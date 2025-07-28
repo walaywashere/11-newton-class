@@ -226,7 +226,7 @@ const Footer = () => {
                   &copy; {currentYear} {branding.name}. {copyright.text}
                 </p>
                 <p className="text-gray-500 text-xs mt-1 flex items-center justify-center sm:justify-start gap-1">
-                  {copyright.madeWithLove.split('❤️')[0]}{React.createElement(getIcon('Heart'), { className: "w-3 h-3 text-red-400 animate-pulse" })}{copyright.madeWithLove.split('❤️')[1]}
+                  {copyright.signature.split('❤️')[0]}{React.createElement(getIcon('Heart'), { className: "w-3 h-3 text-red-400 animate-pulse" })}{copyright.signature.split('❤️')[1]}
                 </p>
               </motion.div>
 
