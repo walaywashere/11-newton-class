@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, Users, Star, Heart, Sparkles, Search, Filter, Grid, List, ChevronLeft, ChevronRight, Crown, Instagram, Mail, Trophy, BookOpen, Target } from 'lucide-react';
+import { Users, Star, Heart, Sparkles, Search, Filter, Grid, List, ChevronLeft, ChevronRight, Crown, Instagram, Mail, Trophy, BookOpen, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { scrollToTopInstant } from '../utils/scrollToTop';
 import { students } from '../data/classData';
@@ -120,27 +120,7 @@ const PerfectStudentsPage = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-purple-300/10 to-blue-300/10 rounded-full blur-3xl animate-pulse" />
       </div>
 
-      {/* Back Button - Positioned below navbar */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-28 left-6 z-50"
-      >
-        <Link
-          to="/"
-          onClick={scrollToTopInstant}
-          className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-indigo-600 group border border-white/50"
-        >
-          <motion.div
-            whileHover={{ x: -3 }}
-            transition={{ duration: 0.2 }}
-          >
-            <ArrowLeft size={20} />
-          </motion.div>
-          <span className="font-medium">Home</span>
-        </Link>
-      </motion.div>
+
 
       {/* Hero Section - Increased top padding for island navbar */}
       <motion.section
@@ -443,13 +423,14 @@ const PerfectStudentsPage = () => {
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
                             className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:scale-105 transition-transform shadow-md text-xs font-medium w-full justify-center"
+                            title="Follow on Instagram"
                           >
                             <Instagram className="w-4 h-4 flex-shrink-0" />
-                            <span>Instagram</span>
+                            <span>Follow on Instagram</span>
                           </a>
                         ) : (
                           <div className="text-center text-xs text-gray-400 py-2">
-                            No social links
+                            No social media
                           </div>
                         )}
                       </div>
@@ -488,14 +469,14 @@ const PerfectStudentsPage = () => {
                             <h3 className="font-bold text-gray-800 group-hover:text-purple-600 transition-colors text-lg truncate">
                               {student.name}
                             </h3>
-                            {student.position && student.position !== 'Student' ? (
-                              <div className="flex items-center gap-1 text-sm font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                                <Crown className="w-4 h-4 text-purple-500" />
-                                <span>{student.position}</span>
-                              </div>
-                            ) : (
-                              <p className="text-gray-600 text-sm">Student</p>
-                            )}
+                                                         {student.position && student.position !== 'Student' ? (
+                               <div className="flex items-center gap-1 text-sm font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                                 <Crown className="w-3 h-3 text-purple-500 flex-shrink-0" />
+                                 <span className="truncate">{student.position}</span>
+                               </div>
+                             ) : (
+                               <p className="text-gray-600 text-sm">Student</p>
+                             )}
                           </div>
                           
                           <div className="flex items-center gap-4 flex-shrink-0">
@@ -506,17 +487,20 @@ const PerfectStudentsPage = () => {
                               </div>
                             )}
                             
-                            {student.socials?.instagram && (
+                            {student.socials?.instagram ? (
                               <a
                                 href={`https://instagram.com/${student.socials.instagram}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
-                                className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:scale-105 transition-transform shadow-md text-sm"
+                                className="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-md hover:scale-105 transition-transform shadow-md text-xs"
+                                title="Follow on Instagram"
                               >
-                                <Instagram className="w-4 h-4" />
-                                <span>Instagram</span>
+                                <Instagram className="w-3 h-3" />
+                                <span className="hidden sm:inline">IG</span>
                               </a>
+                            ) : (
+                              <span className="text-xs text-gray-400 px-2 py-1">No socials</span>
                             )}
                           </div>
                         </div>

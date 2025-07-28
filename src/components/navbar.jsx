@@ -26,6 +26,42 @@ const Navbar = () => {
     { name: 'Achievements', path: '/achievements', icon: Trophy },
   ];
 
+  // Smart color scheme based on current page
+  const getPageTheme = () => {
+    switch (location.pathname) {
+      case '/students':
+        return {
+          gradient: 'from-purple-600 to-indigo-600',
+          hoverColor: 'hover:text-purple-600',
+          hoverBg: 'hover:bg-purple-50/50',
+          mobileGradient: 'from-purple-600 to-indigo-600'
+        };
+      case '/leadership':
+        return {
+          gradient: 'from-indigo-600 to-purple-600',
+          hoverColor: 'hover:text-indigo-600',
+          hoverBg: 'hover:bg-indigo-50/50',
+          mobileGradient: 'from-indigo-600 to-purple-600'
+        };
+      case '/achievements':
+        return {
+          gradient: 'from-orange-600 to-red-600',
+          hoverColor: 'hover:text-orange-600',
+          hoverBg: 'hover:bg-orange-50/50',
+          mobileGradient: 'from-orange-600 to-red-600'
+        };
+      default: // Home
+        return {
+          gradient: 'from-purple-600 to-indigo-600',
+          hoverColor: 'hover:text-purple-600',
+          hoverBg: 'hover:bg-purple-50/50',
+          mobileGradient: 'from-purple-600 to-indigo-600'
+        };
+    }
+  };
+
+  const theme = getPageTheme();
+
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
@@ -56,8 +92,8 @@ const Navbar = () => {
               : '0 16px 64px rgba(0, 0, 0, 0.15), 0 4px 32px rgba(0, 0, 0, 0.1)'
           }}
         >
-          {/* Gradient Border Effect */}
-          <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-indigo-500/20 opacity-60 blur-sm" />
+          {/* Gradient Border Effect - Dynamic based on page */}
+          <div className={`absolute inset-0 rounded-[inherit] bg-gradient-to-r ${theme.gradient} opacity-60 blur-sm`} style={{ opacity: 0.2 }} />
           
           <div className="relative flex items-center justify-between px-6 py-4">
             {/* Logo */}
@@ -66,16 +102,16 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               className="flex items-center space-x-3"
             >
-                             <Link to="/" onClick={scrollToTopInstant} className="flex items-center space-x-3 group">
+              <Link to="/" onClick={scrollToTopInstant} className="flex items-center space-x-3 group">
                 <motion.div
                   animate={{ rotate: [0, 5, -5, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-10 h-10 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow"
+                  className={`w-10 h-10 bg-gradient-to-br ${theme.gradient} rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}
                 >
                   <Sparkles className="w-6 h-6 text-white" />
                 </motion.div>
                 <div className="hidden sm:block">
-                  <div className="text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                  <div className={`text-xl font-bold bg-gradient-to-r ${theme.gradient} bg-clip-text text-transparent`}>
                     Class 11-Newton
                   </div>
                   <div className="text-xs text-gray-500 font-medium">Excellence in Motion</div>
@@ -99,13 +135,13 @@ const Navbar = () => {
                       className={`relative px-4 py-2.5 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 ${
                         isActive
                           ? 'text-white shadow-lg'
-                          : 'text-gray-700 hover:text-purple-600 hover:bg-purple-50/50'
+                          : `text-gray-700 ${theme.hoverColor} ${theme.hoverBg}`
                       }`}
                     >
                       {isActive && (
                         <motion.div
                           layoutId="activeTab"
-                          className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl"
+                          className={`absolute inset-0 bg-gradient-to-r ${theme.gradient} rounded-xl`}
                           transition={{ type: "spring", duration: 0.6 }}
                         />
                       )}
@@ -122,7 +158,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg hover:shadow-xl transition-all"
+              className={`md:hidden p-3 rounded-xl bg-gradient-to-r ${theme.mobileGradient} text-white shadow-lg hover:shadow-xl transition-all`}
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
@@ -186,8 +222,8 @@ const Navbar = () => {
                           }}
                           className={`flex items-center space-x-3 px-6 py-4 transition-all duration-300 ${
                             isActive
-                              ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white'
-                              : 'text-gray-700 hover:bg-purple-50 hover:text-purple-600'
+                              ? `bg-gradient-to-r ${theme.mobileGradient} text-white`
+                              : `text-gray-700 ${theme.hoverBg} ${theme.hoverColor}`
                           }`}
                         >
                           <item.icon className="w-5 h-5" />

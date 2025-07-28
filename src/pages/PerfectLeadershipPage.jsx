@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Crown, Users, Star, Award, Heart, MapPin, Calendar, Mail, Phone, BookOpen, Trophy, Sparkles, ChevronRight, Instagram } from 'lucide-react';
+import { Crown, Users, Star, Award, Heart, MapPin, Calendar, Mail, Phone, BookOpen, Trophy, Sparkles, ChevronRight, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { scrollToTopInstant } from '../utils/scrollToTop';
 import { adviser, classOfficers } from '../data/classData';
@@ -15,17 +15,7 @@ const PerfectLeadershipPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
-      {/* Back Button - Positioned below navbar */}
-      <div className="fixed top-28 left-6 z-50">
-        <Link
-          to="/"
-          onClick={scrollToTopInstant}
-          className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-indigo-600 group"
-        >
-          <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform duration-300" />
-          <span className="font-medium">Home</span>
-        </Link>
-      </div>
+
 
       {/* Hero Section - Increased top padding for island navbar */}
       <section className="relative pt-40 pb-12 overflow-hidden">

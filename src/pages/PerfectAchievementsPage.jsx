@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, Trophy, Medal, Star, Flame, Diamond, Crown, Users, Target, Award, ChevronRight, X, Filter, Grid, List } from 'lucide-react';
+import { Trophy, Medal, Star, Flame, Diamond, Crown, Users, Target, Award, ChevronRight, X, Filter, Grid, List } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { scrollToTopInstant } from '../utils/scrollToTop';
 import PerfectDropdown from '../components/PerfectDropdown';
@@ -181,27 +181,7 @@ const PerfectAchievementsPage = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-yellow-300/10 to-orange-300/10 rounded-full blur-3xl animate-pulse" />
       </div>
 
-      {/* Back Button - Positioned below navbar */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-28 left-6 z-50"
-      >
-        <Link
-          to="/"
-          onClick={scrollToTopInstant}
-          className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-orange-600 group border border-white/50"
-        >
-          <motion.div
-            whileHover={{ x: -3 }}
-            transition={{ duration: 0.2 }}
-          >
-            <ArrowLeft size={20} />
-          </motion.div>
-          <span className="font-medium">Home</span>
-        </Link>
-      </motion.div>
+
 
       {/* Hero Section - Increased top padding for island navbar */}
       <motion.section
@@ -381,9 +361,9 @@ const PerfectAchievementsPage = () => {
                 className="group cursor-pointer"
                 onClick={() => setSelectedAchievement(achievement)}
               >
-                {viewMode === 'grid' ? (
-                  // Grid View
-                  <div className="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 group-hover:border-orange-200">
+                                 {viewMode === 'grid' ? (
+                   // Grid View - Fixed Height
+                   <div className="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 group-hover:border-orange-200 h-96 flex flex-col">
                     {/* Achievement Header */}
                     <div className={`bg-gradient-to-r ${achievement.gradient} p-6 relative overflow-hidden`}>
                       <motion.div
@@ -430,24 +410,26 @@ const PerfectAchievementsPage = () => {
                       ))}
                     </div>
 
-                    {/* Achievement Content */}
-                    <div className="p-6">
+                                         {/* Achievement Content - Flexible */}
+                     <div className="p-6 flex-1 flex flex-col">
                       <p className="text-gray-600 mb-4 line-clamp-3">{achievement.description}</p>
                       
-                      <div className="flex items-center justify-between mb-4">
-                        <span className={`px-3 py-1 rounded-lg text-xs font-bold bg-gradient-to-r ${achievement.gradient} text-white`}>
-                          {achievement.impact} Impact
-                        </span>
-                        <span className="text-sm text-gray-500">{achievement.students.length} Students</span>
-                      </div>
+                                             <div className="flex-1">
+                         <div className="flex items-center justify-between mb-4">
+                           <span className={`px-3 py-1 rounded-lg text-xs font-bold bg-gradient-to-r ${achievement.gradient} text-white`}>
+                             {achievement.impact} Impact
+                           </span>
+                           <span className="text-sm text-gray-500">{achievement.students.length} Students</span>
+                         </div>
+                       </div>
 
-                      <motion.div
-                        className="flex items-center text-orange-600 font-medium group-hover:gap-2 transition-all"
-                        whileHover={{ x: 5 }}
-                      >
-                        <span className="text-sm">View Details</span>
-                        <ChevronRight className="w-4 h-4 ml-1 group-hover:ml-0 transition-all" />
-                      </motion.div>
+                       <motion.div
+                         className="flex items-center text-orange-600 font-medium group-hover:gap-2 transition-all mt-auto"
+                         whileHover={{ x: 5 }}
+                       >
+                         <span className="text-sm">View Details</span>
+                         <ChevronRight className="w-4 h-4 ml-1 group-hover:ml-0 transition-all" />
+                       </motion.div>
                     </div>
 
                     {/* Hover Glow Effect */}
@@ -515,19 +497,21 @@ const PerfectAchievementsPage = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Close Button - Outside gradient */}
+              <motion.button
+                onClick={() => setSelectedAchievement(null)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="absolute top-4 right-4 w-10 h-10 bg-white border border-gray-200 rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors z-50 shadow-lg"
+              >
+                <X className="w-5 h-5 text-gray-600" />
+              </motion.button>
+
               {/* Modal Header */}
               <div className={`bg-gradient-to-r ${selectedAchievement.gradient} p-8 text-white relative overflow-hidden`}>
-                <motion.button
-                  onClick={() => setSelectedAchievement(null)}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="absolute top-4 right-4 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors z-10"
-                >
-                  <X className="w-5 h-5" />
-                </motion.button>
                 
                 <motion.div
                   className="absolute top-0 right-0 w-40 h-40 opacity-10"
