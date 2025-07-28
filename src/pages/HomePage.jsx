@@ -13,7 +13,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section - Mobile First */}
-      <section id="home" className="relative flex items-center justify-center overflow-hidden pt-20 sm:pt-24 lg:pt-28 pb-20 sm:pb-24 lg:pb-28">
+      <section id="home" className="relative flex items-center justify-center overflow-hidden pt-32 sm:pt-40 lg:pt-44 pb-20 sm:pb-24 lg:pb-28">
         {/* Dynamic Gradient Background */}
         <div 
           className="absolute inset-0"

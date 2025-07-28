@@ -120,12 +120,12 @@ const PerfectStudentsPage = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-purple-300/10 to-blue-300/10 rounded-full blur-3xl animate-pulse" />
       </div>
 
-      {/* Back Button */}
+      {/* Back Button - Positioned below navbar */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-6 left-6 z-50"
+        className="fixed top-28 left-6 z-50"
       >
         <Link
           to="/"
@@ -142,10 +142,10 @@ const PerfectStudentsPage = () => {
         </Link>
       </motion.div>
 
-      {/* Hero Section - Added more top padding for navbar */}
+      {/* Hero Section - Increased top padding for island navbar */}
       <motion.section
         style={{ y: heroY, opacity: heroOpacity }}
-        className="relative pt-32 pb-16 overflow-hidden"
+        className="relative pt-40 pb-16 overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -471,14 +471,14 @@ const PerfectStudentsPage = () => {
                           onLoad={() => handleImageLoad(student.name)}
                         />
                         
-                        {/* Position Badge */}
-                        {student.position && student.position !== 'Student' && (
-                          <div className="absolute -top-2 -right-2">
-                            <span className="px-2 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg text-xs font-bold shadow-lg border border-white/20 backdrop-blur-sm flex items-center gap-1">
-                              <Crown className="w-3 h-3" />
-                            </span>
-                          </div>
-                        )}
+                                                 {/* Position Badge */}
+                         {student.position && student.position !== 'Student' && (
+                           <div className="absolute -top-2 -right-2">
+                             <span className="px-2 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg text-xs font-bold shadow-lg border border-white/20 backdrop-blur-sm flex items-center gap-1">
+                               <Crown className="w-3 h-3 flex-shrink-0" />
+                             </span>
+                           </div>
+                         )}
                       </div>
 
                       {/* Student Info - Flex Layout */}

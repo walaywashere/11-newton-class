@@ -181,12 +181,12 @@ const PerfectAchievementsPage = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-yellow-300/10 to-orange-300/10 rounded-full blur-3xl animate-pulse" />
       </div>
 
-      {/* Back Button */}
+      {/* Back Button - Positioned below navbar */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-6 left-6 z-50"
+        className="fixed top-28 left-6 z-50"
       >
         <Link
           to="/"
@@ -203,10 +203,10 @@ const PerfectAchievementsPage = () => {
         </Link>
       </motion.div>
 
-      {/* Hero Section */}
+      {/* Hero Section - Increased top padding for island navbar */}
       <motion.section
         style={{ y: heroY, opacity: heroOpacity }}
-        className="relative pt-32 pb-16 overflow-hidden"
+        className="relative pt-40 pb-16 overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -520,12 +520,14 @@ const PerfectAchievementsPage = () => {
             >
               {/* Modal Header */}
               <div className={`bg-gradient-to-r ${selectedAchievement.gradient} p-8 text-white relative overflow-hidden`}>
-                <button
+                <motion.button
                   onClick={() => setSelectedAchievement(null)}
-                  className="absolute top-4 right-4 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="absolute top-4 right-4 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors z-10"
                 >
                   <X className="w-5 h-5" />
-                </button>
+                </motion.button>
                 
                 <motion.div
                   className="absolute top-0 right-0 w-40 h-40 opacity-10"

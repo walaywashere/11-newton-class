@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, Users, Trophy, UserCheck, Sparkles } from 'lucide-react';
+import { scrollToTopInstant } from '../utils/scrollToTop';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +66,7 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               className="flex items-center space-x-3"
             >
-              <Link to="/" className="flex items-center space-x-3 group">
+                             <Link to="/" onClick={scrollToTopInstant} className="flex items-center space-x-3 group">
                 <motion.div
                   animate={{ rotate: [0, 5, -5, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -94,6 +95,7 @@ const Navbar = () => {
                   >
                     <Link
                       to={item.path}
+                      onClick={scrollToTopInstant}
                       className={`relative px-4 py-2.5 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 ${
                         isActive
                           ? 'text-white shadow-lg'
@@ -178,7 +180,10 @@ const Navbar = () => {
                       >
                         <Link
                           to={item.path}
-                          onClick={() => setIsOpen(false)}
+                          onClick={() => {
+                            setIsOpen(false);
+                            scrollToTopInstant();
+                          }}
                           className={`flex items-center space-x-3 px-6 py-4 transition-all duration-300 ${
                             isActive
                               ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white'

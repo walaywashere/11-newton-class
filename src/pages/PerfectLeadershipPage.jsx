@@ -15,8 +15,8 @@ const PerfectLeadershipPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
-      {/* Back Button */}
-      <div className="fixed top-4 left-4 z-50">
+      {/* Back Button - Positioned below navbar */}
+      <div className="fixed top-28 left-6 z-50">
         <Link
           to="/"
           onClick={scrollToTopInstant}
@@ -27,8 +27,8 @@ const PerfectLeadershipPage = () => {
         </Link>
       </div>
 
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-12 overflow-hidden">
+      {/* Hero Section - Increased top padding for island navbar */}
+      <section className="relative pt-40 pb-12 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 opacity-90"></div>
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
