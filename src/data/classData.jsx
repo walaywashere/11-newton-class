@@ -83,7 +83,7 @@ export const students = [
   {
     name: 'Andrea Garcia',
     photo: comingSoonPhoto, // your photo URL
-    role: 'President',
+    position: 'President',
     dreamJob: 'Corporate Lawyer',
     funFact: 'Is a certified scuba diver.',
     socials: { instagram: 'andrea.g' },
@@ -92,7 +92,7 @@ export const students = [
   {
     name: 'John Michael Reyes',
     photo: comingSoonPhoto,
-    role: 'Vice President',
+    position: 'Vice President',
     dreamJob: 'Civil Engineer',
     funFact: 'Loves to go on mountain hikes.',
     quote: "Building a stronger class, together.",
@@ -100,7 +100,7 @@ export const students = [
   {
     name: 'Samantha Cruz',
     photo: comingSoonPhoto,
-    role: 'Secretary',
+    position: 'Secretary',
     dreamJob: 'Novelist',
     funFact: 'Has written over 50 short stories.',
     quote: "Every detail matters.",
@@ -108,7 +108,7 @@ export const students = [
   {
     name: 'Isabella Santos',
     photo: comingSoonPhoto,
-    role: 'Treasurer',
+    position: 'Treasurer',
     dreamJob: 'Accountant',
     funFact: 'Manages a small online sticker shop.',
     quote: "Count on me to make it count.",
@@ -116,7 +116,7 @@ export const students = [
   {
     name: 'Mark Bautista',
     photo: comingSoonPhoto,
-    role: 'Auditor',
+    position: 'Auditor',
     dreamJob: 'Game Developer',
     funFact: 'Is ranked in the top 1% of a popular online game.',
     quote: "Ensuring fairness in every step.",
@@ -124,7 +124,7 @@ export const students = [
   {
     name: 'Angela David',
     photo: comingSoonPhoto,
-    role: 'P.R.O.',
+    position: 'P.R.O.',
     dreamJob: 'Journalist',
     funFact: 'Runs the unofficial class social media page.',
     quote: "Connecting our class, one post at a time.",

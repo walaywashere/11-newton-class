@@ -13,6 +13,7 @@ const PerfectStudentsPage = () => {
   // PERFECT STATE MANAGEMENT
   const [viewMode, setViewMode] = useState('grid');
   const [sortBy, setSortBy] = useState('name');
+  const [filterBy, setFilterBy] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,14 +27,32 @@ const PerfectStudentsPage = () => {
     { value: 'dreamJob', label: 'Dream Job' }
   ];
 
+  // PERFECT FILTER OPTIONS
+  const filterOptions = [
+    { value: 'all', label: 'All Students' },
+    { value: 'officers', label: 'Class Officers Only' },
+    { value: 'students', label: 'Regular Students' }
+  ];
+
   // PERFECT FILTERED AND SORTED DATA
   const processedStudents = useMemo(() => {
-    let filtered = students.filter(student =>
-      student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      student.position?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      student.dreamJob?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      student.funFact?.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    let filtered = students.filter(student => {
+      // Apply search filter
+      const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        student.position?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        student.dreamJob?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        student.funFact?.toLowerCase().includes(searchTerm.toLowerCase());
+
+      // Apply category filter
+      let matchesFilter = true;
+      if (filterBy === 'officers') {
+        matchesFilter = student.position && student.position !== 'Student';
+      } else if (filterBy === 'students') {
+        matchesFilter = !student.position || student.position === 'Student';
+      }
+
+      return matchesSearch && matchesFilter;
+    });
 
     // Sort students
     filtered.sort((a, b) => {
@@ -52,7 +71,7 @@ const PerfectStudentsPage = () => {
     });
 
     return filtered;
-  }, [searchTerm, sortBy]);
+  }, [searchTerm, sortBy, filterBy]);
 
   // PERFECT PAGINATION
   const totalPages = Math.ceil(processedStudents.length / studentsPerPage);
@@ -181,9 +200,17 @@ const PerfectStudentsPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
                 
                 {/* PERFECT DROPDOWN CONTAINER */}
-                <div className="flex-shrink-0">
+                <div className="flex gap-3 flex-shrink-0">
                   <PerfectDropdown
                     trigger={<Filter className="w-4 h-4" />}
+                    options={filterOptions}
+                    value={filterBy}
+                    onChange={setFilterBy}
+                    placeholder="Filter"
+                    align="left"
+                  />
+                  <PerfectDropdown
+                    trigger={<Users className="w-4 h-4" />}
                     options={sortOptions}
                     value={sortBy}
                     onChange={setSortBy}
@@ -245,8 +272,8 @@ const PerfectStudentsPage = () => {
                   />
                   {student.position && student.position !== 'Student' && (
                     <div className="absolute top-3 left-3">
-                      <span className="px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-medium">
-                        {student.position}
+                      <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full text-xs font-bold shadow-lg border-2 border-white/20 backdrop-blur-sm">
+                        ⭐ {student.position}
                       </span>
                     </div>
                   )}
@@ -256,7 +283,14 @@ const PerfectStudentsPage = () => {
                 <div className={`${viewMode === 'list' ? 'flex-1' : 'p-4'}`}>
                   <div className="mb-3">
                     <h3 className="text-lg font-bold text-gray-900 mb-1">{student.name}</h3>
-                    <p className="text-blue-600 font-medium text-sm">{student.position || 'Student'}</p>
+                    {student.position && student.position !== 'Student' ? (
+                      <p className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600 font-bold text-sm flex items-center gap-1">
+                        <span className="text-purple-500">👑</span>
+                        {student.position}
+                      </p>
+                    ) : (
+                      <p className="text-gray-600 font-medium text-sm">Student</p>
+                    )}
                   </div>
 
                   {student.motto && (
@@ -407,7 +441,15 @@ const PerfectStudentsPage = () => {
                     />
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900">{selectedStudent.name}</h2>
-                      <p className="text-blue-600 font-medium">{selectedStudent.position || 'Student'}</p>
+                      {selectedStudent.position && selectedStudent.position !== 'Student' ? (
+                        <div className="flex items-center gap-2">
+                          <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full text-sm font-bold">
+                            👑 {selectedStudent.position}
+                          </span>
+                        </div>
+                      ) : (
+                        <p className="text-gray-600 font-medium">Student</p>
+                      )}
                     </div>
                   </div>
                   <button
