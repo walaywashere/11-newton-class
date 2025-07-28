@@ -1,0 +1,175 @@
+{
+  "page": {
+    "title": "Our Amazing Students",
+    "subtitle": "Meet the brilliant minds, unique personalities, and future leaders that make Class 11-Newton extraordinary.",
+    "badge": {
+      "text": "Student Directory",
+      "icon": "Users"
+    }
+  },
+  "display": {
+    "defaultView": "grid",
+    "defaultSort": "name",
+    "defaultFilter": "all",
+    "itemsPerPage": 12
+  },
+  "search": {
+    "placeholder": "Search by name, position, dream job, or fun fact...",
+    "enabled": true
+  },
+  "filters": {
+    "sort": [
+      {
+        "value": "name",
+        "label": "Name (A-Z)"
+      },
+      {
+        "value": "name-desc",
+        "label": "Name (Z-A)"
+      },
+      {
+        "value": "position", 
+        "label": "Position"
+      },
+      {
+        "value": "dreamJob",
+        "label": "Dream Job"
+      }
+    ],
+    "category": [
+      {
+        "value": "all",
+        "label": "All Students"
+      },
+      {
+        "value": "officers",
+        "label": "Class Officers"
+      },
+      {
+        "value": "regular",
+        "label": "Regular Students"
+      }
+    ]
+  },
+  "layout": {
+    "grid": {
+      "cardHeight": "420px",
+      "imageHeight": "192px",
+      "showQuote": false,
+      "showFunFact": true,
+      "showDreamJob": true,
+      "showSocials": true,
+      "showHeartButton": true
+    },
+    "list": {
+      "imageSize": "80px",
+      "showFunFact": true,
+      "showDreamJob": true,
+      "showSocials": true,
+      "showHeartButton": true
+    }
+  },
+  "modal": {
+    "sections": {
+      "profilePicture": true,
+      "personalQuote": true,
+      "quickStats": true,
+      "dreamJob": true,
+      "funFact": true,
+      "skillsInterests": true,
+      "contactInfo": true
+    },
+    "skillsInterests": {
+      "title": "Interests & Skills",
+      "icon": "Star",
+      "backgroundColor": "bg-green-50",
+      "borderColor": "border-green-100",
+      "iconColor": "text-green-600",
+      "iconBackground": "bg-green-100",
+      "skills": [
+        {
+          "name": "Academic Excellence",
+          "category": "academic",
+          "color": "green"
+        },
+        {
+          "name": "Leadership",
+          "category": "leadership",
+          "color": "purple"
+        },
+        {
+          "name": "Teamwork",
+          "category": "social",
+          "color": "blue"
+        },
+        {
+          "name": "Communication",
+          "category": "social",
+          "color": "indigo"
+        },
+        {
+          "name": "Problem Solving",
+          "category": "analytical",
+          "color": "emerald"
+        },
+        {
+          "name": "Creativity",
+          "category": "creative",
+          "color": "pink"
+        },
+        {
+          "name": "Critical Thinking",
+          "category": "analytical",
+          "color": "amber"
+        },
+        {
+          "name": "Innovation",
+          "category": "creative",
+          "color": "violet"
+        },
+        {
+          "name": "Public Speaking",
+          "category": "communication",
+          "color": "orange"
+        },
+        {
+          "name": "Technology",
+          "category": "technical",
+          "color": "cyan"
+        },
+        {
+          "name": "Research",
+          "category": "academic",
+          "color": "teal"
+        },
+        {
+          "name": "Time Management",
+          "category": "organizational",
+          "color": "slate"
+        }
+      ],
+      "display": {
+        "maxSkills": 6,
+        "randomize": true,
+        "groupByCategory": false
+      }
+    }
+  },
+  "badges": {
+    "leadership": {
+      "show": true,
+      "icon": "Crown",
+      "position": "top-right",
+      "styling": "bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500"
+    }
+  },
+  "cta": {
+    "title": "Want to Learn More?",
+    "subtitle": "Discover our leadership team and see how these amazing students contribute to our class excellence.",
+    "button": {
+      "text": "Meet Our Leaders",
+      "path": "/leadership",
+      "icon": "UserCheck"
+    }
+  }
+}

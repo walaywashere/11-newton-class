@@ -5,7 +5,7 @@
     "academicYear": "2025-2026",
     "description": "We are a community of passionate learners, innovators, and future leaders. Together, we're shaping tomorrow through knowledge, creativity, and collaboration."
   },
-  "classStats": [
+  "stats": [
     {
       "label": "Students",
       "value": "dynamic",
@@ -33,22 +33,22 @@
   "quickLinks": [
     {
       "name": "Our Students",
-      "href": "/students",
+      "path": "/students",
       "icon": "Users"
     },
     {
       "name": "Leadership", 
-      "href": "/leadership",
+      "path": "/leadership",
       "icon": "UserCheck"
     },
     {
       "name": "Achievements",
-      "href": "/achievements", 
+      "path": "/achievements", 
       "icon": "Trophy"
     },
     {
       "name": "About Class",
-      "href": "/",
+      "path": "/",
       "icon": "BookOpen"
     }
   ],
@@ -61,25 +61,25 @@
   "socialLinks": [
     {
       "name": "GitHub",
-      "href": "#",
+      "url": "#",
       "icon": "Github",
       "color": "hover:text-gray-400"
     },
     {
       "name": "Instagram", 
-      "href": "#",
+      "url": "#",
       "icon": "Instagram",
       "color": "hover:text-pink-400"
     },
     {
       "name": "Twitter",
-      "href": "#",
+      "url": "#",
       "icon": "Twitter", 
       "color": "hover:text-blue-400"
     }
   ],
   "copyright": {
     "text": "All rights reserved.",
-    "madeWithLove": "Made with ❤️ by our amazing class"
+    "signature": "Made with ❤️ by our amazing class"
   }
 }

@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "name": "Class 11-Newton",
+    "tagline": "Excellence in Motion",
+    "academicYear": "2025-2026",
+    "version": "2.0.0",
+    "description": "Official website showcasing the amazing students, achievements, and leadership of Class 11-Newton"
+  },
+  "branding": {
+    "logo": {
+      "text": "Class 11-Newton",
+      "subtitle": "Excellence in Motion", 
+      "icon": "Sparkles",
+      "showIcon": true
+    },
+    "colors": {
+      "primary": {
+        "blue": "#3B82F6",
+        "purple": "#8B5CF6", 
+        "emerald": "#10B981",
+        "amber": "#F59E0B",
+        "red": "#EF4444"
+      },
+      "gradients": {
+        "hero": "from-slate-50 via-blue-50 to-purple-50",
+        "students": "from-blue-50 via-indigo-50 to-purple-50",
+        "leadership": "from-purple-50 via-indigo-50 to-blue-50",
+        "achievements": "from-amber-50 via-orange-50 to-red-50"
+      }
+    }
+  },
+  "navigation": {
+    "type": "island",
+    "links": [
+      {
+        "name": "Home",
+        "path": "/",
+        "icon": "Home"
+      },
+      {
+        "name": "Students", 
+        "path": "/students",
+        "icon": "Users"
+      },
+      {
+        "name": "Leadership",
+        "path": "/leadership", 
+        "icon": "UserCheck"
+      },
+      {
+        "name": "Achievements",
+        "path": "/achievements",
+        "icon": "Trophy"
+      }
+    ]
+  },
+  "features": {
+    "animations": true,
+    "islandNavbar": true,
+    "customScrollbar": true,
+    "performanceOptimized": true,
+    "dynamicStats": true,
+    "preloader": true,
+    "scrollToTop": true
+  },
+  "performance": {
+    "lazyLoading": true,
+    "memoization": true,
+    "reducedMotion": true,
+    "animationOptimization": "subtle"
+  }
+}

@@ -1,4 +1,4 @@
-import studentsConfig from '../data/studentsConfig.json';
+import studentsConfig from '../data/students.config.json';
 
 /**
  * Get skills for display in student modal
@@ -7,11 +7,11 @@ import studentsConfig from '../data/studentsConfig.json';
  */
 export const getStudentSkills = (options = {}) => {
   const skillsConfig = studentsConfig.modal.skillsInterests;
-  const { skills, displaySettings } = skillsConfig;
+  const { skills, display } = skillsConfig;
   
   const {
-    maxSkills = displaySettings.maxSkillsToShow,
-    randomize = displaySettings.randomizeSelection,
+    maxSkills = display.maxSkills,
+    randomize = display.randomize,
     category = null
     // studentName for future student-specific skills implementation
   } = options;
@@ -19,7 +19,7 @@ export const getStudentSkills = (options = {}) => {
   let availableSkills = [...skills];
 
   // Filter by category if specified
-  if (category && !displaySettings.showByCategory) {
+  if (category && !display.groupByCategory) {
     availableSkills = skills.filter(skill => skill.category === category);
   }
 
@@ -46,14 +46,7 @@ export const getSkillsConfig = () => {
  * @returns {Object} CSS classes for the skill tag
  */
 export const getSkillStyling = (color = 'green') => {
-  const config = getSkillsConfig();
-  const { tagStyling } = config.displaySettings;
-  
   return {
-    baseClasses: tagStyling.baseClasses,
-    backgroundClasses: tagStyling.backgroundClasses,
-    textClasses: tagStyling.textClasses,
-    borderClasses: tagStyling.borderClasses,
     colorClasses: getColorClasses(color)
   };
 };

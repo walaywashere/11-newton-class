@@ -1,0 +1,71 @@
+{
+  "page": {
+    "title": "Meet Our Leaders",
+    "subtitle": "Discover the visionaries and innovators who guide Class 11-Newton towards excellence and success.",
+    "badge": {
+      "text": "Leadership Excellence",
+      "icon": "UserCheck"
+    }
+  },
+  "adviser": {
+    "section": {
+      "title": "Our Class Adviser",
+      "subtitle": "The guiding force behind Class 11-Newton's success"
+    },
+    "display": {
+      "imageSize": "224px",
+      "showQuote": true,
+      "showContact": true,
+      "showExperience": true,
+      "showAchievements": true,
+      "backgroundGradient": "from-purple-50 to-blue-50",
+      "borderColor": "border-purple-200"
+    },
+    "bottomIcons": [
+      {
+        "icon": "Trophy",
+        "label": "Excellence",
+        "color": "amber"
+      },
+      {
+        "icon": "Heart",
+        "label": "Dedication", 
+        "color": "red"
+      },
+      {
+        "icon": "Users",
+        "label": "Leadership",
+        "color": "blue"
+      }
+    ]
+  },
+  "officers": {
+    "section": {
+      "title": "Our Class Officers",
+      "subtitle": "Student leaders making a difference in our class"
+    },
+    "display": {
+      "imageHeight": "192px",
+      "showQuote": true,
+      "showPosition": true,
+      "showResponsibilities": true,
+      "showFunFact": true,
+      "showDreamJob": true,
+      "showSocials": true
+    },
+    "modal": {
+      "showResponsibilities": true,
+      "showPersonalInfo": true,
+      "showQuote": true
+    }
+  },
+  "cta": {
+    "title": "Ready to Meet Everyone?",
+    "subtitle": "Explore our complete student directory and discover the amazing individuals that make up Class 11-Newton.",
+    "button": {
+      "text": "Meet All Students",
+      "path": "/students",
+      "icon": "Users"
+    }
+  }
+}

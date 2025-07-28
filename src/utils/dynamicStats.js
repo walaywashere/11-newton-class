@@ -1,7 +1,5 @@
 import { students, classOfficers } from '../data/classData';
-
-// Import achievement data from the configuration
-import achievementsConfig from '../data/achievementsConfig.json';
+import achievementsConfig from '../data/achievements.config.json';
 
 /**
  * Calculate dynamic statistics based on actual data
@@ -38,12 +36,12 @@ export const calculateDynamicStats = () => {
   );
 
   return {
-    totalStudents: `${totalStudents}+`,
+    totalStudents: `${totalStudents}`,
     totalOfficers: `${totalOfficers}`,
-    totalAchievements: `${totalAchievements}+`,
-    totalRecognitions: `${totalRecognitions}+`,
-    totalChampionships: `${totalChampionships}+`,
-    totalProjects: `${totalProjects}+`,
+    totalAchievements: `${totalAchievements}`,
+    totalRecognitions: `${totalRecognitions}`,
+    totalChampionships: `${totalChampionships}`,
+    totalProjects: `${totalProjects}`,
     
     // Raw numbers for calculations
     raw: {

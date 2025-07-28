@@ -4,7 +4,7 @@ import {
   ArrowUp
 } from 'lucide-react';
 import { getIcon } from '../utils/iconMapper';
-import footerConfig from '../data/footerConfig.json';
+import footerConfig from '../data/footer.config.json';
 import { processDynamicStats } from '../utils/dynamicStats';
 
 const Footer = () => {
@@ -19,7 +19,7 @@ const Footer = () => {
   
   // Process dynamic stats
   const processedClassStats = useMemo(() => {
-    return processDynamicStats(footerConfig.classStats);
+    return processDynamicStats(footerConfig.stats);
   }, []);
 
   // Convert icon names to components
@@ -30,7 +30,8 @@ const Footer = () => {
 
   const processedSocialLinks = socialLinks.map(social => ({
     ...social,
-    icon: getIcon(social.icon)
+    icon: getIcon(social.icon),
+    href: social.url
   }));
 
   const processedClassStatsWithIcons = processedClassStats.map(stat => ({

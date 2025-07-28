@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Sparkles, Users, Trophy, BookOpen, ArrowRight, UserCheck, Heart, Star, Crown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { scrollToTopInstant } from '../utils/scrollToTop';
-import homepageConfig from '../data/homepageConfig.json';
+import homepageConfig from '../data/homepage.config.json';
 import { processDynamicStats } from '../utils/dynamicStats';
 
 const HomePage = () => {
   // Process dynamic stats from configuration
   const heroStats = useMemo(() => {
-    return processDynamicStats(homepageConfig.heroSection.stats);
+    return processDynamicStats(homepageConfig.hero.stats);
   }, []);
 
   // Error boundary for this component

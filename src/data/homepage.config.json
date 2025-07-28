@@ -1,52 +1,36 @@
 {
-  "heroSection": {
-    "topBadge": {
+  "hero": {
+    "badge": {
       "text": "Class of 2025-2026",
       "icon": "Sparkles",
-      "showPulsingDot": true
+      "animated": true
     },
     "title": {
-      "firstPart": "Welcome to",
-      "secondPart": "Class 11-Newton"
+      "primary": "Welcome to",
+      "highlighted": "Class 11-Newton"
     },
-    "subtitle": {
-      "text": "Where brilliant minds come together to create extraordinary futures. We are a community of passionate learners, dedicated to ",
-      "highlightWords": [
-        {
-          "word": "Innovation",
-          "color": "blue"
-        },
-        {
-          "word": "Excellence", 
-          "color": "purple"
-        },
-        {
-          "word": "Dreams",
-          "color": "emerald"
-        }
-      ]
-    },
+    "subtitle": "Where brilliant minds come together to create extraordinary futures. We are a community of passionate learners, dedicated to Innovation, Excellence, and Dreams.",
     "stats": [
       {
         "icon": "Users",
         "label": "Brilliant Minds",
         "value": "dynamic",
-        "color": "blue",
-        "calculation": "totalStudents"
+        "calculation": "totalStudents",
+        "color": "blue"
       },
       {
         "icon": "Trophy", 
         "label": "Achievements",
         "value": "dynamic",
-        "color": "purple",
-        "calculation": "totalAchievements"
+        "calculation": "totalAchievements",
+        "color": "purple"
       },
       {
         "icon": "BookOpen",
         "label": "Projects",
         "value": "dynamic",
-        "color": "emerald",
-        "calculation": "totalProjects"
+        "calculation": "totalProjects",
+        "color": "emerald"
       },
       {
         "icon": "Star",
@@ -55,29 +39,26 @@
         "color": "amber"
       }
     ],
-    "ctaButtons": [
+    "actions": [
       {
         "text": "Meet Our Students",
-        "link": "/students",
+        "path": "/students",
         "type": "primary",
         "icon": "Users"
       },
       {
         "text": "Our Leadership",
-        "link": "/leadership", 
+        "path": "/leadership", 
         "type": "secondary",
         "icon": "UserCheck"
       }
     ],
     "scrollIndicator": {
       "text": "Discover More",
-      "position": {
-        "mobile": "bottom-2",
-        "desktop": "bottom-6"
-      }
+      "show": true
     }
   },
-  "exploreSection": {
+  "explore": {
     "title": "Explore Our Class",
     "subtitle": "Discover what makes Class 11-Newton extraordinary",
     "cards": [
@@ -85,7 +66,7 @@
         "title": "Leadership",
         "subtitle": "Meet Our Leaders",
         "description": "Discover the visionaries and innovators who guide our class towards excellence and success.",
-        "link": "/leadership",
+        "path": "/leadership",
         "icon": "UserCheck",
         "gradient": "from-purple-600 to-blue-600",
         "stats": [
@@ -108,7 +89,7 @@
         "title": "Students",
         "subtitle": "Our Amazing Students", 
         "description": "Meet the brilliant minds, unique personalities, and future leaders that make our class extraordinary.",
-        "link": "/students",
+        "path": "/students",
         "icon": "Users",
         "gradient": "from-blue-600 to-emerald-600",
         "stats": [
@@ -132,7 +113,7 @@
         "title": "Achievements",
         "subtitle": "Our Success Stories",
         "description": "Celebrate the remarkable milestones and collective successes that define our journey.",
-        "link": "/achievements", 
+        "path": "/achievements", 
         "icon": "Trophy",
         "gradient": "from-emerald-600 to-amber-600",
         "stats": [
@@ -152,10 +133,10 @@
           }
         ]
       }
-    ],
-    "madeWithLove": {
-      "text": "Made with ❤️ by Class 11-Newton",
-      "showHeartAnimation": true
-    }
+    ]
+  },
+  "footer": {
+    "signature": "Made with ❤️ by Class 11-Newton",
+    "animated": true
   }
 }

@@ -19,7 +19,7 @@ export const adviser = {
   ]
 };
 
-// Class Officers - separate from regular students
+// Class Officers - separate array for leadership page
 export const classOfficers = [
   {
     name: 'Andrea Garcia',
@@ -78,11 +78,12 @@ export const classOfficers = [
   }
 ];
 
+// Complete student list including officers
 export const students = [
-  // --- Class Officers (also part of the student list) ---
+  // Class Officers (also part of the student list)
   {
     name: 'Andrea Garcia',
-    photo: comingSoonPhoto, // your photo URL
+    photo: comingSoonPhoto,
     position: 'President',
     dreamJob: 'Corporate Lawyer',
     funFact: 'Is a certified scuba diver.',
@@ -129,203 +130,201 @@ export const students = [
     funFact: 'Runs the unofficial class social media page.',
     quote: "Connecting our class, one post at a time.",
   },
-  // --- Male Students ---
+
+  // Regular Students
   {
     name: 'James Villanueva',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Pilot',
     funFact: 'Builds and flies model airplanes.',
   },
   {
     name: 'Joshua Castillo',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Chef',
     funFact: 'Can name every type of pasta.',
   },
   {
     name: 'Daniel Mercado',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Architect',
     funFact: 'Enjoys architectural photography.',
   },
   {
     name: 'Christian Ramos',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Marine Biologist',
     funFact: 'Has a collection of unique seashells.',
   },
-   {
+  {
     name: 'Miguel Ocampo',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'VFX Artist',
     funFact: 'Creates amazing video edits.',
   },
   {
     name: 'Ethan Torres',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Mechanical Engineer',
     funFact: 'Loves to tinker with old gadgets.',
   },
-
-
-  // --- Female Students ---
   {
     name: 'Sophia Lim',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Fashion Designer',
     funFact: 'Sews and designs her own clothes.',
   },
   {
     name: 'Chloe Gonzales',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Doctor',
     funFact: 'Volunteers at the local animal shelter.',
   },
   {
     name: 'Jasmine Aquino',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Graphic Designer',
     funFact: 'Is learning digital painting.',
   },
   {
     name: 'Nicole Mendoza',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Teacher',
     funFact: 'Speaks three languages fluently.',
   },
   {
     name: 'Maria Dela Cruz',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Veterinarian',
     funFact: 'Has two dogs, three cats, and a parrot.',
   },
   {
     name: 'Kathryn Perez',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Dancer',
     funFact: 'Leads the school dance troupe.',
   },
   {
     name: 'Nadine Fernandez',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Photographer',
     funFact: 'Only shoots with vintage film cameras.',
   },
   {
     name: 'Liza Pascual',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Interior Designer',
     funFact: 'Loves rearranging her room.',
   },
   {
     name: 'Julia Flores',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Scientist',
     funFact: 'Won the regional chemistry quiz bee.',
   },
   {
     name: 'Angelica Lopez',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Animator',
     funFact: 'Creates stop-motion short films.',
   },
   {
     name: 'Patricia Mariano',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Entrepreneur',
     funFact: 'Sells handmade bracelets online.',
   },
   {
     name: 'Bea Alonzo',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Actress',
     funFact: 'Starred in all the school plays.',
   },
   {
     name: 'Ella Santiago',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Astronomer',
     funFact: 'Owns a powerful telescope.',
   },
   {
     name: 'Gabrielle Diaz',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Psychologist',
     funFact: 'Is a great listener.',
   },
   {
     name: 'Kyline Alcantara',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Singer',
     funFact: 'Has a popular YouTube cover channel.',
   },
   {
     name: 'Francine Rivera',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Lawyer',
     funFact: 'Is the captain of the debate team.',
   },
   {
     name: 'Alyssa Valdez',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Athlete',
     funFact: 'Is the varsity volleyball captain.',
   },
   {
     name: 'Heart Evangelista',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Artist',
     funFact: 'Paints on luxury bags as a hobby.',
   },
   {
     name: 'Kim Chiu',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Business Owner',
     funFact: 'Loves watching business documentaries.',
   },
   {
     name: 'Maja Salvador',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Choreographer',
     funFact: 'Has won multiple dance competitions.',
   },
   {
     name: 'Pia Wurtzbach',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Advocate',
     funFact: 'Is passionate about charity work.',
   },
-   {
+  {
     name: 'Catriona Gray',
     photo: comingSoonPhoto,
-    role: null,
+    position: 'Student',
     dreamJob: 'Ambassador',
     funFact: 'Loves to travel and learn new cultures.',
   },
