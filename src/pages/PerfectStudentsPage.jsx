@@ -816,7 +816,7 @@ const PerfectStudentsPage = () => {
                     {modalSkills.map((skill, _index) => (
                       <span
                         key={skill.name}
-                        className={`${skillsConfig.displaySettings.tagStyling.baseClasses} border-${skill.color}-200 bg-${skill.color}-50 text-${skill.color}-700`}
+                        className={`${skillsConfig.display.tagStyling.baseClasses} border-${skill.color}-200 bg-${skill.color}-50 text-${skill.color}-700`}
                       >
                         {skill.name}
                       </span>

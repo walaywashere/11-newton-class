@@ -121,10 +121,14 @@ Fully customizable skills displayed in student modals:
           "color": "blue"
         }
       ],
-      "display": {
-        "maxSkills": 6,
-        "randomize": true
-      }
+             "display": {
+         "maxSkills": 6,
+         "randomize": true,
+         "tagStyling": {
+           "baseClasses": "px-3 py-1.5 rounded-lg text-sm font-medium shadow-sm",
+           "colorClasses": "border-{color}-200 bg-{color}-50 text-{color}-700"
+         }
+       }
     }
   }
 }
