@@ -117,7 +117,10 @@ const StudentGridCard = memo(({ student, index, onImageLoad, onStudentClick, ima
                   <Instagram className="w-3 h-3" />
                   <span>Connect</span>
                 </a>
-                <button className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors duration-200">
+                <button 
+                  className="flex items-center justify-center w-8 h-8 bg-gradient-to-r from-red-50 to-pink-50 border border-red-200 rounded-lg text-red-500 hover:bg-gradient-to-r hover:from-red-100 hover:to-pink-100 hover:border-red-300 hover:text-red-600 transition-all duration-200 shadow-sm hover:shadow-md"
+                  title="Add to favorites"
+                >
                   <Heart className="w-3 h-3" />
                 </button>
               </div>
@@ -207,7 +210,7 @@ const StudentListCard = memo(({ student, onImageLoad, onStudentClick, imageLoade
                   )}
                 </div>
 
-                {/* Action Buttons */}
+                {/* Action Buttons - Enhanced */}
                 <div className="flex items-center gap-2 flex-shrink-0">
                   {student.socials?.instagram ? (
                     <>
@@ -216,18 +219,21 @@ const StudentListCard = memo(({ student, onImageLoad, onStudentClick, imageLoade
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg text-xs font-semibold hover:shadow-lg transition-shadow duration-200"
+                        className="flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg text-xs font-semibold hover:shadow-lg transition-shadow duration-200 h-8"
                         title="Follow on Instagram"
                       >
                         <Instagram className="w-3 h-3" />
                         <span className="hidden sm:inline">Connect</span>
                       </a>
-                      <button className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors duration-200">
+                      <button 
+                        className="flex items-center justify-center w-8 h-8 bg-gradient-to-r from-red-50 to-pink-50 border border-red-200 rounded-lg text-red-500 hover:bg-gradient-to-r hover:from-red-100 hover:to-pink-100 hover:border-red-300 hover:text-red-600 transition-all duration-200 shadow-sm hover:shadow-md"
+                        title="Add to favorites"
+                      >
                         <Heart className="w-3 h-3" />
                       </button>
                     </>
                   ) : (
-                    <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs text-gray-600 font-medium">
+                    <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs text-gray-600 font-medium h-8">
                       <Mail className="w-3 h-3" />
                       <span className="hidden sm:inline">Contact via school</span>
                     </div>
@@ -637,16 +643,16 @@ const PerfectStudentsPage = () => {
               className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar relative"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
+              {/* Close Button - Better Positioned */}
               <button
                 onClick={() => setSelectedStudent(null)}
-                className="absolute top-6 right-6 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-all duration-200 z-50 shadow-sm hover:shadow-md"
+                className="absolute top-4 right-4 w-8 h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 z-50 shadow-lg hover:shadow-xl border border-gray-200"
               >
-                <X className="w-5 h-5 text-gray-600" />
+                <X className="w-4 h-4 text-gray-500 hover:text-gray-700" />
               </button>
 
-              {/* Header with Subtle Pattern */}
-              <div className="relative bg-gradient-to-br from-slate-50 to-gray-100 p-8 pb-6 rounded-t-3xl">
+              {/* Header with Subtle Pattern - More spacing for close button */}
+              <div className="relative bg-gradient-to-br from-slate-50 to-gray-100 p-8 pr-16 pb-6 rounded-t-3xl">
                 <div 
                   className="absolute inset-0 opacity-5"
                   style={{
