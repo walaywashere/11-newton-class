@@ -127,7 +127,7 @@ const PerfectDropdownMenu = ({
       top = triggerRect.top - PERFECT_GAP - height;
       
       // DEBUG: Log upward positioning
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.DEV) {
         console.log('🔺 UPWARD POSITIONING DEBUG:', {
           triggerTop: triggerRect.top,
           dropdownHeight: height,
@@ -151,7 +151,7 @@ const PerfectDropdownMenu = ({
         top = triggerRect.top - PERFECT_GAP - height;
         
         // DEBUG: Log fallback upward positioning
-        if (process.env.NODE_ENV === 'development') {
+        if (import.meta.env.DEV) {
           console.log('🔺 FALLBACK UPWARD DEBUG:', {
             triggerTop: triggerRect.top,
             dropdownHeight: height,
@@ -166,7 +166,7 @@ const PerfectDropdownMenu = ({
     }
 
     // PERFECT DEBUG LOGGING
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
       const actualGap = direction === 'below' 
         ? top - triggerRect.bottom 
         : triggerRect.top - (top + height);
@@ -231,7 +231,7 @@ const PerfectDropdownMenu = ({
             maxHeight: position.height + 'px'
           }}
         >
-          {options.map((option, index) => (
+          {options.map((option, _index) => (
             <button
               key={option.value}
               onClick={() => {

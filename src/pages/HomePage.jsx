@@ -1,13 +1,9 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowDown, Sparkles, Users, Trophy, BookOpen, ArrowRight, Crown, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { scrollToTopInstant } from '../utils/scrollToTop';
 
 const HomePage = () => {
-  const { scrollYProgress } = useScroll();
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   // Error boundary for this component
   if (typeof window === 'undefined') {
@@ -478,7 +474,7 @@ const HomePage = () => {
                       { label: 'Class Adviser', value: '1' },
                       { label: 'Student Officers', value: '8+' },
                       { label: 'Leadership Excellence', value: '100%' }
-                    ].map((stat, index) => (
+                    ].map((stat, _index) => (
                       <div key={stat.label} className="text-center p-3 sm:p-4 bg-white/10 rounded-xl sm:rounded-2xl backdrop-blur-sm">
                         <div className="text-lg sm:text-xl lg:text-2xl font-bold text-white">{stat.value}</div>
                         <div className="text-xs sm:text-sm text-white/70">{stat.label}</div>
@@ -623,17 +619,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <style jsx>{`
-        @keyframes gridSlide {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(50px, 50px); }
-        }
-        
-        @keyframes gradientShift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-      `}</style>
+
     </div>
   );
 };

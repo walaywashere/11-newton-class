@@ -382,3 +382,20 @@ a[data-discover="true"]:focus {
     padding-bottom: 2rem;
   }
 }
+
+/* Preloader animations */
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(60px, 60px); }
+}
+
+/* Homepage animations */
+@keyframes gridSlide {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}

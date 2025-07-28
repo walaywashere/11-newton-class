@@ -86,7 +86,6 @@ const AdviserCard = ({ person }) => {
 // Completely New Officer Card Component
 const OfficerCard = ({ person, index }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -95,8 +94,6 @@ const OfficerCard = ({ person, index }) => {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="group h-full"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="bg-white rounded-xl shadow-soft hover:shadow-large transition-all duration-500 border border-neutral-200 hover:border-primary-300 h-full overflow-hidden group-hover:-translate-y-2">
         

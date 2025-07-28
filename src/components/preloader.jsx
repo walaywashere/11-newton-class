@@ -324,12 +324,7 @@ const Preloader = () => {
         </div>
       </motion.div>
       
-      <style jsx>{`
-        @keyframes gridMove {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(60px, 60px); }
-        }
-      `}</style>
+
     </AnimatePresence>
   );
 };

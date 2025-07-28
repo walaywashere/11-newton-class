@@ -50,7 +50,7 @@ const StudentsPage = () => {
     });
 
     return filtered;
-  }, [students, searchTerm, sortBy]);
+  }, [searchTerm, sortBy]);
 
   // Pagination logic
   const totalPages = Math.ceil(filteredAndSortedStudents.length / studentsPerPage);

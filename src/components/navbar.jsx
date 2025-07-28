@@ -146,7 +146,7 @@ const Navbar = () => {
                 >
                   <Link
                     to={link.href}
-                    onClick={(e) => {
+                    onClick={(_e) => {
                       setIsOpen(false);
                       // Ensure scroll to top works on mobile
                       setTimeout(() => {

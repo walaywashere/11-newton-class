@@ -5,6 +5,90 @@ import { Link } from 'react-router-dom';
 import { scrollToTopInstant } from '../utils/scrollToTop';
 import PerfectDropdown from '../components/PerfectDropdown';
 
+// PERFECT ACHIEVEMENTS DATA
+const achievementsData = [
+  {
+    id: 1,
+    title: "Academic Excellence Award",
+    category: "academic",
+    description: "Outstanding performance in Mathematics and Science competitions",
+    date: "2024-03-15",
+    location: "Regional Science Fair",
+    participants: ["Alexandra Santos", "Marcus Johnson", "Elena Rodriguez"],
+    icon: Trophy,
+    color: "blue",
+    gradient: "from-blue-500 to-indigo-600",
+    stats: { participation: "85%", improvement: "+25%" },
+    images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
+    type: "Competition",
+    level: "Regional"
+  },
+  {
+    id: 2,
+    title: "Leadership Summit Recognition",
+    category: "leadership",
+    description: "Class officers led successful student council initiatives",
+    date: "2024-02-20",
+    location: "City Hall Auditorium",
+    participants: ["Carlos Mendez", "Sophia Chen", "David Kim"],
+    icon: Crown,
+    color: "purple",
+    gradient: "from-purple-500 to-pink-600",
+    stats: { participation: "100%", impact: "School-wide" },
+    images: ["/api/placeholder/400/300"],
+    type: "Leadership",
+    level: "Municipal"
+  },
+  {
+    id: 3,
+    title: "Community Service Excellence",
+    category: "service",
+    description: "Organized charity drive that helped 200+ families",
+    date: "2024-01-10",
+    location: "Community Center",
+    participants: ["All Class Members"],
+    icon: Users,
+    color: "green",
+    gradient: "from-green-500 to-emerald-600",
+    stats: { beneficiaries: "200+", hours: "150+" },
+    images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
+    type: "Service",
+    level: "Community"
+  },
+  {
+    id: 4,
+    title: "Innovation Challenge Winner",
+    category: "innovation",
+    description: "Developed sustainable technology solution for local environmental issue",
+    date: "2024-04-05",
+    location: "Tech Innovation Hub",
+    participants: ["Tech Team Members"],
+    icon: Zap,
+    color: "yellow",
+    gradient: "from-yellow-500 to-orange-600",
+    stats: { innovation: "High", sustainability: "100%" },
+    images: ["/api/placeholder/400/300"],
+    type: "Innovation",
+    level: "Regional"
+  },
+  {
+    id: 5,
+    title: "Sports Championship Victory",
+    category: "sports",
+    description: "Won first place in inter-school basketball tournament",
+    date: "2024-05-12",
+    location: "Central Sports Complex",
+    participants: ["Basketball Team"],
+    icon: Medal,
+    color: "orange",
+    gradient: "from-orange-500 to-red-600",
+    stats: { wins: "12/15", teamwork: "Excellent" },
+    images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
+    type: "Sports",
+    level: "Regional"
+  }
+];
+
 // PERFECT ACHIEVEMENTS PAGE - REVOLUTIONARY ARCHITECTURE
 // ================================================================
 
@@ -13,70 +97,6 @@ const PerfectAchievementsPage = () => {
   const [viewMode, setViewMode] = useState('grid');
   const [filterCategory, setFilterCategory] = useState('all');
   const [selectedAchievement, setSelectedAchievement] = useState(null);
-
-  // PERFECT ACHIEVEMENTS DATA
-  const achievementsData = [
-    {
-      id: 1,
-      title: "Academic Excellence Award",
-      category: "academic",
-      description: "Outstanding performance in Mathematics and Science competitions",
-      date: "2024-03-15",
-      location: "Regional Science Fair",
-      participants: ["John Doe", "Jane Smith", "Mike Johnson"],
-      images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
-      type: "Competition",
-      level: "Regional"
-    },
-    {
-      id: 2,
-      title: "Leadership Summit Champion",
-      category: "leadership",
-      description: "First place in inter-school leadership challenge",
-      date: "2024-02-20",
-      location: "City Convention Center",
-      participants: ["Sarah Wilson", "David Brown"],
-      images: ["/api/placeholder/400/300"],
-      type: "Leadership",
-      level: "City-wide"
-    },
-    {
-      id: 3,
-      title: "Community Service Recognition",
-      category: "service",
-      description: "100+ hours of community service and volunteer work",
-      date: "2024-01-10",
-      location: "Local Community Center",
-      participants: ["Emma Davis", "Alex Thompson", "Lisa Garcia"],
-      images: ["/api/placeholder/400/300", "/api/placeholder/400/300", "/api/placeholder/400/300"],
-      type: "Service",
-      level: "Community"
-    },
-    {
-      id: 4,
-      title: "Innovation Fair Winner",
-      category: "innovation",
-      description: "Revolutionary project in sustainable technology",
-      date: "2024-04-05",
-      location: "Tech Innovation Hub",
-      participants: ["Chris Lee", "Maya Patel"],
-      images: ["/api/placeholder/400/300"],
-      type: "Innovation",
-      level: "National"
-    },
-    {
-      id: 5,
-      title: "Sports Championship",
-      category: "sports",
-      description: "Basketball team victory in regional championships",
-      date: "2024-03-25",
-      location: "Sports Complex Arena",
-      participants: ["Team Basketball", "Coach Martinez"],
-      images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
-      type: "Sports",
-      level: "Regional"
-    }
-  ];
 
   // PERFECT FILTER OPTIONS
   const categoryOptions = [

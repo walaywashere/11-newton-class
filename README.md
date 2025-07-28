@@ -64,21 +64,53 @@ A beautiful, interactive showcase website for Class 11-Newton, featuring student
 ```
 src/
 ├── components/          # React components
-│   ├── homepage.jsx     # Landing page with animated hero
-│   ├── navbar.jsx       # Navigation component
-│   ├── preloader.jsx    # Loading animation
-│   ├── leadership.jsx   # Class adviser and officers
-│   ├── studentshowcase.jsx # Student profiles with pagination
-│   └── achievements.jsx # Timeline of class achievements
-├── data/
-│   └── classData.jsx    # Student and achievement data
+│   ├── ErrorBoundary.jsx    # Error boundary wrapper
+│   ├── Footer.jsx           # Footer component
+│   ├── LoadingSpinner.jsx   # Loading spinner component
+│   ├── PerfectDropdown.jsx  # Custom dropdown component
+│   ├── achievements.jsx     # Achievements showcase
+│   ├── homepage.jsx         # Landing page hero section
+│   ├── leadership.jsx       # Leadership cards component
+│   ├── navbar.jsx           # Navigation component
+│   ├── preloader.jsx        # Loading animation
+│   └── studentshowcase.jsx  # Student profiles display
+├── pages/               # Page components
+│   ├── AchievementsPage.jsx        # Achievements listing page
+│   ├── HomePage.jsx                # Main landing page
+│   ├── LeadershipPage.jsx          # Leadership showcase page
+│   ├── PerfectAchievementsPage.jsx # Enhanced achievements page
+│   ├── PerfectLeadershipPage.jsx   # Enhanced leadership page
+│   ├── PerfectStudentsPage.jsx     # Enhanced students page
+│   └── StudentsPage.jsx            # Students listing page
+├── data/                # Data and configuration
+│   ├── achievementsConfig.json     # Achievements configuration
+│   ├── classData.jsx              # Student and class data
+│   ├── footerConfig.json          # Footer configuration
+│   ├── homepageConfig.json        # Homepage configuration
+│   ├── leadershipConfig.json      # Leadership configuration
+│   ├── siteConfig.json            # Site-wide configuration
+│   ├── studentsConfig.json        # Students configuration
+│   └── DYNAMIC_CONTENT_GUIDE.md   # Configuration guide
+├── utils/               # Utility functions
+│   ├── iconMapper.js              # Icon mapping utility
+│   └── scrollToTop.js             # Scroll utility functions
 ├── assets/              # Static assets
 ├── App.jsx             # Main application component
 ├── main.jsx            # Application entry point
-└── index.css           # Global styles
+└── index.css           # Global styles and animations
 ```
 
 ## 🎨 Customization
+
+The project uses a comprehensive configuration system for easy customization:
+
+### Configuration Files
+- **`src/data/siteConfig.json`** - General site settings and metadata
+- **`src/data/homepageConfig.json`** - Homepage content and hero section
+- **`src/data/studentsConfig.json`** - Student showcase settings
+- **`src/data/leadershipConfig.json`** - Leadership section configuration
+- **`src/data/achievementsConfig.json`** - Achievements display settings
+- **`src/data/footerConfig.json`** - Footer content and links
 
 ### Adding New Students
 Edit `src/data/classData.jsx` and add student objects to the `students` array:
@@ -96,18 +128,25 @@ Edit `src/data/classData.jsx` and add student objects to the `students` array:
 ```
 
 ### Adding Achievements
-Add achievement objects to the `achievements` array in `classData.jsx`:
+Add achievement objects to the `achievementsData` array in `src/pages/PerfectAchievementsPage.jsx`:
 
 ```javascript
 {
-  date: 'YYYY-MM-DD',
+  id: uniqueId,
   title: 'Achievement Title',
+  category: 'academic|leadership|service|innovation|sports',
   description: 'Detailed description',
-  image: 'image-url (optional)',
-  tags: ['tag1', 'tag2'],
-  icon: IconComponent
+  date: 'YYYY-MM-DD',
+  location: 'Event location',
+  participants: ['Student names'],
+  icon: IconComponent,
+  color: 'theme-color',
+  gradient: 'tailwind-gradient-class'
 }
 ```
+
+### Dynamic Content Guide
+Refer to `src/data/DYNAMIC_CONTENT_GUIDE.md` for detailed instructions on customizing content through configuration files.
 
 ## 📱 Responsive Design
 

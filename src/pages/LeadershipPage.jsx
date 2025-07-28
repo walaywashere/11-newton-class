@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Crown, Sparkles, Users, Trophy, Search, Filter, Grid, List, ChevronDown, Instagram, Target, Star, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
