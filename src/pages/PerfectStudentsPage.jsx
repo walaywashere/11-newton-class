@@ -452,11 +452,11 @@ const PerfectStudentsPage = () => {
                           onLoad={() => handleImageLoad(student.name)}
                         />
                         
-                                                 {/* Position Badge */}
+                                                 {/* Position Badge - Better positioned for mobile */}
                          {student.position && student.position !== 'Student' && (
-                           <div className="absolute -top-2 -right-2">
-                             <span className="px-2 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg text-xs font-bold shadow-lg border border-white/20 backdrop-blur-sm flex items-center gap-1">
-                               <Crown className="w-3 h-3 flex-shrink-0" />
+                           <div className="absolute top-1 right-1">
+                             <span className="px-1.5 py-0.5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-md text-xs font-bold shadow-lg border border-white/20 backdrop-blur-sm flex items-center gap-0.5">
+                               <Crown className="w-2.5 h-2.5 flex-shrink-0" />
                              </span>
                            </div>
                          )}
