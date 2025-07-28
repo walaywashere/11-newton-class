@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, memo } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Sparkles, Users, Trophy, BookOpen, ArrowRight, UserCheck, Heart, Star, Crown } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -636,4 +636,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default memo(HomePage);

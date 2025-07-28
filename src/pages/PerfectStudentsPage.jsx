@@ -16,7 +16,7 @@ const StudentGridCard = memo(function StudentGridCard({ student, onImageLoad, on
     >
       <div className="bg-gradient-to-br from-white via-gray-50/80 to-slate-50/60 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200 overflow-hidden border border-white/60 hover:border-purple-200/80 h-[420px] flex flex-col relative will-change-transform">
         {/* Simplified Card Accent */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
         
         {/* Profile Picture Area - Optimized */}
         <div className="relative p-6 pb-3 flex justify-center">
@@ -147,7 +147,7 @@ const StudentListCard = memo(function StudentListCard({ student, onImageLoad, on
     >
       <div className="bg-gradient-to-br from-white via-gray-50/80 to-slate-50/60 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200 overflow-hidden border border-white/60 hover:border-purple-200/80 relative will-change-transform">
         {/* Simplified Card Accent */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
         
         <div className="p-6">
           <div className="flex gap-6 items-start">
@@ -318,7 +318,7 @@ const PerfectStudentsPage = () => {
 
   // Process students data
   const processedStudents = useMemo(() => {
-    let filtered = students.filter(student => {
+    const filtered = students.filter(student => {
       const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         student.position?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         student.dreamJob?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -372,9 +372,9 @@ const PerfectStudentsPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
       {/* Simplified Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/10 to-pink-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-purple-300/5 to-blue-300/5 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/10 to-pink-400/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-purple-300/5 to-blue-300/5 rounded-full blur-3xl" />
       </div>
 
 
@@ -716,7 +716,7 @@ const PerfectStudentsPage = () => {
                       <span className="text-gray-600 font-medium">
                         {selectedStudent.position && selectedStudent.position !== 'Student' ? selectedStudent.position : 'Student'}
                       </span>
-                      <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+                      <div className="w-1 h-1 bg-gray-400 rounded-full" />
                       <span className="text-gray-500 text-sm">Class 11-Newton</span>
                     </motion.div>
                     
@@ -868,4 +868,4 @@ const PerfectStudentsPage = () => {
   );
 };
 
-export default PerfectStudentsPage;
+export default memo(PerfectStudentsPage);

@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Allow search engines to crawl all content
+Crawl-delay: 1
+
+# Sitemap location (update with your actual domain)
+Sitemap: https://class-11-newton.vercel.app/sitemap.xml
+
+# Block access to development and config files
+Disallow: /api/
+Disallow: /.env
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /src/

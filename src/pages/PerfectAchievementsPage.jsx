@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, memo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Trophy, Medal, Star, Flame, Diamond, Crown, Users, Target, Award, ChevronRight, X, Filter, Grid, List } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -573,7 +573,7 @@ const PerfectAchievementsPage = () => {
                   <ul className="space-y-2">
                     {selectedAchievement.criteria.map((criterion, index) => (
                       <li key={index} className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-red-500 rounded-full"></div>
+                        <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-red-500 rounded-full" />
                         <span className="text-gray-600">{criterion}</span>
                       </li>
                     ))}
@@ -628,4 +628,4 @@ const PerfectAchievementsPage = () => {
   );
 };
 
-export default PerfectAchievementsPage;
+export default memo(PerfectAchievementsPage);

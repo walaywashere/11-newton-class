@@ -20,11 +20,11 @@ const PerfectLeadershipPage = () => {
 
       {/* Hero Section - Increased top padding for island navbar */}
       <section className="relative pt-40 pb-12 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 opacity-90" />
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
-          <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -75,16 +75,16 @@ const PerfectLeadershipPage = () => {
           >
             <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
               <div className="relative bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-8 md:p-12">
-                <div className="absolute inset-0 bg-black/10"></div>
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32"></div>
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-24 -translate-x-24"></div>
+                <div className="absolute inset-0 bg-black/10" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-24 -translate-x-24" />
                 
                 <div className="relative flex flex-col lg:flex-row items-center gap-8">
                   {/* Photo */}
                   <div className="relative group">
                     <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-white/50 shadow-2xl">
                       {!imageLoaded.adviser && (
-                        <div className="absolute inset-0 bg-white/20 animate-pulse rounded-full"></div>
+                        <div className="absolute inset-0 bg-white/20 animate-pulse rounded-full" />
                       )}
                       <img
                         src={adviser.photo}
@@ -176,11 +176,11 @@ const PerfectLeadershipPage = () => {
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 group-hover:-translate-y-2">
                   {/* Header with gradient */}
                   <div className="relative h-24 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
-                    <div className="absolute inset-0 bg-black/10"></div>
+                    <div className="absolute inset-0 bg-black/10" />
                     <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
                       <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-xl">
                         {!imageLoaded[officer.name] && (
-                          <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-full"></div>
+                          <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-full" />
                         )}
                         <img
                           src={officer.photo}
@@ -276,7 +276,7 @@ const PerfectLeadershipPage = () => {
                     <div className="space-y-2">
                       {selectedOfficer.responsibilities.map((responsibility, index) => (
                         <div key={index} className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                          <div className="w-2 h-2 bg-purple-500 rounded-full" />
                           <span className="text-gray-600">{responsibility}</span>
                         </div>
                       ))}

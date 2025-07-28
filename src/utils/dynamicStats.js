@@ -56,18 +56,72 @@ export const calculateDynamicStats = () => {
 };
 
 /**
- * Process configuration stats and replace dynamic values
+ * Processes dynamic stats from configuration objects
+ * @param {Array} stats - Array of stat objects from config
+ * @returns {Array} Processed stats with dynamic values
  */
 export const processDynamicStats = (stats) => {
-  const dynamicData = calculateDynamicStats();
-  
+  if (!Array.isArray(stats)) {
+    console.warn('processDynamicStats: Expected array, got:', typeof stats);
+    return [];
+  }
+
   return stats.map(stat => {
-    if (stat.value === 'dynamic' && stat.calculation) {
-      return {
-        ...stat,
-        value: dynamicData[stat.calculation] || stat.value
-      };
+    // Handle dynamic value computation based on stat type
+    let computedValue = stat.value;
+    
+    if (stat.dynamic) {
+      switch (stat.key) {
+        case 'current_year':
+          computedValue = new Date().getFullYear();
+          break;
+        case 'established_year':
+          computedValue = stat.baseYear || 2024;
+          break;
+        case 'days_since_start': {
+          const startDate = new Date(stat.startDate || '2024-09-01');
+          const now = new Date();
+          computedValue = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+          break;
+        }
+        case 'student_count':
+          // This would typically come from actual data
+          computedValue = stat.value || 40;
+          break;
+        default:
+          computedValue = stat.value;
+      }
     }
-    return stat;
+
+    return {
+      ...stat,
+      value: computedValue,
+      displayValue: formatValue(computedValue, stat.format)
+    };
   });
 };
+
+/**
+ * Formats a value based on the specified format
+ * @param {number|string} value - The value to format
+ * @param {string} format - The format type
+ * @returns {string} Formatted value
+ */
+const formatValue = (value, format) => {
+  if (!format) return String(value);
+
+  switch (format) {
+    case 'number':
+      return value.toLocaleString();
+    case 'percentage':
+      return `${value}%`;
+    case 'year':
+      return String(value);
+    case 'days':
+      return `${value}+`;
+    default:
+      return String(value);
+  }
+};
+
+export default processDynamicStats;
