@@ -130,7 +130,7 @@ const PerfectStudentsPage = () => {
         <Link
           to="/"
           onClick={scrollToTopInstant}
-          className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-indigo-600 group border border-white/50"
+          className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-indigo-600 group border border-white/50"
         >
           <motion.div
             whileHover={{ x: -3 }}
@@ -206,9 +206,9 @@ const PerfectStudentsPage = () => {
                   whileHover={{ scale: 1.05, y: -5 }}
                   className="relative"
                 >
-                  <div className="bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-300">
+                  <div className="bg-white/80 backdrop-blur-md rounded-xl p-6 shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-300">
                     <motion.div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4 mx-auto`}
+                      className={`w-12 h-12 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4 mx-auto`}
                       whileHover={{ rotate: 15 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -237,7 +237,7 @@ const PerfectStudentsPage = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/50 p-6 md:p-8"
+          className="bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/50 p-6 md:p-8"
         >
           {/* Search Bar */}
           <motion.div
@@ -253,7 +253,7 @@ const PerfectStudentsPage = () => {
                 placeholder="Search students by name, position, or dream job..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-white/80 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all shadow-sm text-gray-700 placeholder-gray-400"
+                className="w-full pl-12 pr-4 py-4 bg-white/80 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all shadow-sm text-gray-700 placeholder-gray-400"
               />
             </div>
           </motion.div>
@@ -290,7 +290,7 @@ const PerfectStudentsPage = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="flex bg-gray-100 rounded-2xl p-1 shadow-inner"
+              className="flex bg-gray-100 rounded-xl p-1 shadow-inner"
             >
               {[
                 { mode: 'grid', icon: Grid },
@@ -299,7 +299,7 @@ const PerfectStudentsPage = () => {
                 <button
                   key={mode}
                   onClick={() => setViewMode(mode)}
-                  className={`p-3 rounded-xl transition-all duration-300 ${
+                  className={`p-3 rounded-lg transition-all duration-300 ${
                     viewMode === mode
                       ? 'bg-white shadow-md text-purple-600 scale-105'
                       : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
@@ -356,7 +356,7 @@ const PerfectStudentsPage = () => {
               >
                 {viewMode === 'grid' ? (
                   // Grid View - Fixed Card Size
-                  <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 group-hover:border-purple-200 h-80 flex flex-col">
+                  <div className="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 group-hover:border-purple-200 h-80 flex flex-col">
                     {/* Student Photo - Fixed Height */}
                     <div className="relative overflow-hidden h-48 flex-shrink-0">
                       {!imageLoaded[student.name] && (
@@ -378,7 +378,7 @@ const PerfectStudentsPage = () => {
                           transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
                           className="absolute top-3 left-3"
                         >
-                          <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full text-xs font-bold shadow-lg border-2 border-white/20 backdrop-blur-sm flex items-center gap-1">
+                          <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg text-xs font-bold shadow-lg border-2 border-white/20 backdrop-blur-sm flex items-center gap-1">
                             <Crown className="w-3 h-3" />
                             {student.position}
                           </span>
@@ -435,30 +435,34 @@ const PerfectStudentsPage = () => {
                       </div>
 
                       {/* Social Links - Always at bottom */}
-                      <div className="mt-2">
-                        {student.socials?.instagram && (
+                      <div className="mt-3 pt-2 border-t border-gray-100">
+                        {student.socials?.instagram ? (
                           <a
                             href={`https://instagram.com/${student.socials.instagram}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:scale-105 transition-transform shadow-md text-xs"
+                            className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:scale-105 transition-transform shadow-md text-xs font-medium w-full justify-center"
                           >
-                            <Instagram className="w-3 h-3" />
-                            <span>IG</span>
+                            <Instagram className="w-4 h-4 flex-shrink-0" />
+                            <span>Instagram</span>
                           </a>
+                        ) : (
+                          <div className="text-center text-xs text-gray-400 py-2">
+                            No social links
+                          </div>
                         )}
                       </div>
                     </div>
                   </div>
                 ) : (
                   // List View - Horizontal Layout
-                  <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 group-hover:border-purple-200 p-6">
+                  <div className="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 group-hover:border-purple-200 p-6">
                     <div className="flex gap-6 items-center">
                       {/* Student Photo - Fixed Size */}
-                      <div className="relative overflow-hidden w-20 h-20 rounded-xl flex-shrink-0">
+                      <div className="relative overflow-hidden w-20 h-20 rounded-lg flex-shrink-0">
                         {!imageLoaded[student.name] && (
-                          <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse rounded-xl" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse rounded-lg" />
                         )}
                         <motion.img
                           src={student.photo}
@@ -470,7 +474,7 @@ const PerfectStudentsPage = () => {
                         {/* Position Badge */}
                         {student.position && student.position !== 'Student' && (
                           <div className="absolute -top-2 -right-2">
-                            <span className="px-2 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full text-xs font-bold shadow-lg border border-white/20 backdrop-blur-sm flex items-center gap-1">
+                            <span className="px-2 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg text-xs font-bold shadow-lg border border-white/20 backdrop-blur-sm flex items-center gap-1">
                               <Crown className="w-3 h-3" />
                             </span>
                           </div>
@@ -508,7 +512,7 @@ const PerfectStudentsPage = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
-                                className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:scale-105 transition-transform shadow-md text-sm"
+                                className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:scale-105 transition-transform shadow-md text-sm"
                               >
                                 <Instagram className="w-4 h-4" />
                                 <span>Instagram</span>
@@ -543,7 +547,7 @@ const PerfectStudentsPage = () => {
             <button
               onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
-              className="p-3 rounded-xl bg-white/80 backdrop-blur-md border border-white/50 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-purple-50 hover:border-purple-200 transition-all"
+              className="p-3 rounded-lg bg-white/80 backdrop-blur-md border border-white/50 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-purple-50 hover:border-purple-200 transition-all"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -554,7 +558,7 @@ const PerfectStudentsPage = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setCurrentPage(page)}
-                className={`w-12 h-12 rounded-xl font-bold transition-all ${
+                className={`w-12 h-12 rounded-lg font-bold transition-all ${
                   currentPage === page
                     ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg'
                     : 'bg-white/80 backdrop-blur-md border border-white/50 text-gray-700 hover:bg-purple-50'
@@ -567,7 +571,7 @@ const PerfectStudentsPage = () => {
             <button
               onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
               disabled={currentPage === totalPages}
-              className="p-3 rounded-xl bg-white/80 backdrop-blur-md border border-white/50 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-purple-50 hover:border-purple-200 transition-all"
+              className="p-3 rounded-lg bg-white/80 backdrop-blur-md border border-white/50 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-purple-50 hover:border-purple-200 transition-all"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -590,14 +594,14 @@ const PerfectStudentsPage = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
               <div className="relative bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 p-8 text-white">
                 <button
                   onClick={() => setSelectedStudent(null)}
-                  className="absolute top-4 right-4 w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                  className="absolute top-4 right-4 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors"
                 >
                   ×
                 </button>
@@ -607,7 +611,7 @@ const PerfectStudentsPage = () => {
                     initial={{ scale: 0, rotate: -45 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="w-24 h-24 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl"
+                    className="w-24 h-24 rounded-xl overflow-hidden border-4 border-white/30 shadow-2xl"
                   >
                     <img
                       src={selectedStudent.photo}
@@ -632,7 +636,7 @@ const PerfectStudentsPage = () => {
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="flex items-center gap-2"
                       >
-                        <span className="px-4 py-2 bg-white/20 rounded-full text-sm font-bold backdrop-blur-sm flex items-center gap-2">
+                        <span className="px-4 py-2 bg-white/20 rounded-lg text-sm font-bold backdrop-blur-sm flex items-center gap-2">
                           <Crown className="w-4 h-4" />
                           {selectedStudent.position}
                         </span>
@@ -701,7 +705,7 @@ const PerfectStudentsPage = () => {
                           href={`https://instagram.com/${selectedStudent.socials.instagram}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105"
+                          className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
                         >
                           <Instagram className="w-5 h-5" />
                           <span>Instagram</span>
