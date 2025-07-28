@@ -456,16 +456,16 @@ const PerfectAchievementsPage = () => {
                         
                         <p className="text-gray-600 mb-3">{achievement.description}</p>
                         
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-4">
-                            <span className={`px-3 py-1 rounded-lg text-xs font-bold bg-gradient-to-r ${achievement.gradient} text-white`}>
+                        <div className="flex items-center justify-between gap-4">
+                          <div className="flex items-center gap-3 sm:gap-4">
+                            <span className={`px-3 py-1 rounded-lg text-xs font-bold bg-gradient-to-r ${achievement.gradient} text-white flex-shrink-0`}>
                               {achievement.impact} Impact
                             </span>
-                            <span className="text-sm text-gray-500">{achievement.students.length} Students</span>
+                            <span className="text-sm text-gray-500 flex-shrink-0">{achievement.students.length} Students</span>
                           </div>
                           
                           <motion.div
-                            className="flex items-center text-orange-600 font-medium cursor-pointer"
+                            className="flex items-center text-orange-600 font-medium cursor-pointer flex-shrink-0 ml-auto"
                             whileHover={{ x: 5 }}
                           >
                             <span className="text-sm">View Details</span>

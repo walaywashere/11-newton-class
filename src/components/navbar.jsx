@@ -110,8 +110,8 @@ const Navbar = () => {
                 >
                   <Sparkles className="w-6 h-6 text-white" />
                 </motion.div>
-                <div className="hidden sm:block">
-                  <div className={`text-xl font-bold bg-gradient-to-r ${theme.gradient} bg-clip-text text-transparent`}>
+                <div className="ml-2">
+                  <div className={`text-base sm:text-xl font-bold bg-gradient-to-r ${theme.gradient} bg-clip-text text-transparent leading-tight`}>
                     Class 11-Newton
                   </div>
                   <div className="text-xs text-gray-500 font-medium">Excellence in Motion</div>
