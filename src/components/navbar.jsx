@@ -132,7 +132,7 @@ const Navbar = () => {
                     <Link
                       to={item.path}
                       onClick={scrollToTopInstant}
-                      className={`relative px-4 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2 ${
+                      className={`relative px-4 py-2.5 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2 min-h-[44px] ${
                         isActive
                           ? 'text-white shadow-lg'
                           : `text-gray-700 ${theme.hoverColor} ${theme.hoverBg}`
@@ -141,12 +141,14 @@ const Navbar = () => {
                       {isActive && (
                         <motion.div
                           layoutId="activeTab"
-                          className={`absolute inset-0 bg-gradient-to-r ${theme.gradient} rounded-xl`}
+                          className={`absolute inset-0 bg-gradient-to-r ${theme.gradient} rounded-xl flex items-center justify-center`}
                           transition={{ type: "spring", duration: 0.6 }}
                         />
                       )}
-                      <item.icon className={`w-4 h-4 relative z-10 ${isActive ? 'text-white' : ''}`} />
-                      <span className="relative z-10">{item.name}</span>
+                      <div className="relative z-10 flex items-center justify-center space-x-2">
+                        <item.icon className={`w-4 h-4 ${isActive ? 'text-white' : ''}`} />
+                        <span className="leading-none">{item.name}</span>
+                      </div>
                     </Link>
                   </motion.div>
                 );
