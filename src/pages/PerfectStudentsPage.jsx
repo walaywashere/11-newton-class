@@ -335,106 +335,155 @@ const PerfectStudentsPage = () => {
                 onClick={() => setSelectedStudent(student)}
               >
                 {viewMode === 'grid' ? (
-                  // Grid View - Fixed Card Size
-                  <div className="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 group-hover:border-purple-200 h-80 flex flex-col">
-                    {/* Student Photo - Fixed Height */}
-                    <div className="relative overflow-hidden h-48 flex-shrink-0">
-                      {!imageLoaded[student.name] && (
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse" />
-                      )}
-                      <motion.img
-                        src={student.photo}
-                        alt={student.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        onLoad={() => handleImageLoad(student.name)}
-                        whileHover={{ scale: 1.1 }}
-                      />
-                      
-                      {/* Position Badge */}
-                      {student.position && student.position !== 'Student' && (
-                        <motion.div
-                          initial={{ scale: 0, rotate: -45 }}
-                          animate={{ scale: 1, rotate: 0 }}
-                          transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                          className="absolute top-3 left-3"
-                        >
-                          <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg text-xs font-bold shadow-lg border-2 border-white/20 backdrop-blur-sm flex items-center gap-1">
-                            <Crown className="w-3 h-3" />
-                            {student.position}
-                          </span>
-                        </motion.div>
-                      )}
+                  // Grid View - Modern Redesigned Cards
+                  <div className="bg-gradient-to-br from-white via-gray-50/80 to-slate-50/60 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/60 group-hover:border-purple-200/80 h-80 flex flex-col relative">
+                    {/* Subtle Card Accent */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    {/* Profile Picture Area - Redesigned */}
+                    <div className="relative p-6 pb-3 flex justify-center">
+                      <div className="relative">
+                        {/* Profile Picture Container - Hexagonal Style */}
+                        <div className="relative w-24 h-24 mx-auto">
+                          <div 
+                            className="w-24 h-24 rounded-2xl overflow-hidden shadow-xl ring-4 ring-white/80 group-hover:ring-purple-200/60 transition-all duration-500 bg-gradient-to-br from-slate-100 to-gray-200 relative"
+                            style={{ transform: 'rotate(-2deg)' }}
+                          >
+                            {!imageLoaded[student.name] ? (
+                              <div className="w-full h-full bg-gradient-to-br from-slate-200 via-gray-200 to-slate-300 flex flex-col items-center justify-center relative overflow-hidden">
+                                {/* Elegant Pattern Background */}
+                                <div 
+                                  className="absolute inset-0 opacity-20"
+                                  style={{
+                                    backgroundImage: `
+                                      radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.4) 2px, transparent 2px),
+                                      radial-gradient(circle at 70% 70%, rgba(59, 130, 246, 0.3) 1.5px, transparent 1.5px)
+                                    `,
+                                    backgroundSize: '24px 24px, 16px 16px'
+                                  }}
+                                />
+                                <div className="text-center z-10">
+                                  <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl mx-auto mb-1 flex items-center justify-center shadow-lg">
+                                    <Users className="w-4 h-4 text-white" />
+                                  </div>
+                                  <p className="text-[10px] text-gray-600 font-bold tracking-wider mb-0.5">PHOTO</p>
+                                  <p className="text-[9px] text-gray-500 font-medium">COMING SOON</p>
+                                </div>
+                              </div>
+                            ) : (
+                              <motion.img
+                                src={student.photo}
+                                alt={student.name}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                onLoad={() => handleImageLoad(student.name)}
+                                whileHover={{ scale: 1.05 }}
+                              />
+                            )}
+                          </div>
 
-                      {/* Hover Overlay */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                        className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end justify-center pb-4"
-                      >
-                        <span className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          Click to view profile
-                        </span>
-                      </motion.div>
+                          {/* Leadership Badge - Elegant Integration */}
+                          {student.position && student.position !== 'Student' && (
+                            <motion.div
+                              initial={{ scale: 0, rotate: -45 }}
+                              animate={{ scale: 1, rotate: 0 }}
+                              transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                              className="absolute -top-2 -right-2 z-10"
+                            >
+                              <div className="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 text-white rounded-full p-2 shadow-lg border-3 border-white ring-2 ring-amber-200/50">
+                                <Crown className="w-3 h-3" />
+                              </div>
+                            </motion.div>
+                          )}
+                        </div>
+                      </div>
                     </div>
 
-                    {/* Student Info - Fixed Height with Flex */}
-                    <div className="p-4 flex-1 flex flex-col justify-between min-h-0">
-                      <div className="mb-2">
-                        <h3 className="font-bold text-gray-800 mb-1 group-hover:text-purple-600 transition-colors truncate">
+                    {/* Content Section */}
+                    <div className="px-6 py-2 flex-1 flex flex-col">
+                      {/* Name and Role - Enhanced Typography */}
+                      <div className="text-center mb-4">
+                        <h3 className="font-bold text-lg text-gray-800 leading-tight mb-2 group-hover:text-purple-700 transition-colors duration-300">
                           {student.name}
                         </h3>
+                        
                         {student.position && student.position !== 'Student' ? (
                           <motion.div
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
-                            className="flex items-center gap-1 text-sm font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
+                            className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full border border-purple-200/60 shadow-sm"
                           >
-                            <Crown className="w-4 h-4 text-purple-500 flex-shrink-0" />
-                            <span className="truncate">{student.position}</span>
+                            <Crown className="w-3 h-3 text-purple-600" />
+                            <span className="text-sm font-semibold text-purple-700">{student.position}</span>
                           </motion.div>
                         ) : (
-                          <p className="text-gray-600 text-sm">Student</p>
+                          <span className="inline-block px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full border border-gray-200">
+                            Student
+                          </span>
                         )}
                       </div>
 
-                      <div className="space-y-1 flex-1">
-                        {student.dreamJob && (
-                          <div className="flex items-center gap-2 text-xs text-gray-500">
-                            <Target className="w-3 h-3 flex-shrink-0" />
-                            <span className="truncate">{student.dreamJob}</span>
-                          </div>
-                        )}
-                        
-                        {student.funFact && (
-                          <div className="flex items-center gap-2 text-xs text-gray-500">
-                            <Sparkles className="w-3 h-3 flex-shrink-0" />
-                            <span className="truncate">{student.funFact}</span>
-                          </div>
-                        )}
+                      {/* Key Facts - Sophisticated Layout */}
+                      <div className="flex-1 mb-4">
+                        <div className="space-y-2">
+                          {student.dreamJob && (
+                            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-2.5 border border-blue-100/50">
+                              <div className="flex items-center gap-2">
+                                <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                  <Target className="w-3 h-3 text-white" />
+                                </div>
+                                <p className="text-xs text-gray-700 font-medium truncate">{student.dreamJob}</p>
+                              </div>
+                            </div>
+                          )}
+                          
+                          {student.funFact && (
+                            <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-2.5 border border-purple-100/50">
+                              <div className="flex items-center gap-2">
+                                <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                  <Sparkles className="w-3 h-3 text-white" />
+                                </div>
+                                <p className="text-xs text-gray-700 leading-relaxed line-clamp-2">{student.funFact}</p>
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       </div>
 
-                      {/* Social Links - Always at bottom */}
-                      <div className="mt-3 pt-2 border-t border-gray-100">
+                      {/* Action Area - Modern Design */}
+                      <div className="mt-auto">
                         {student.socials?.instagram ? (
-                          <a
-                            href={`https://instagram.com/${student.socials.instagram}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:scale-105 transition-transform shadow-md text-xs font-medium w-full justify-center"
-                            title="Follow on Instagram"
-                          >
-                            <Instagram className="w-4 h-4 flex-shrink-0" />
-                            <span>Follow on Instagram</span>
-                          </a>
+                          <div className="flex gap-2">
+                            <a
+                              href={`https://instagram.com/${student.socials.instagram}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl text-xs font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 group/btn"
+                              title="Follow on Instagram"
+                            >
+                              <Instagram className="w-3 h-3 group-hover/btn:rotate-12 transition-transform duration-300" />
+                              <span>Connect</span>
+                            </a>
+                            <button className="px-3 py-2.5 bg-white/80 border border-gray-200 rounded-xl text-xs font-medium text-gray-600 hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md">
+                              <Heart className="w-3 h-3" />
+                            </button>
+                          </div>
                         ) : (
-                          <div className="text-center text-xs text-gray-400 py-2">
-                            No social media
+                          <div className="flex items-center justify-center gap-2 px-3 py-2.5 bg-gradient-to-r from-gray-50 to-slate-50 border border-gray-200 rounded-xl text-xs text-gray-600 font-medium">
+                            <Mail className="w-3 h-3" />
+                            <span>Contact via school</span>
                           </div>
                         )}
                       </div>
                     </div>
+
+                    {/* Subtle Interaction Feedback */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      className="absolute inset-0 bg-gradient-to-t from-purple-500/5 via-transparent to-transparent pointer-events-none rounded-2xl"
+                    />
                   </div>
                 ) : (
                   // List View - Horizontal Layout
