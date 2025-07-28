@@ -7,7 +7,76 @@ export const adviser = {
   role: 'Class Adviser',
   photo: comingSoonPhoto,
   fact: 'Loves gardening and has a passion for teaching Physics.',
+  email: 'evelyn.reyes@school.edu',
+  department: 'Science Department',
+  experience: '8 years',
+  specialization: 'Physics & Mathematics',
+  quote: 'Every student has the potential to shine brighter than they imagine.',
+  achievements: [
+    'Outstanding Teacher Award 2023',
+    'Science Department Head',
+    'Regional Physics Olympiad Coach'
+  ]
 };
+
+// Class Officers - separate from regular students
+export const classOfficers = [
+  {
+    name: 'Andrea Garcia',
+    position: 'President',
+    photo: comingSoonPhoto,
+    dreamJob: 'Corporate Lawyer',
+    funFact: 'Is a certified scuba diver.',
+    socials: { instagram: 'andrea.g' },
+    quote: "Leading with purpose and passion.",
+    responsibilities: ['Overall class coordination', 'Representing class in school events', 'Leading student initiatives']
+  },
+  {
+    name: 'John Michael Reyes',
+    position: 'Vice President',
+    photo: comingSoonPhoto,
+    dreamJob: 'Civil Engineer',
+    funFact: 'Loves to go on mountain hikes.',
+    quote: "Building a stronger class, together.",
+    responsibilities: ['Assisting the president', 'Project management', 'Event coordination']
+  },
+  {
+    name: 'Samantha Cruz',
+    position: 'Secretary',
+    photo: comingSoonPhoto,
+    dreamJob: 'Novelist',
+    funFact: 'Has written over 50 short stories.',
+    quote: "Every detail matters.",
+    responsibilities: ['Meeting documentation', 'Communication management', 'Record keeping']
+  },
+  {
+    name: 'Isabella Santos',
+    position: 'Treasurer',
+    photo: comingSoonPhoto,
+    dreamJob: 'Accountant',
+    funFact: 'Manages a small online sticker shop.',
+    quote: "Count on me to make it count.",
+    responsibilities: ['Financial management', 'Budget planning', 'Fund tracking']
+  },
+  {
+    name: 'Mark Bautista',
+    position: 'Auditor',
+    photo: comingSoonPhoto,
+    dreamJob: 'Game Developer',
+    funFact: 'Is ranked in the top 1% of a popular online game.',
+    quote: "Ensuring fairness in every step.",
+    responsibilities: ['Financial auditing', 'Process oversight', 'Compliance monitoring']
+  },
+  {
+    name: 'Angela David',
+    position: 'P.R.O.',
+    photo: comingSoonPhoto,
+    dreamJob: 'Journalist',
+    funFact: 'Runs the unofficial class social media page.',
+    quote: "Connecting our class, one post at a time.",
+    responsibilities: ['Public relations', 'Social media management', 'External communications']
+  }
+];
 
 export const students = [
   // --- Class Officers (also part of the student list) ---
