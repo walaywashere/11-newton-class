@@ -8,6 +8,8 @@ const PerfectLeadershipPage = () => {
   const [selectedOfficer, setSelectedOfficer] = useState(null);
   const [imageLoaded, setImageLoaded] = useState({});
 
+
+
   const handleImageLoad = (id) => {
     setImageLoaded(prev => ({ ...prev, [id]: true }));
   };

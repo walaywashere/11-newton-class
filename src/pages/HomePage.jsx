@@ -1,9 +1,16 @@
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Sparkles, Users, Trophy, BookOpen, ArrowRight, Crown, Heart } from 'lucide-react';
+import { ArrowDown, Sparkles, Users, Trophy, BookOpen, ArrowRight, UserCheck, Heart, Star, Crown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { scrollToTopInstant } from '../utils/scrollToTop';
+import homepageConfig from '../data/homepageConfig.json';
+import { processDynamicStats } from '../utils/dynamicStats';
 
 const HomePage = () => {
+  // Process dynamic stats from configuration
+  const heroStats = useMemo(() => {
+    return processDynamicStats(homepageConfig.heroSection.stats);
+  }, []);
 
   // Error boundary for this component
   if (typeof window === 'undefined') {
@@ -212,12 +219,12 @@ const HomePage = () => {
             transition={{ duration: 0.8, delay: 1.2 }}
             className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-12 lg:mb-16 max-w-4xl mx-auto"
           >
-            {[
-              { icon: Users, label: 'Brilliant Minds', value: '40+', color: 'blue' },
-              { icon: Trophy, label: 'Achievements', value: '15+', color: 'purple' },
-              { icon: BookOpen, label: 'Projects', value: '25+', color: 'emerald' },
-              { icon: Heart, label: 'Excellence', value: '100%', color: 'amber' }
-            ].map((stat, index) => (
+            {heroStats.map((stat, index) => {
+              const IconComponent = stat.icon === 'Users' ? Users : 
+                                   stat.icon === 'Trophy' ? Trophy :
+                                   stat.icon === 'BookOpen' ? BookOpen :
+                                   stat.icon === 'Star' ? Star : Heart;
+              return (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -243,7 +250,7 @@ const HomePage = () => {
                     transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
                     className="mb-2 sm:mb-3"
                   >
-                    <stat.icon className={`w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 mx-auto text-${stat.color}-400 group-hover:scale-110 transition-transform`} />
+                    <IconComponent className={`w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 mx-auto text-${stat.color}-400 group-hover:scale-110 transition-transform`} />
                   </motion.div>
                   <div className={`text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-${stat.color}-300 mb-1 sm:mb-2 group-hover:text-${stat.color}-200 transition-colors`}>
                     {stat.value}
@@ -253,7 +260,8 @@ const HomePage = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </motion.div>
 
           {/* CTA Buttons - No Overlap */}

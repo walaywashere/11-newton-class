@@ -17,13 +17,15 @@
     "stats": [
       {
         "icon": "Trophy",
-        "value": "12+",
+        "value": "dynamic",
+        "calculation": "totalAchievements",
         "label": "Major Awards",
         "color": "text-amber-400"
       },
       {
         "icon": "Star",
-        "value": "20+",
+        "value": "dynamic",
+        "calculation": "totalRecognitions",
         "label": "Recognition",
         "color": "text-yellow-400"
       },
@@ -35,7 +37,8 @@
       },
       {
         "icon": "Crown",
-        "value": "5+",
+        "value": "dynamic",
+        "calculation": "totalChampionships",
         "label": "Championships",
         "color": "text-amber-300"
       }

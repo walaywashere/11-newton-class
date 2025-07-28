@@ -2,28 +2,31 @@
   "branding": {
     "name": "Class 11-Newton",
     "tagline": "Excellence in Motion",
-    "academicYear": "2024-2025",
+    "academicYear": "2025-2026",
     "description": "We are a community of passionate learners, innovators, and future leaders. Together, we're shaping tomorrow through knowledge, creativity, and collaboration."
   },
   "classStats": [
     {
       "label": "Students",
-      "value": "35+",
+      "value": "dynamic",
+      "calculation": "totalStudents",
       "icon": "Users"
     },
     {
       "label": "Projects", 
-      "value": "20+",
+      "value": "dynamic",
+      "calculation": "totalProjects",
       "icon": "BookOpen"
     },
     {
       "label": "Achievements",
-      "value": "12+", 
+      "value": "dynamic",
+      "calculation": "totalAchievements",
       "icon": "Trophy"
     },
     {
       "label": "Academic Year",
-      "value": "2024-25",
+      "value": "2025-26",
       "icon": "Calendar"
     }
   ],
@@ -53,7 +56,7 @@
     "schoolName": "Your School Name",
     "city": "Your City",
     "email": "class11newton@school.edu",
-    "academicYear": "Academic Year 2024-2025"
+    "academicYear": "Academic Year 2025-2026"
   },
   "socialLinks": [
     {

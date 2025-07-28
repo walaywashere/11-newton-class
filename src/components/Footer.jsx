@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { 
   ArrowUp
 } from 'lucide-react';
 import { getIcon } from '../utils/iconMapper';
 import footerConfig from '../data/footerConfig.json';
+import { processDynamicStats } from '../utils/dynamicStats';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -14,7 +15,12 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   // Get data from JSON config
-  const { branding, classStats, quickLinks, contact, socialLinks, copyright } = footerConfig;
+  const { branding, quickLinks, contact, socialLinks, copyright } = footerConfig;
+  
+  // Process dynamic stats
+  const processedClassStats = useMemo(() => {
+    return processDynamicStats(footerConfig.classStats);
+  }, []);
 
   // Convert icon names to components
   const processedQuickLinks = quickLinks.map(link => ({
@@ -27,7 +33,7 @@ const Footer = () => {
     icon: getIcon(social.icon)
   }));
 
-  const processedClassStats = classStats.map(stat => ({
+  const processedClassStatsWithIcons = processedClassStats.map(stat => ({
     ...stat,
     icon: getIcon(stat.icon)
   }));
@@ -97,7 +103,7 @@ const Footer = () => {
 
                 {/* Class Stats */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  {processedClassStats.map((stat, index) => (
+                  {processedClassStatsWithIcons.map((stat, index) => (
                     <motion.div
                       key={stat.label}
                       initial={{ opacity: 0, scale: 0.8 }}

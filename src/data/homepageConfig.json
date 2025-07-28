@@ -1,7 +1,7 @@
 {
   "heroSection": {
     "topBadge": {
-      "text": "Class of 2024-2025",
+      "text": "Class of 2025-2026",
       "icon": "Sparkles",
       "showPulsingDot": true
     },
@@ -30,20 +30,23 @@
       {
         "icon": "Users",
         "label": "Brilliant Minds",
-        "value": "35+",
-        "color": "blue"
+        "value": "dynamic",
+        "color": "blue",
+        "calculation": "totalStudents"
       },
       {
         "icon": "Trophy", 
         "label": "Achievements",
-        "value": "12+",
-        "color": "purple"
+        "value": "dynamic",
+        "color": "purple",
+        "calculation": "totalAchievements"
       },
       {
         "icon": "BookOpen",
         "label": "Projects",
-        "value": "20+",
-        "color": "emerald"
+        "value": "dynamic",
+        "color": "emerald",
+        "calculation": "totalProjects"
       },
       {
         "icon": "Star",
@@ -92,7 +95,8 @@
           },
           {
             "label": "Student Officers", 
-            "value": "6+"
+            "value": "dynamic",
+            "calculation": "totalOfficers"
           },
           {
             "label": "Leadership Excellence",
@@ -110,11 +114,13 @@
         "stats": [
           {
             "label": "Total Students",
-            "value": "35+"
+            "value": "dynamic",
+            "calculation": "totalStudents"
           },
           {
             "label": "Unique Stories",
-            "value": "35+"
+            "value": "dynamic",
+            "calculation": "totalStudents"
           },
           {
             "label": "Future Leaders", 
@@ -132,11 +138,13 @@
         "stats": [
           {
             "label": "Major Awards",
-            "value": "12+"
+            "value": "dynamic",
+            "calculation": "totalAchievements"
           },
           {
             "label": "Projects Completed",
-            "value": "20+"
+            "value": "dynamic",
+            "calculation": "totalProjects"
           },
           {
             "label": "Excellence Rate",
