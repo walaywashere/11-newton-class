@@ -619,50 +619,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Extra Content to Force Scrollbars */}
-      <section className="py-16 bg-gradient-to-br from-purple-50 to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Class Achievements & Activities</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-              <div key={item} className="bg-white rounded-xl shadow-lg p-6">
-                <div className="w-full h-48 bg-gradient-to-br from-purple-200 to-indigo-200 rounded-lg mb-4"></div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Achievement {item}</h3>
-                <p className="text-gray-600 mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <div className="flex items-center gap-2 text-sm text-purple-600">
-                  <span>🏆</span>
-                  <span>Outstanding Performance</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* More Content */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Student Testimonials</h2>
-          <div className="space-y-8">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div key={item} className="bg-gradient-to-r from-gray-50 to-slate-50 rounded-xl p-8">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full flex-shrink-0"></div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">Student {item}</h3>
-                    <p className="text-gray-600 mb-4">
-                      "This class has been an incredible journey of learning and growth. The supportive environment and dedicated teachers have helped me achieve things I never thought possible."
-                    </p>
-                    <div className="text-sm text-purple-600 font-medium">Class 11-Newton Student</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-16">

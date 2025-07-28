@@ -1,38 +1,38 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Modern Subtle Scrollbar - Force Override */
+/* Modern Visible Scrollbar - Force Override */
 /* Webkit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 8px !important;
-  height: 8px !important;
+  width: 10px !important;
+  height: 10px !important;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05) !important;
-  border-radius: 10px !important;
+  background: rgba(0, 0, 0, 0.08) !important;
+  border-radius: 8px !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2) !important;
-  border-radius: 10px !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 8px !important;
   border: none !important;
   transition: all 0.2s ease !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.35) !important;
+  background: rgba(0, 0, 0, 0.5) !important;
   border: none !important;
 }
 
 ::-webkit-scrollbar-corner {
-  background: rgba(0, 0, 0, 0.05) !important;
+  background: rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Firefox scrollbar - subtle theme */
+/* Firefox scrollbar - visible theme */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.08);
 }
 
 /* Custom scrollbar for modals and overlays - even more subtle */
