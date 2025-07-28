@@ -96,11 +96,11 @@ const PerfectStudentsPage = () => {
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"
           animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
+            scale: [1, 1.1, 1],
+            rotate: [0, 60, 120, 180, 240, 300, 360],
           }}
           transition={{
-            duration: 20,
+            duration: 40,
             repeat: Infinity,
             ease: "linear"
           }}
@@ -108,11 +108,11 @@ const PerfectStudentsPage = () => {
         <motion.div
           className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/20 to-pink-400/20 rounded-full blur-3xl"
           animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0],
+            scale: [1.1, 1, 1.1],
+            rotate: [360, 300, 240, 180, 120, 60, 0],
           }}
           transition={{
-            duration: 25,
+            duration: 50,
             repeat: Infinity,
             ease: "linear"
           }}
@@ -142,10 +142,10 @@ const PerfectStudentsPage = () => {
         </Link>
       </motion.div>
 
-      {/* Hero Section */}
+      {/* Hero Section - Added more top padding for navbar */}
       <motion.section
         style={{ y: heroY, opacity: heroOpacity }}
-        className="relative pt-24 pb-16 overflow-hidden"
+        className="relative pt-32 pb-16 overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -161,8 +161,8 @@ const PerfectStudentsPage = () => {
               transition={{ duration: 0.6, type: "spring", stiffness: 200 }}
             >
               <motion.div
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
                 <Users className="w-8 h-8 text-indigo-600" />
               </motion.div>
@@ -170,8 +170,8 @@ const PerfectStudentsPage = () => {
                 Our Amazing Class
               </h1>
               <motion.div
-                animate={{ rotate: [360, 0] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                animate={{ rotate: [0, -10, 10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
               >
                 <Sparkles className="w-8 h-8 text-purple-600" />
               </motion.div>
@@ -209,8 +209,8 @@ const PerfectStudentsPage = () => {
                   <div className="bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-300">
                     <motion.div
                       className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4 mx-auto`}
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
+                      whileHover={{ rotate: 15 }}
+                      transition={{ duration: 0.3 }}
                     >
                       <stat.icon className="w-6 h-6 text-white" />
                     </motion.div>
@@ -232,7 +232,7 @@ const PerfectStudentsPage = () => {
       </motion.section>
 
       {/* Search and Controls */}
-      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <section className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -264,22 +264,26 @@ const PerfectStudentsPage = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex gap-3"
+              className="flex gap-3 relative z-40"
             >
-              <PerfectDropdown
-                trigger={<Filter className="w-4 h-4" />}
-                options={filterOptions}
-                value={filterBy}
-                onChange={setFilterBy}
-                placeholder="Filter"
-              />
-              <PerfectDropdown
-                trigger={<Users className="w-4 h-4" />}
-                options={sortOptions}
-                value={sortBy}
-                onChange={setSortBy}
-                placeholder="Sort"
-              />
+              <div className="relative z-50">
+                <PerfectDropdown
+                  trigger={<Filter className="w-4 h-4" />}
+                  options={filterOptions}
+                  value={filterBy}
+                  onChange={setFilterBy}
+                  placeholder="Filter"
+                />
+              </div>
+              <div className="relative z-40">
+                <PerfectDropdown
+                  trigger={<Users className="w-4 h-4" />}
+                  options={sortOptions}
+                  value={sortBy}
+                  onChange={setSortBy}
+                  placeholder="Sort"
+                />
+              </div>
             </motion.div>
 
             <motion.div
@@ -347,122 +351,182 @@ const PerfectStudentsPage = () => {
                   stiffness: 100
                 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className={`group cursor-pointer ${
-                  viewMode === 'list' ? 'flex gap-6' : ''
-                }`}
+                className="group cursor-pointer"
                 onClick={() => setSelectedStudent(student)}
               >
-                <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 group-hover:border-purple-200">
-                  {/* Student Photo */}
-                  <div className={`relative overflow-hidden ${
-                    viewMode === 'list' ? 'w-24 h-24 rounded-xl m-4' : 'w-full h-48'
-                  }`}>
-                    {!imageLoaded[student.name] && (
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse" />
-                    )}
-                    <motion.img
-                      src={student.photo}
-                      alt={student.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      onLoad={() => handleImageLoad(student.name)}
-                      whileHover={{ scale: 1.1 }}
-                    />
-                    
-                    {/* Position Badge */}
-                    {student.position && student.position !== 'Student' && (
+                {viewMode === 'grid' ? (
+                  // Grid View - Fixed Card Size
+                  <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 group-hover:border-purple-200 h-80 flex flex-col">
+                    {/* Student Photo - Fixed Height */}
+                    <div className="relative overflow-hidden h-48 flex-shrink-0">
+                      {!imageLoaded[student.name] && (
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse" />
+                      )}
+                      <motion.img
+                        src={student.photo}
+                        alt={student.name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        onLoad={() => handleImageLoad(student.name)}
+                        whileHover={{ scale: 1.1 }}
+                      />
+                      
+                      {/* Position Badge */}
+                      {student.position && student.position !== 'Student' && (
+                        <motion.div
+                          initial={{ scale: 0, rotate: -45 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                          className="absolute top-3 left-3"
+                        >
+                          <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full text-xs font-bold shadow-lg border-2 border-white/20 backdrop-blur-sm flex items-center gap-1">
+                            <Crown className="w-3 h-3" />
+                            {student.position}
+                          </span>
+                        </motion.div>
+                      )}
+
+                      {/* Hover Overlay */}
                       <motion.div
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                        className="absolute top-3 left-3"
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                        className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end justify-center pb-4"
                       >
-                        <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full text-xs font-bold shadow-lg border-2 border-white/20 backdrop-blur-sm flex items-center gap-1">
-                          <Crown className="w-3 h-3" />
-                          {student.position}
+                        <span className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          Click to view profile
                         </span>
                       </motion.div>
-                    )}
-
-                    {/* Hover Overlay */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                      className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end justify-center pb-4"
-                    >
-                      <span className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        Click to view profile
-                      </span>
-                    </motion.div>
-                  </div>
-
-                  {/* Student Info */}
-                  <div className={`p-4 ${viewMode === 'list' ? 'flex-1' : ''}`}>
-                    <div className="mb-3">
-                      <h3 className="font-bold text-gray-800 mb-1 group-hover:text-purple-600 transition-colors">
-                        {student.name}
-                      </h3>
-                      {student.position && student.position !== 'Student' ? (
-                        <motion.div
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
-                          className="flex items-center gap-1 text-sm font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
-                        >
-                          <Crown className="w-4 h-4 text-purple-500" />
-                          {student.position}
-                        </motion.div>
-                      ) : (
-                        <p className="text-gray-600 text-sm">Student</p>
-                      )}
                     </div>
 
-                    {student.dreamJob && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
-                        className="flex items-center gap-2 text-xs text-gray-500 mb-2"
-                      >
-                        <Target className="w-3 h-3" />
-                        <span className="truncate">{student.dreamJob}</span>
-                      </motion.div>
-                    )}
+                    {/* Student Info - Fixed Height with Flex */}
+                    <div className="p-4 flex-1 flex flex-col justify-between min-h-0">
+                      <div className="mb-2">
+                        <h3 className="font-bold text-gray-800 mb-1 group-hover:text-purple-600 transition-colors truncate">
+                          {student.name}
+                        </h3>
+                        {student.position && student.position !== 'Student' ? (
+                          <motion.div
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+                            className="flex items-center gap-1 text-sm font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
+                          >
+                            <Crown className="w-4 h-4 text-purple-500 flex-shrink-0" />
+                            <span className="truncate">{student.position}</span>
+                          </motion.div>
+                        ) : (
+                          <p className="text-gray-600 text-sm">Student</p>
+                        )}
+                      </div>
 
-                    {student.funFact && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 + 0.6 }}
-                        className="flex items-center gap-2 text-xs text-gray-500 mb-3"
-                      >
-                        <Sparkles className="w-3 h-3" />
-                        <span className="truncate">{student.funFact}</span>
-                      </motion.div>
-                    )}
+                      <div className="space-y-1 flex-1">
+                        {student.dreamJob && (
+                          <div className="flex items-center gap-2 text-xs text-gray-500">
+                            <Target className="w-3 h-3 flex-shrink-0" />
+                            <span className="truncate">{student.dreamJob}</span>
+                          </div>
+                        )}
+                        
+                        {student.funFact && (
+                          <div className="flex items-center gap-2 text-xs text-gray-500">
+                            <Sparkles className="w-3 h-3 flex-shrink-0" />
+                            <span className="truncate">{student.funFact}</span>
+                          </div>
+                        )}
+                      </div>
 
-                    {/* Social Links */}
-                    {student.socials && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 + 0.7 }}
-                        className="flex gap-2"
-                      >
-                        {student.socials.instagram && (
+                      {/* Social Links - Always at bottom */}
+                      <div className="mt-2">
+                        {student.socials?.instagram && (
                           <a
                             href={`https://instagram.com/${student.socials.instagram}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="p-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:scale-110 transition-transform shadow-md"
+                            className="inline-flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:scale-105 transition-transform shadow-md text-xs"
                           >
                             <Instagram className="w-3 h-3" />
+                            <span>IG</span>
                           </a>
                         )}
-                      </motion.div>
-                    )}
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  // List View - Horizontal Layout
+                  <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 group-hover:border-purple-200 p-6">
+                    <div className="flex gap-6 items-center">
+                      {/* Student Photo - Fixed Size */}
+                      <div className="relative overflow-hidden w-20 h-20 rounded-xl flex-shrink-0">
+                        {!imageLoaded[student.name] && (
+                          <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse rounded-xl" />
+                        )}
+                        <motion.img
+                          src={student.photo}
+                          alt={student.name}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          onLoad={() => handleImageLoad(student.name)}
+                        />
+                        
+                        {/* Position Badge */}
+                        {student.position && student.position !== 'Student' && (
+                          <div className="absolute -top-2 -right-2">
+                            <span className="px-2 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full text-xs font-bold shadow-lg border border-white/20 backdrop-blur-sm flex items-center gap-1">
+                              <Crown className="w-3 h-3" />
+                            </span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Student Info - Flex Layout */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                          <div className="min-w-0">
+                            <h3 className="font-bold text-gray-800 group-hover:text-purple-600 transition-colors text-lg truncate">
+                              {student.name}
+                            </h3>
+                            {student.position && student.position !== 'Student' ? (
+                              <div className="flex items-center gap-1 text-sm font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                                <Crown className="w-4 h-4 text-purple-500" />
+                                <span>{student.position}</span>
+                              </div>
+                            ) : (
+                              <p className="text-gray-600 text-sm">Student</p>
+                            )}
+                          </div>
+                          
+                          <div className="flex items-center gap-4 flex-shrink-0">
+                            {student.dreamJob && (
+                              <div className="flex items-center gap-1 text-sm text-gray-500">
+                                <Target className="w-4 h-4" />
+                                <span className="hidden sm:inline">{student.dreamJob}</span>
+                              </div>
+                            )}
+                            
+                            {student.socials?.instagram && (
+                              <a
+                                href={`https://instagram.com/${student.socials.instagram}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:scale-105 transition-transform shadow-md text-sm"
+                              >
+                                <Instagram className="w-4 h-4" />
+                                <span>Instagram</span>
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                        
+                        {student.funFact && (
+                          <div className="mt-2 flex items-center gap-2 text-sm text-gray-500">
+                            <Sparkles className="w-4 h-4" />
+                            <span className="truncate">{student.funFact}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </motion.div>
             ))}
           </motion.div>
@@ -540,7 +604,7 @@ const PerfectStudentsPage = () => {
                 
                 <div className="flex items-center gap-6">
                   <motion.div
-                    initial={{ scale: 0, rotate: -180 }}
+                    initial={{ scale: 0, rotate: -45 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ duration: 0.5 }}
                     className="w-24 h-24 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl"

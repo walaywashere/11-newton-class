@@ -72,9 +72,9 @@ const PerfectDropdown = ({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className={`absolute z-50 mt-2 min-w-[200px] bg-white border border-gray-200 rounded-xl shadow-lg backdrop-blur-md ${
-              align === 'right' ? 'right-0' : 'left-0'
-            }`}
+                         className={`absolute z-[100] mt-2 min-w-[200px] bg-white border border-gray-200 rounded-xl shadow-lg backdrop-blur-md ${
+               align === 'right' ? 'right-0' : 'left-0'
+             }`}
             style={{
               boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)'
             }}
