@@ -1,10 +1,275 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Users, Star, Heart, Sparkles, Search, Filter, Grid, List, ChevronLeft, ChevronRight, Crown, Instagram, Mail, Trophy, BookOpen, Target, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { scrollToTopInstant } from '../utils/scrollToTop';
 import { students } from '../data/classData';
 import PerfectDropdown from '../components/PerfectDropdown';
+
+// Optimized StudentCard component with memo to prevent unnecessary re-renders
+const StudentGridCard = memo(({ student, index, onImageLoad, onStudentClick, imageLoaded }) => {
+  return (
+    <div
+      className="group cursor-pointer"
+      onClick={() => onStudentClick(student)}
+    >
+      <div className="bg-gradient-to-br from-white via-gray-50/80 to-slate-50/60 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200 overflow-hidden border border-white/60 hover:border-purple-200/80 h-[420px] flex flex-col relative will-change-transform">
+        {/* Simplified Card Accent */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+        
+        {/* Profile Picture Area - Optimized */}
+        <div className="relative p-6 pb-3 flex justify-center">
+          <div className="relative w-24 h-24">
+            <div 
+              className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg ring-2 ring-white/80 group-hover:ring-purple-200/60 transition-all duration-200 bg-gradient-to-br from-slate-100 to-gray-200 relative transform -rotate-2"
+            >
+              {!imageLoaded[student.name] ? (
+                <div className="w-full h-full bg-gradient-to-br from-slate-200 via-gray-200 to-slate-300 flex flex-col items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl mx-auto mb-1 flex items-center justify-center">
+                      <Users className="w-4 h-4 text-white" />
+                    </div>
+                    <p className="text-[10px] text-gray-600 font-bold tracking-wider mb-0.5">PHOTO</p>
+                    <p className="text-[9px] text-gray-500 font-medium">COMING SOON</p>
+                  </div>
+                </div>
+              ) : (
+                <img
+                  src={student.photo}
+                  alt={student.name}
+                  className="w-full h-full object-cover"
+                  onLoad={() => onImageLoad(student.name)}
+                  loading="lazy"
+                />
+              )}
+            </div>
+
+            {/* Leadership Badge */}
+            {student.position && student.position !== 'Student' && (
+              <div className="absolute -top-2 -right-2 z-10">
+                <div className="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 text-white rounded-full p-2 shadow-lg border-2 border-white">
+                  <Crown className="w-3 h-3" />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Content Section - Simplified */}
+        <div className="px-6 py-4 flex-1 flex flex-col">
+          {/* Name and Role */}
+          <div className="text-center mb-3">
+            <h3 className="font-bold text-lg text-gray-800 leading-tight mb-2 group-hover:text-purple-700 transition-colors duration-200">
+              {student.name}
+            </h3>
+            
+            {student.position && student.position !== 'Student' ? (
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full border border-purple-200/60">
+                <Crown className="w-3 h-3 text-purple-600" />
+                <span className="text-sm font-semibold text-purple-700">{student.position}</span>
+              </div>
+            ) : (
+              <span className="inline-block px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full border border-gray-200">
+                Student
+              </span>
+            )}
+          </div>
+
+          {/* Key Facts - Simplified */}
+          <div className="flex-1 mb-4 min-h-[120px] flex flex-col justify-start">
+            <div className="space-y-2">
+              {student.dreamJob && (
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-2.5 border border-blue-100/50">
+                  <div className="flex items-start gap-2">
+                    <div className="w-5 h-5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Target className="w-2.5 h-2.5 text-white" />
+                    </div>
+                    <p className="text-xs text-gray-700 font-medium leading-relaxed">{student.dreamJob}</p>
+                  </div>
+                </div>
+              )}
+              
+              {student.funFact && (
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-2.5 border border-purple-100/50">
+                  <div className="flex items-start gap-2">
+                    <div className="w-5 h-5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Sparkles className="w-2.5 h-2.5 text-white" />
+                    </div>
+                    <p className="text-xs text-gray-700 leading-relaxed">{student.funFact}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Action Area */}
+          <div className="mt-auto pt-2">
+            {student.socials?.instagram ? (
+              <div className="flex gap-2">
+                <a
+                  href={`https://instagram.com/${student.socials.instagram}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg text-xs font-semibold hover:shadow-lg transition-shadow duration-200"
+                  title="Follow on Instagram"
+                >
+                  <Instagram className="w-3 h-3" />
+                  <span>Connect</span>
+                </a>
+                <button className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors duration-200">
+                  <Heart className="w-3 h-3" />
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center justify-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs text-gray-600 font-medium">
+                <Mail className="w-3 h-3" />
+                <span>Contact via school</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+});
+
+// Optimized ListCard component
+const StudentListCard = memo(({ student, onImageLoad, onStudentClick, imageLoaded }) => {
+  return (
+    <div
+      className="group cursor-pointer"
+      onClick={() => onStudentClick(student)}
+    >
+      <div className="bg-gradient-to-br from-white via-gray-50/80 to-slate-50/60 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200 overflow-hidden border border-white/60 hover:border-purple-200/80 relative will-change-transform">
+        {/* Simplified Card Accent */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+        
+        <div className="p-6">
+          <div className="flex gap-6 items-start">
+            {/* Profile Picture - Simplified */}
+            <div className="relative flex-shrink-0">
+              <div className="relative w-20 h-20">
+                <div 
+                  className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg ring-2 ring-white/80 group-hover:ring-purple-200/60 transition-all duration-200 bg-gradient-to-br from-slate-100 to-gray-200 relative transform -rotate-2"
+                >
+                  {!imageLoaded[student.name] ? (
+                    <div className="w-full h-full bg-gradient-to-br from-slate-200 via-gray-200 to-slate-300 flex flex-col items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg mx-auto mb-1 flex items-center justify-center">
+                          <Users className="w-3 h-3 text-white" />
+                        </div>
+                        <p className="text-[8px] text-gray-600 font-bold tracking-wider">PHOTO</p>
+                        <p className="text-[7px] text-gray-500 font-medium">SOON</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      src={student.photo}
+                      alt={student.name}
+                      className="w-full h-full object-cover"
+                      onLoad={() => onImageLoad(student.name)}
+                      loading="lazy"
+                    />
+                  )}
+                </div>
+
+                {/* Leadership Badge */}
+                {student.position && student.position !== 'Student' && (
+                  <div className="absolute -top-1 -right-1 z-10">
+                    <div className="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 text-white rounded-full p-1.5 shadow-lg border-2 border-white">
+                      <Crown className="w-2.5 h-2.5" />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Content Section */}
+            <div className="flex-1 min-w-0">
+              {/* Header Row */}
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+                {/* Name and Role */}
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-bold text-xl text-gray-800 leading-tight mb-2 group-hover:text-purple-700 transition-colors duration-200">
+                    {student.name}
+                  </h3>
+                  
+                  {student.position && student.position !== 'Student' ? (
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full border border-purple-200/60">
+                      <Crown className="w-3 h-3 text-purple-600" />
+                      <span className="text-sm font-semibold text-purple-700">{student.position}</span>
+                    </div>
+                  ) : (
+                    <span className="inline-block px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full border border-gray-200">
+                      Student
+                    </span>
+                  )}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  {student.socials?.instagram ? (
+                    <>
+                      <a
+                        href={`https://instagram.com/${student.socials.instagram}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg text-xs font-semibold hover:shadow-lg transition-shadow duration-200"
+                        title="Follow on Instagram"
+                      >
+                        <Instagram className="w-3 h-3" />
+                        <span className="hidden sm:inline">Connect</span>
+                      </a>
+                      <button className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors duration-200">
+                        <Heart className="w-3 h-3" />
+                      </button>
+                    </>
+                  ) : (
+                    <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs text-gray-600 font-medium">
+                      <Mail className="w-3 h-3" />
+                      <span className="hidden sm:inline">Contact via school</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Key Facts - Horizontal Layout */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                {student.dreamJob && (
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-2.5 border border-blue-100/50 flex-1">
+                    <div className="flex items-start gap-2">
+                      <div className="w-5 h-5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Target className="w-2.5 h-2.5 text-white" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-xs text-gray-700 font-medium leading-relaxed">{student.dreamJob}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
+                {student.funFact && (
+                  <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-2.5 border border-purple-100/50 flex-1">
+                    <div className="flex items-start gap-2">
+                      <div className="w-5 h-5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Sparkles className="w-2.5 h-2.5 text-white" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-xs text-gray-700 leading-relaxed">{student.funFact}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+});
 
 const PerfectStudentsPage = () => {
   const [viewMode, setViewMode] = useState('grid');
@@ -20,9 +285,9 @@ const PerfectStudentsPage = () => {
   const heroY = useTransform(scrollYProgress, [0, 0.3], [0, -50]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.8]);
 
-  const handleImageLoad = (studentName) => {
+  const handleImageLoad = useCallback((studentName) => {
     setImageLoaded(prev => ({ ...prev, [studentName]: true }));
-  };
+  }, []);
 
   // Filter and sort options
   const sortOptions = [
@@ -91,33 +356,11 @@ const PerfectStudentsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.1, 1],
-            rotate: [0, 60, 120, 180, 240, 300, 360],
-          }}
-          transition={{
-            duration: 40,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/20 to-pink-400/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1.1, 1, 1.1],
-            rotate: [360, 300, 240, 180, 120, 60, 0],
-          }}
-          transition={{
-            duration: 50,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-purple-300/10 to-blue-300/10 rounded-full blur-3xl animate-pulse" />
+      {/* Simplified Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/10 to-pink-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-purple-300/5 to-blue-300/5 rounded-full blur-3xl"></div>
       </div>
 
 
@@ -306,333 +549,32 @@ const PerfectStudentsPage = () => {
 
       {/* Students Grid/List */}
       <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`${viewMode}-${currentPage}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className={
-              viewMode === 'grid'
-                ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
-                : 'space-y-4'
-            }
-          >
-            {currentStudents.map((student, index) => (
-              <motion.div
+        <div className={
+          viewMode === 'grid'
+            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
+            : 'space-y-4'
+        }>
+          {currentStudents.map((student, index) => (
+            viewMode === 'grid' ? (
+              <StudentGridCard
                 key={student.name}
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                whileHover={{ y: -4 }}
-                className="group cursor-pointer"
-                onClick={() => setSelectedStudent(student)}
-              >
-                {viewMode === 'grid' ? (
-                  // Grid View - Modern Redesigned Cards
-                  <div className="bg-gradient-to-br from-white via-gray-50/80 to-slate-50/60 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-white/60 group-hover:border-purple-200/80 h-[420px] flex flex-col relative">
-                    {/* Subtle Card Accent */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
-                    {/* Profile Picture Area - Redesigned */}
-                    <div className="relative p-6 pb-3 flex justify-center">
-                      <div className="relative">
-                        {/* Profile Picture Container - Hexagonal Style */}
-                        <div className="relative w-24 h-24 mx-auto">
-                          <div 
-                            className="w-24 h-24 rounded-2xl overflow-hidden shadow-xl ring-4 ring-white/80 group-hover:ring-purple-200/60 transition-all duration-300 bg-gradient-to-br from-slate-100 to-gray-200 relative"
-                            style={{ transform: 'rotate(-2deg)' }}
-                          >
-                            {!imageLoaded[student.name] ? (
-                              <div className="w-full h-full bg-gradient-to-br from-slate-200 via-gray-200 to-slate-300 flex flex-col items-center justify-center relative overflow-hidden">
-                                {/* Elegant Pattern Background */}
-                                <div 
-                                  className="absolute inset-0 opacity-20"
-                                  style={{
-                                    backgroundImage: `
-                                      radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.4) 2px, transparent 2px),
-                                      radial-gradient(circle at 70% 70%, rgba(59, 130, 246, 0.3) 1.5px, transparent 1.5px)
-                                    `,
-                                    backgroundSize: '24px 24px, 16px 16px'
-                                  }}
-                                />
-                                <div className="text-center z-10">
-                                  <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl mx-auto mb-1 flex items-center justify-center shadow-lg">
-                                    <Users className="w-4 h-4 text-white" />
-                                  </div>
-                                  <p className="text-[10px] text-gray-600 font-bold tracking-wider mb-0.5">PHOTO</p>
-                                  <p className="text-[9px] text-gray-500 font-medium">COMING SOON</p>
-                                </div>
-                              </div>
-                            ) : (
-                              <img
-                                src={student.photo}
-                                alt={student.name}
-                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                onLoad={() => handleImageLoad(student.name)}
-                                loading="lazy"
-                              />
-                            )}
-                          </div>
-
-                          {/* Leadership Badge - Elegant Integration */}
-                          {student.position && student.position !== 'Student' && (
-                            <motion.div
-                              initial={{ scale: 0, rotate: -45 }}
-                              animate={{ scale: 1, rotate: 0 }}
-                              transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                              className="absolute -top-2 -right-2 z-10"
-                            >
-                              <div className="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 text-white rounded-full p-2 shadow-lg border-3 border-white ring-2 ring-amber-200/50">
-                                <Crown className="w-3 h-3" />
-                              </div>
-                            </motion.div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Content Section */}
-                    <div className="px-6 py-4 flex-1 flex flex-col">
-                      {/* Name and Role - Enhanced Typography */}
-                      <div className="text-center mb-3">
-                        <h3 className="font-bold text-lg text-gray-800 leading-tight mb-2 group-hover:text-purple-700 transition-colors duration-300">
-                          {student.name}
-                        </h3>
-                        
-                        {student.position && student.position !== 'Student' ? (
-                          <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
-                            className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full border border-purple-200/60 shadow-sm"
-                          >
-                            <Crown className="w-3 h-3 text-purple-600" />
-                            <span className="text-sm font-semibold text-purple-700">{student.position}</span>
-                          </motion.div>
-                        ) : (
-                          <span className="inline-block px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full border border-gray-200">
-                            Student
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Key Facts - Consistent Layout */}
-                      <div className="flex-1 mb-4 min-h-[120px] flex flex-col justify-start">
-                        <div className="space-y-2">
-                          {student.dreamJob && (
-                            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-2.5 border border-blue-100/50">
-                              <div className="flex items-start gap-2">
-                                <div className="w-5 h-5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                  <Target className="w-2.5 h-2.5 text-white" />
-                                </div>
-                                <p className="text-xs text-gray-700 font-medium leading-relaxed">{student.dreamJob}</p>
-                              </div>
-                            </div>
-                          )}
-                          
-                          {student.funFact && (
-                            <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-2.5 border border-purple-100/50">
-                              <div className="flex items-start gap-2">
-                                <div className="w-5 h-5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                  <Sparkles className="w-2.5 h-2.5 text-white" />
-                                </div>
-                                <p className="text-xs text-gray-700 leading-relaxed">{student.funFact}</p>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Action Area - Optimized */}
-                      <div className="mt-auto pt-2">
-                        {student.socials?.instagram ? (
-                          <div className="flex gap-2">
-                            <a
-                              href={`https://instagram.com/${student.socials.instagram}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg text-xs font-semibold hover:shadow-lg transition-shadow duration-200"
-                              title="Follow on Instagram"
-                            >
-                              <Instagram className="w-3 h-3" />
-                              <span>Connect</span>
-                            </a>
-                            <button className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors duration-200">
-                              <Heart className="w-3 h-3" />
-                            </button>
-                          </div>
-                        ) : (
-                          <div className="flex items-center justify-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs text-gray-600 font-medium">
-                            <Mail className="w-3 h-3" />
-                            <span>Contact via school</span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Subtle Interaction Feedback */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                      className="absolute inset-0 bg-gradient-to-t from-purple-500/5 via-transparent to-transparent pointer-events-none rounded-2xl"
-                    />
-                  </div>
-                ) : (
-                  // List View - Modern Redesigned Layout
-                  <div className="bg-gradient-to-br from-white via-gray-50/80 to-slate-50/60 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-white/60 group-hover:border-purple-200/80 relative">
-                    {/* Subtle Card Accent */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <div className="p-6">
-                      <div className="flex gap-6 items-start">
-                        {/* Profile Picture Area - Matching Grid Design */}
-                        <div className="relative flex-shrink-0">
-                          <div className="relative w-20 h-20">
-                            <div 
-                              className="w-20 h-20 rounded-2xl overflow-hidden shadow-xl ring-4 ring-white/80 group-hover:ring-purple-200/60 transition-all duration-300 bg-gradient-to-br from-slate-100 to-gray-200 relative"
-                              style={{ transform: 'rotate(-2deg)' }}
-                            >
-                              {!imageLoaded[student.name] ? (
-                                <div className="w-full h-full bg-gradient-to-br from-slate-200 via-gray-200 to-slate-300 flex flex-col items-center justify-center relative overflow-hidden">
-                                  {/* Elegant Pattern Background */}
-                                  <div 
-                                    className="absolute inset-0 opacity-20"
-                                    style={{
-                                      backgroundImage: `
-                                        radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.4) 2px, transparent 2px),
-                                        radial-gradient(circle at 70% 70%, rgba(59, 130, 246, 0.3) 1.5px, transparent 1.5px)
-                                      `,
-                                      backgroundSize: '20px 20px, 14px 14px'
-                                    }}
-                                  />
-                                  <div className="text-center z-10">
-                                    <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg mx-auto mb-1 flex items-center justify-center shadow-lg">
-                                      <Users className="w-3 h-3 text-white" />
-                                    </div>
-                                    <p className="text-[8px] text-gray-600 font-bold tracking-wider">PHOTO</p>
-                                    <p className="text-[7px] text-gray-500 font-medium">SOON</p>
-                                  </div>
-                                </div>
-                              ) : (
-                                <img
-                                  src={student.photo}
-                                  alt={student.name}
-                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                  onLoad={() => handleImageLoad(student.name)}
-                                  loading="lazy"
-                                />
-                              )}
-                            </div>
-
-                            {/* Leadership Badge - Elegant Integration */}
-                            {student.position && student.position !== 'Student' && (
-                              <div className="absolute -top-1 -right-1 z-10">
-                                <div className="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 text-white rounded-full p-1.5 shadow-lg border-2 border-white ring-2 ring-amber-200/50">
-                                  <Crown className="w-2.5 h-2.5" />
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Content Section - Enhanced Layout */}
-                        <div className="flex-1 min-w-0">
-                          {/* Header Row */}
-                          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
-                            {/* Name and Role */}
-                            <div className="min-w-0 flex-1">
-                              <h3 className="font-bold text-xl text-gray-800 leading-tight mb-2 group-hover:text-purple-700 transition-colors duration-300">
-                                {student.name}
-                              </h3>
-                              
-                              {student.position && student.position !== 'Student' ? (
-                                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full border border-purple-200/60 shadow-sm">
-                                  <Crown className="w-3 h-3 text-purple-600" />
-                                  <span className="text-sm font-semibold text-purple-700">{student.position}</span>
-                                </div>
-                              ) : (
-                                <span className="inline-block px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full border border-gray-200">
-                                  Student
-                                </span>
-                              )}
-                            </div>
-
-                            {/* Action Buttons */}
-                            <div className="flex items-center gap-2 flex-shrink-0">
-                              {student.socials?.instagram ? (
-                                <>
-                                  <a
-                                    href={`https://instagram.com/${student.socials.instagram}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={(e) => e.stopPropagation()}
-                                    className="flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg text-xs font-semibold hover:shadow-lg transition-shadow duration-200"
-                                    title="Follow on Instagram"
-                                  >
-                                    <Instagram className="w-3 h-3" />
-                                    <span className="hidden sm:inline">Connect</span>
-                                  </a>
-                                  <button className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors duration-200">
-                                    <Heart className="w-3 h-3" />
-                                  </button>
-                                </>
-                              ) : (
-                                <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs text-gray-600 font-medium">
-                                  <Mail className="w-3 h-3" />
-                                  <span className="hidden sm:inline">Contact via school</span>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-
-                          {/* Key Facts - Horizontal Layout */}
-                          <div className="flex flex-col sm:flex-row gap-3">
-                            {student.dreamJob && (
-                              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-2.5 border border-blue-100/50 flex-1">
-                                <div className="flex items-start gap-2">
-                                  <div className="w-5 h-5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <Target className="w-2.5 h-2.5 text-white" />
-                                  </div>
-                                  <div className="min-w-0">
-                                    <p className="text-xs text-gray-700 font-medium leading-relaxed">{student.dreamJob}</p>
-                                  </div>
-                                </div>
-                              </div>
-                            )}
-                            
-                            {student.funFact && (
-                              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-2.5 border border-purple-100/50 flex-1">
-                                <div className="flex items-start gap-2">
-                                  <div className="w-5 h-5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <Sparkles className="w-2.5 h-2.5 text-white" />
-                                  </div>
-                                  <div className="min-w-0">
-                                    <p className="text-xs text-gray-700 leading-relaxed">{student.funFact}</p>
-                                  </div>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Subtle Interaction Feedback */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-purple-500/5 via-transparent to-transparent pointer-events-none rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+                student={student}
+                index={index}
+                onImageLoad={handleImageLoad}
+                onStudentClick={setSelectedStudent}
+                imageLoaded={imageLoaded}
+              />
+            ) : (
+              <StudentListCard
+                key={student.name}
+                student={student}
+                onImageLoad={handleImageLoad}
+                onStudentClick={setSelectedStudent}
+                imageLoaded={imageLoaded}
+              />
+            )
+                     ))}
+         </div>
 
         {/* Pagination */}
         {totalPages > 1 && (
