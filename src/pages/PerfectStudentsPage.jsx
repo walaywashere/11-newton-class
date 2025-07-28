@@ -336,7 +336,7 @@ const PerfectStudentsPage = () => {
               >
                 {viewMode === 'grid' ? (
                   // Grid View - Modern Redesigned Cards
-                  <div className="bg-gradient-to-br from-white via-gray-50/80 to-slate-50/60 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/60 group-hover:border-purple-200/80 h-80 flex flex-col relative">
+                  <div className="bg-gradient-to-br from-white via-gray-50/80 to-slate-50/60 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/60 group-hover:border-purple-200/80 min-h-96 flex flex-col relative">
                     {/* Subtle Card Accent */}
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
@@ -399,7 +399,7 @@ const PerfectStudentsPage = () => {
                     </div>
 
                     {/* Content Section */}
-                    <div className="px-6 py-2 flex-1 flex flex-col">
+                    <div className="px-6 py-3 flex-1 flex flex-col">
                       {/* Name and Role - Enhanced Typography */}
                       <div className="text-center mb-4">
                         <h3 className="font-bold text-lg text-gray-800 leading-tight mb-2 group-hover:text-purple-700 transition-colors duration-300">
@@ -425,25 +425,25 @@ const PerfectStudentsPage = () => {
 
                       {/* Key Facts - Sophisticated Layout */}
                       <div className="flex-1 mb-4">
-                        <div className="space-y-2">
+                        <div className="space-y-3">
                           {student.dreamJob && (
-                            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-2.5 border border-blue-100/50">
-                              <div className="flex items-center gap-2">
-                                <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3 border border-blue-100/50">
+                              <div className="flex items-start gap-3">
+                                <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
                                   <Target className="w-3 h-3 text-white" />
                                 </div>
-                                <p className="text-xs text-gray-700 font-medium truncate">{student.dreamJob}</p>
+                                <p className="text-xs text-gray-700 font-medium leading-relaxed">{student.dreamJob}</p>
                               </div>
                             </div>
                           )}
                           
                           {student.funFact && (
-                            <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-2.5 border border-purple-100/50">
-                              <div className="flex items-center gap-2">
-                                <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-3 border border-purple-100/50">
+                              <div className="flex items-start gap-3">
+                                <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
                                   <Sparkles className="w-3 h-3 text-white" />
                                 </div>
-                                <p className="text-xs text-gray-700 leading-relaxed line-clamp-2">{student.funFact}</p>
+                                <p className="text-xs text-gray-700 leading-relaxed">{student.funFact}</p>
                               </div>
                             </div>
                           )}
