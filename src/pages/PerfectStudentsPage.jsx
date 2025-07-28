@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { Users, Star, Heart, Sparkles, Search, Filter, Grid, List, ChevronLeft, ChevronRight, Crown, Instagram, Mail, Trophy, BookOpen, Target } from 'lucide-react';
+import { Users, Star, Heart, Sparkles, Search, Filter, Grid, List, ChevronLeft, ChevronRight, Crown, Instagram, Mail, Trophy, BookOpen, Target, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { scrollToTopInstant } from '../utils/scrollToTop';
 import { students } from '../data/classData';
@@ -563,7 +563,7 @@ const PerfectStudentsPage = () => {
         )}
       </section>
 
-      {/* Student Detail Modal */}
+      {/* Student Detail Modal - Modern Redesign */}
       <AnimatePresence>
         {selectedStudent && (
           <motion.div
@@ -578,123 +578,215 @@ const PerfectStudentsPage = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar"
+              className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar relative"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Header */}
-              <div className="relative bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 p-8 text-white">
-                <button
-                  onClick={() => setSelectedStudent(null)}
-                  className="absolute top-4 right-4 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-colors"
-                >
-                  ×
-                </button>
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedStudent(null)}
+                className="absolute top-6 right-6 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-all duration-200 z-50 shadow-sm hover:shadow-md"
+              >
+                <X className="w-5 h-5 text-gray-600" />
+              </button>
+
+              {/* Header with Subtle Pattern */}
+              <div className="relative bg-gradient-to-br from-slate-50 to-gray-100 p-8 pb-6 rounded-t-3xl">
+                <div 
+                  className="absolute inset-0 opacity-5"
+                  style={{
+                    backgroundImage: `
+                      radial-gradient(circle at 2px 2px, rgba(139, 92, 246, 0.3) 1px, transparent 0),
+                      radial-gradient(circle at 20px 20px, rgba(59, 130, 246, 0.3) 1px, transparent 0)
+                    `,
+                    backgroundSize: '40px 40px'
+                  }}
+                />
                 
-                <div className="flex items-center gap-6">
+                <div className="relative flex items-start gap-6">
+                  {/* Profile Picture */}
                   <motion.div
                     initial={{ scale: 0, rotate: -45 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="w-24 h-24 rounded-xl overflow-hidden border-4 border-white/30 shadow-2xl"
+                    className="relative"
                   >
-                    <img
-                      src={selectedStudent.photo}
-                      alt={selectedStudent.name}
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="w-20 h-20 rounded-2xl overflow-hidden border-4 border-white shadow-xl bg-gradient-to-br from-gray-200 to-gray-300">
+                      <img
+                        src={selectedStudent.photo}
+                        alt={selectedStudent.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {/* Position Badge */}
+                    {selectedStudent.position && selectedStudent.position !== 'Student' && (
+                      <div className="absolute -bottom-2 -right-2">
+                        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg px-2 py-1 text-xs font-bold shadow-lg flex items-center gap-1">
+                          <Crown className="w-3 h-3" />
+                          <span className="hidden sm:inline">{selectedStudent.position}</span>
+                        </div>
+                      </div>
+                    )}
                   </motion.div>
                   
-                  <div>
+                  {/* Name and Role */}
+                  <div className="flex-1 min-w-0">
                     <motion.h2
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
-                      className="text-3xl font-bold mb-2"
+                      className="text-2xl font-bold text-gray-900 mb-1 leading-tight"
                     >
                       {selectedStudent.name}
                     </motion.h2>
-                    {selectedStudent.position && selectedStudent.position !== 'Student' ? (
-                      <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="flex items-center gap-2"
-                      >
-                        <span className="px-4 py-2 bg-white/20 rounded-lg text-sm font-bold backdrop-blur-sm flex items-center gap-2">
-                          <Crown className="w-4 h-4" />
-                          {selectedStudent.position}
-                        </span>
-                      </motion.div>
-                    ) : (
-                      <p className="text-white/80 font-medium">Student</p>
-                    )}
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      className="flex items-center gap-2 mb-3"
+                    >
+                      <span className="text-gray-600 font-medium">
+                        {selectedStudent.position && selectedStudent.position !== 'Student' ? selectedStudent.position : 'Student'}
+                      </span>
+                      <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+                      <span className="text-gray-500 text-sm">Class 11-Newton</span>
+                    </motion.div>
+                    
+                    {/* Quick Stats */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                      className="flex gap-4"
+                    >
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-purple-600">2024</div>
+                        <div className="text-xs text-gray-500">Class Year</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-lg font-bold text-indigo-600">11-N</div>
+                        <div className="text-xs text-gray-500">Section</div>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-8 space-y-6">
+              {/* Content Sections */}
+              <div className="p-8 space-y-8">
+                {/* Personal Quote */}
                 {selectedStudent.quote && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
+                    className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl p-6 border border-purple-100"
                   >
-                    <h4 className="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                      <Heart className="w-5 h-5 text-red-500" />
-                      Personal Quote
-                    </h4>
-                    <p className="text-gray-600 italic text-lg">"{selectedStudent.quote}"</p>
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Heart className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-lg font-semibold text-gray-800 mb-2">Personal Quote</h4>
+                        <blockquote className="text-gray-700 italic text-lg leading-relaxed">
+                          "{selectedStudent.quote}"
+                        </blockquote>
+                      </div>
+                    </div>
                   </motion.div>
                 )}
 
-                {selectedStudent.dreamJob && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    <h4 className="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                      <Target className="w-5 h-5 text-blue-500" />
-                      Dream Job
-                    </h4>
-                    <p className="text-gray-600">{selectedStudent.dreamJob}</p>
-                  </motion.div>
-                )}
+                {/* Dream Job & Fun Fact Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {selectedStudent.dreamJob && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="bg-blue-50 rounded-2xl p-6 border border-blue-100"
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                          <Target className="w-4 h-4 text-white" />
+                        </div>
+                        <h4 className="font-semibold text-gray-800">Dream Career</h4>
+                      </div>
+                      <p className="text-gray-700 font-medium">{selectedStudent.dreamJob}</p>
+                    </motion.div>
+                  )}
 
-                {selectedStudent.funFact && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                  >
-                    <h4 className="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                      <Sparkles className="w-5 h-5 text-purple-500" />
-                      Fun Fact
-                    </h4>
-                    <p className="text-gray-600">{selectedStudent.funFact}</p>
-                  </motion.div>
-                )}
+                  {selectedStudent.funFact && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.25 }}
+                      className="bg-amber-50 rounded-2xl p-6 border border-amber-100"
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center">
+                          <Sparkles className="w-4 h-4 text-white" />
+                        </div>
+                        <h4 className="font-semibold text-gray-800">Fun Fact</h4>
+                      </div>
+                      <p className="text-gray-700">{selectedStudent.funFact}</p>
+                    </motion.div>
+                  )}
+                </div>
 
+                {/* Skills & Interests */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="bg-green-50 rounded-2xl p-6 border border-green-100"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                      <Star className="w-4 h-4 text-white" />
+                    </div>
+                    <h4 className="font-semibold text-gray-800">Interests & Skills</h4>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {['Academic Excellence', 'Leadership', 'Teamwork', 'Communication', 'Problem Solving', 'Creativity'].map((skill, index) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1.5 bg-white rounded-lg text-sm font-medium text-gray-700 border border-green-200 shadow-sm"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Contact Information */}
                 {selectedStudent.socials && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
+                    className="bg-gradient-to-r from-gray-50 to-slate-50 rounded-2xl p-6 border border-gray-200"
                   >
-                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Connect</h4>
-                    <div className="flex gap-3">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center">
+                        <Users className="w-4 h-4 text-white" />
+                      </div>
+                      <h4 className="font-semibold text-gray-800">Connect</h4>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
                       {selectedStudent.socials.instagram && (
                         <a
                           href={`https://instagram.com/${selectedStudent.socials.instagram}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                          className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm font-medium"
                         >
-                          <Instagram className="w-5 h-5" />
-                          <span>Instagram</span>
+                          <Instagram className="w-4 h-4" />
+                          <span>Follow on Instagram</span>
                         </a>
                       )}
+                      <div className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-600">
+                        <Mail className="w-4 h-4" />
+                        <span>Email available on request</span>
+                      </div>
                     </div>
                   </motion.div>
                 )}
