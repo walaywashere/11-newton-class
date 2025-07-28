@@ -2,6 +2,34 @@ import { Award, BookOpen, Calendar, Rocket } from 'lucide-react';
 
 const comingSoonPhoto = "https://media.discordapp.net/attachments/1394255915443552316/1398910732732727367/360_F_354511285_Rk4Pm1gWvS00XHNwthtxBBpyZvCWSEyk.jpg?ex=6887bd65&is=68866be5&hm=57b627aec9503734d7b07bfa96fca0a1077892dea29b94a948962b3294720536&=&format=webp";
 
+// Available skills/interests that students can have
+export const availableSkills = [
+  { name: 'Academic Excellence', category: 'academic', color: 'green' },
+  { name: 'Leadership', category: 'leadership', color: 'purple' },
+  { name: 'Teamwork', category: 'social', color: 'blue' },
+  { name: 'Communication', category: 'social', color: 'indigo' },
+  { name: 'Problem Solving', category: 'analytical', color: 'emerald' },
+  { name: 'Creativity', category: 'creative', color: 'pink' },
+  { name: 'Critical Thinking', category: 'analytical', color: 'amber' },
+  { name: 'Innovation', category: 'creative', color: 'violet' },
+  { name: 'Public Speaking', category: 'communication', color: 'orange' },
+  { name: 'Technology', category: 'technical', color: 'cyan' },
+  { name: 'Research', category: 'academic', color: 'teal' },
+  { name: 'Time Management', category: 'organizational', color: 'slate' },
+  { name: 'Sports & Athletics', category: 'physical', color: 'red' },
+  { name: 'Music & Arts', category: 'creative', color: 'purple' },
+  { name: 'Mathematics', category: 'academic', color: 'blue' },
+  { name: 'Science & Lab Work', category: 'academic', color: 'green' },
+  { name: 'Writing & Literature', category: 'creative', color: 'indigo' },
+  { name: 'Photography', category: 'creative', color: 'pink' },
+  { name: 'Entrepreneurship', category: 'leadership', color: 'amber' },
+  { name: 'Community Service', category: 'social', color: 'emerald' },
+  { name: 'Event Planning', category: 'organizational', color: 'violet' },
+  { name: 'Digital Media', category: 'technical', color: 'cyan' },
+  { name: 'Foreign Languages', category: 'communication', color: 'orange' },
+  { name: 'Debate & Argumentation', category: 'communication', color: 'red' }
+];
+
 export const adviser = {
   name: 'Ms. Evelyn Reyes',
   role: 'Class Adviser',
@@ -89,6 +117,7 @@ export const students = [
     funFact: 'Is a certified scuba diver.',
     socials: { instagram: 'andrea.g' },
     quote: "Leading with purpose and passion.",
+    skills: ['Leadership', 'Public Speaking', 'Critical Thinking', 'Debate & Argumentation', 'Academic Excellence'],
   },
   {
     name: 'John Michael Reyes',
@@ -97,6 +126,7 @@ export const students = [
     dreamJob: 'Civil Engineer',
     funFact: 'Loves to go on mountain hikes.',
     quote: "Building a stronger class, together.",
+    skills: ['Leadership', 'Problem Solving', 'Mathematics', 'Sports & Athletics', 'Teamwork'],
   },
   {
     name: 'Samantha Cruz',
@@ -105,6 +135,7 @@ export const students = [
     dreamJob: 'Novelist',
     funFact: 'Has written over 50 short stories.',
     quote: "Every detail matters.",
+    skills: ['Writing & Literature', 'Creativity', 'Time Management', 'Communication', 'Research'],
   },
   {
     name: 'Isabella Santos',
@@ -113,6 +144,7 @@ export const students = [
     dreamJob: 'Accountant',
     funFact: 'Manages a small online sticker shop.',
     quote: "Count on me to make it count.",
+    skills: ['Mathematics', 'Entrepreneurship', 'Time Management', 'Critical Thinking', 'Academic Excellence'],
   },
   {
     name: 'Mark Bautista',
@@ -121,6 +153,7 @@ export const students = [
     dreamJob: 'Game Developer',
     funFact: 'Is ranked in the top 1% of a popular online game.',
     quote: "Ensuring fairness in every step.",
+    skills: ['Technology', 'Innovation', 'Problem Solving', 'Digital Media', 'Critical Thinking'],
   },
   {
     name: 'Angela David',
@@ -129,6 +162,7 @@ export const students = [
     dreamJob: 'Journalist',
     funFact: 'Runs the unofficial class social media page.',
     quote: "Connecting our class, one post at a time.",
+    skills: ['Communication', 'Digital Media', 'Writing & Literature', 'Public Speaking', 'Creativity'],
   },
 
   // Regular Students
@@ -138,6 +172,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Pilot',
     funFact: 'Builds and flies model airplanes.',
+    skills: ['Technology', 'Innovation', 'Mathematics', 'Science & Lab Work', 'Problem Solving'],
   },
   {
     name: 'Joshua Castillo',
@@ -145,6 +180,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Chef',
     funFact: 'Can name every type of pasta.',
+    skills: ['Creativity', 'Innovation', 'Time Management', 'Foreign Languages', 'Teamwork'],
   },
   {
     name: 'Daniel Mercado',
@@ -152,6 +188,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Architect',
     funFact: 'Enjoys architectural photography.',
+    skills: ['Creativity', 'Mathematics', 'Photography', 'Critical Thinking', 'Innovation'],
   },
   {
     name: 'Christian Ramos',
@@ -159,6 +196,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Marine Biologist',
     funFact: 'Has a collection of unique seashells.',
+    skills: ['Science & Lab Work', 'Research', 'Academic Excellence', 'Community Service', 'Critical Thinking'],
   },
   {
     name: 'Miguel Ocampo',
@@ -166,6 +204,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'VFX Artist',
     funFact: 'Creates amazing video edits.',
+    skills: ['Digital Media', 'Technology', 'Creativity', 'Innovation', 'Music & Arts'],
   },
   {
     name: 'Ethan Torres',
@@ -173,6 +212,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Mechanical Engineer',
     funFact: 'Loves to tinker with old gadgets.',
+    skills: ['Technology', 'Problem Solving', 'Mathematics', 'Innovation', 'Critical Thinking'],
   },
   {
     name: 'Sophia Lim',
@@ -180,6 +220,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Fashion Designer',
     funFact: 'Sews and designs her own clothes.',
+    skills: ['Creativity', 'Music & Arts', 'Innovation', 'Entrepreneurship', 'Photography'],
   },
   {
     name: 'Chloe Gonzales',
@@ -187,6 +228,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Doctor',
     funFact: 'Volunteers at the local animal shelter.',
+    skills: ['Science & Lab Work', 'Community Service', 'Academic Excellence', 'Communication', 'Critical Thinking'],
   },
   {
     name: 'Jasmine Aquino',
@@ -194,6 +236,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Graphic Designer',
     funFact: 'Is learning digital painting.',
+    skills: ['Digital Media', 'Creativity', 'Music & Arts', 'Technology', 'Innovation'],
   },
   {
     name: 'Nicole Mendoza',
@@ -201,6 +244,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Teacher',
     funFact: 'Speaks three languages fluently.',
+    skills: ['Foreign Languages', 'Communication', 'Academic Excellence', 'Public Speaking', 'Teamwork'],
   },
   {
     name: 'Maria Dela Cruz',
@@ -208,6 +252,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Veterinarian',
     funFact: 'Has two dogs, three cats, and a parrot.',
+    skills: ['Science & Lab Work', 'Community Service', 'Academic Excellence', 'Research', 'Communication'],
   },
   {
     name: 'Kathryn Perez',
@@ -215,6 +260,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Dancer',
     funFact: 'Leads the school dance troupe.',
+    skills: ['Music & Arts', 'Leadership', 'Sports & Athletics', 'Teamwork', 'Event Planning'],
   },
   {
     name: 'Nadine Fernandez',
@@ -222,6 +268,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Photographer',
     funFact: 'Only shoots with vintage film cameras.',
+    skills: ['Photography', 'Creativity', 'Music & Arts', 'Technology', 'Innovation'],
   },
   {
     name: 'Liza Pascual',
@@ -229,6 +276,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Interior Designer',
     funFact: 'Loves rearranging her room.',
+    skills: ['Creativity', 'Innovation', 'Mathematics', 'Music & Arts', 'Problem Solving'],
   },
   {
     name: 'Julia Flores',
@@ -236,6 +284,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Scientist',
     funFact: 'Won the regional chemistry quiz bee.',
+    skills: ['Science & Lab Work', 'Academic Excellence', 'Research', 'Critical Thinking', 'Mathematics'],
   },
   {
     name: 'Angelica Lopez',
@@ -243,6 +292,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Animator',
     funFact: 'Creates stop-motion short films.',
+    skills: ['Digital Media', 'Creativity', 'Technology', 'Innovation', 'Music & Arts'],
   },
   {
     name: 'Patricia Mariano',
@@ -250,6 +300,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Entrepreneur',
     funFact: 'Sells handmade bracelets online.',
+    skills: ['Entrepreneurship', 'Creativity', 'Digital Media', 'Communication', 'Time Management'],
   },
   {
     name: 'Bea Alonzo',
@@ -257,6 +308,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Actress',
     funFact: 'Starred in all the school plays.',
+    skills: ['Music & Arts', 'Public Speaking', 'Creativity', 'Communication', 'Teamwork'],
   },
   {
     name: 'Ella Santiago',
@@ -264,6 +316,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Astronomer',
     funFact: 'Owns a powerful telescope.',
+    skills: ['Science & Lab Work', 'Mathematics', 'Research', 'Academic Excellence', 'Critical Thinking'],
   },
   {
     name: 'Gabrielle Diaz',
@@ -271,6 +324,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Psychologist',
     funFact: 'Is a great listener.',
+    skills: ['Communication', 'Research', 'Academic Excellence', 'Critical Thinking', 'Community Service'],
   },
   {
     name: 'Kyline Alcantara',
@@ -278,6 +332,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Singer',
     funFact: 'Has a popular YouTube cover channel.',
+    skills: ['Music & Arts', 'Digital Media', 'Public Speaking', 'Creativity', 'Communication'],
   },
   {
     name: 'Francine Rivera',
@@ -285,6 +340,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Lawyer',
     funFact: 'Is the captain of the debate team.',
+    skills: ['Debate & Argumentation', 'Public Speaking', 'Critical Thinking', 'Leadership', 'Academic Excellence'],
   },
   {
     name: 'Alyssa Valdez',
@@ -292,6 +348,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Athlete',
     funFact: 'Is the varsity volleyball captain.',
+    skills: ['Sports & Athletics', 'Leadership', 'Teamwork', 'Time Management', 'Communication'],
   },
   {
     name: 'Heart Evangelista',
@@ -299,6 +356,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Artist',
     funFact: 'Paints on luxury bags as a hobby.',
+    skills: ['Music & Arts', 'Creativity', 'Innovation', 'Entrepreneurship', 'Photography'],
   },
   {
     name: 'Kim Chiu',
@@ -306,6 +364,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Business Owner',
     funFact: 'Loves watching business documentaries.',
+    skills: ['Entrepreneurship', 'Leadership', 'Communication', 'Critical Thinking', 'Time Management'],
   },
   {
     name: 'Maja Salvador',
@@ -313,6 +372,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Choreographer',
     funFact: 'Has won multiple dance competitions.',
+    skills: ['Music & Arts', 'Creativity', 'Leadership', 'Event Planning', 'Sports & Athletics'],
   },
   {
     name: 'Pia Wurtzbach',
@@ -320,6 +380,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Advocate',
     funFact: 'Is passionate about charity work.',
+    skills: ['Community Service', 'Public Speaking', 'Communication', 'Leadership', 'Foreign Languages'],
   },
   {
     name: 'Catriona Gray',
@@ -327,6 +388,7 @@ export const students = [
     position: 'Student',
     dreamJob: 'Ambassador',
     funFact: 'Loves to travel and learn new cultures.',
+    skills: ['Foreign Languages', 'Communication', 'Public Speaking', 'Leadership', 'Community Service'],
   },
 ];
 

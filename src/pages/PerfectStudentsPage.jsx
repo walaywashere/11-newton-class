@@ -298,7 +298,9 @@ const PerfectStudentsPage = () => {
 
   // Get skills configuration and generate skills for modal
   const skillsConfig = useMemo(() => getSkillsConfig(), []);
-  const modalSkills = useMemo(() => getStudentSkills(), []);
+  const modalSkills = useMemo(() => {
+    return selectedStudent ? getStudentSkills(selectedStudent) : [];
+  }, [selectedStudent]);
 
   // Filter and sort options
   const sortOptions = [

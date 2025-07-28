@@ -35,9 +35,20 @@ All statistics automatically update based on your actual data:
 - `totalChampionships` - Sports/championship achievements
 - `totalProjects` - Estimated project count
 
-### 🎨 Skills & Interests System
-Fully customizable skills displayed in student modals:
+### 🎨 Individual Skills & Interests System
+Each student has their own personalized skills displayed in their modal:
 
+**Student Data (classData.jsx):**
+```javascript
+{
+  name: 'Andrea Garcia',
+  position: 'President',
+  dreamJob: 'Corporate Lawyer',
+  skills: ['Leadership', 'Public Speaking', 'Critical Thinking', 'Debate & Argumentation', 'Academic Excellence']
+}
+```
+
+**Available Skills Library:**
 ```json
 {
   "name": "Leadership",
@@ -47,17 +58,21 @@ Fully customizable skills displayed in student modals:
 ```
 
 **Available Categories:**
-- `academic` - Academic-related skills
-- `leadership` - Leadership abilities
-- `social` - Social and teamwork skills
-- `analytical` - Problem-solving skills
-- `creative` - Creative abilities
-- `communication` - Speaking/presentation
-- `technical` - Technology skills
-- `organizational` - Planning skills
+- `academic` - Academic-related skills (Mathematics, Science & Lab Work, Research)
+- `leadership` - Leadership abilities (Leadership, Entrepreneurship)
+- `social` - Social and teamwork skills (Teamwork, Community Service)
+- `analytical` - Problem-solving skills (Problem Solving, Critical Thinking)
+- `creative` - Creative abilities (Creativity, Music & Arts, Photography)
+- `communication` - Speaking/presentation (Communication, Public Speaking, Foreign Languages)
+- `technical` - Technology skills (Technology, Digital Media)
+- `organizational` - Planning skills (Time Management, Event Planning)
+- `physical` - Athletic abilities (Sports & Athletics)
 
 **Available Colors:**
-`green`, `purple`, `blue`, `indigo`, `emerald`, `pink`, `amber`, `violet`, `orange`, `cyan`, `teal`, `slate`
+`green`, `purple`, `blue`, `indigo`, `emerald`, `pink`, `amber`, `violet`, `orange`, `cyan`, `teal`, `slate`, `red`
+
+**Available Skills (24 Total):**
+Academic Excellence, Leadership, Teamwork, Communication, Problem Solving, Creativity, Critical Thinking, Innovation, Public Speaking, Technology, Research, Time Management, Sports & Athletics, Music & Arts, Mathematics, Science & Lab Work, Writing & Literature, Photography, Entrepreneurship, Community Service, Event Planning, Digital Media, Foreign Languages, Debate & Argumentation
 
 ## 🔧 Configuration Guide
 
@@ -174,18 +189,28 @@ Fully customizable skills displayed in student modals:
 
 ## 🎨 Customization Examples
 
-### Adding a New Skill
+### Adding Skills to a Student
 
-1. Open `students.config.json`
-2. Find `modal.skillsInterests.skills`
+1. Open `src/data/classData.jsx`
+2. Find the student in the `students` array
+3. Add or modify their skills array:
+
+```javascript
+{
+  name: 'Student Name',
+  // ... other properties
+  skills: ['Academic Excellence', 'Leadership', 'Technology', 'Communication', 'Problem Solving']
+}
+```
+
+### Adding a New Skill to the Library
+
+1. Open `src/data/classData.jsx`
+2. Find the `availableSkills` array
 3. Add your skill:
 
-```json
-{
-  "name": "Data Analysis",
-  "category": "analytical",
-  "color": "cyan"
-}
+```javascript
+{ name: 'Data Analysis', category: 'analytical', color: 'cyan' }
 ```
 
 ### Adding an Achievement
@@ -264,10 +289,11 @@ Edit `app.config.json`:
 ## 🚀 Quick Start
 
 1. **Modify Student Info**: Edit `src/data/classData.jsx`
-2. **Add Skills**: Update `students.config.json`
-3. **Add Achievements**: Update `achievements.config.json`
-4. **Change Academic Year**: Update all config files
-5. **Customize Appearance**: Modify `app.config.json`
+2. **Add Student Skills**: Update individual student skills in `classData.jsx`
+3. **Add New Skills to Library**: Update `availableSkills` in `classData.jsx`
+4. **Add Achievements**: Update `achievements.config.json`
+5. **Change Academic Year**: Update all config files
+6. **Customize Appearance**: Modify `app.config.json`
 
 ## 📞 Support
 

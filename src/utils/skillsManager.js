@@ -1,35 +1,41 @@
 import studentsConfig from '../data/students.config.json';
+import { availableSkills } from '../data/classData';
 
 /**
- * Get skills for display in student modal
+ * Get skills for a specific student from their individual data
+ * @param {Object} student - Student object containing skills array
  * @param {Object} options - Options for skill selection
- * @returns {Array} Array of skills to display
+ * @returns {Array} Array of skills to display for this student
  */
-export const getStudentSkills = (options = {}) => {
+export const getStudentSkills = (student, options = {}) => {
   const skillsConfig = studentsConfig.modal.skillsInterests;
-  const { skills, display } = skillsConfig;
+  const { display } = skillsConfig;
   
   const {
     maxSkills = display.maxSkills,
-    randomize = display.randomize,
-    category = null
     // studentName for future student-specific skills implementation
   } = options;
 
-  let availableSkills = [...skills];
-
-  // Filter by category if specified
-  if (category && !display.groupByCategory) {
-    availableSkills = skills.filter(skill => skill.category === category);
+  // If student has individual skills, use those
+  if (student && student.skills && student.skills.length > 0) {
+    return student.skills.slice(0, maxSkills).map(skillName => {
+      // Find the skill details from availableSkills
+      const skillDetails = availableSkills.find(skill => skill.name === skillName);
+      return skillDetails || { name: skillName, category: 'general', color: 'gray' };
+    });
   }
 
+  // Fallback to configuration skills if student has no individual skills
+  const { skills } = skillsConfig;
+  let fallbackSkills = [...skills];
+
   // If randomize is enabled, shuffle the skills
-  if (randomize) {
-    availableSkills = shuffleArray(availableSkills);
+  if (display.randomize) {
+    fallbackSkills = shuffleArray(fallbackSkills);
   }
 
   // Return the specified number of skills
-  return availableSkills.slice(0, maxSkills);
+  return fallbackSkills.slice(0, maxSkills);
 };
 
 /**
