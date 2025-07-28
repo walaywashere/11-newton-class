@@ -15,10 +15,10 @@ const HomePage = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Modern gradient background */}
-      <div className="absolute inset-0 gradient-bg"></div>
+      <div className="absolute inset-0 gradient-bg" />
       
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-black/20" />
       
       {/* Floating geometric shapes - Mobile responsive */}
       <motion.div 
@@ -135,7 +135,7 @@ const HomePage = () => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse" />
         </div>
       </motion.div>
     </section>

@@ -38,6 +38,26 @@ export default defineConfig([
       }],
       'react/prop-types': 'off',
       'react/no-unescaped-entities': 'off',
+      
+      // Additional rules for better code quality
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'no-debugger': 'error',
+      'no-alert': 'warn',
+      'prefer-const': 'error',
+      'no-var': 'error',
+      'no-duplicate-imports': 'error',
+      'no-unused-expressions': 'error',
+      
+      // React specific improvements
+      'react/jsx-no-duplicate-props': 'error',
+      'react/jsx-uses-react': 'off', // Not needed in React 17+
+      'react/jsx-uses-vars': 'error',
+      'react/no-array-index-key': 'warn',
+      'react/no-deprecated': 'error',
+      'react/self-closing-comp': 'error',
+      
+      // Performance related
+      'react-hooks/exhaustive-deps': 'warn',
     },
   },
 ])

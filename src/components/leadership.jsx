@@ -17,7 +17,7 @@ const AdviserCard = ({ person }) => {
       className="relative max-w-4xl mx-auto mb-16"
     >
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-100/50 to-accent-100/50 rounded-3xl transform rotate-1 scale-105"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-100/50 to-accent-100/50 rounded-3xl transform rotate-1 scale-105" />
       
       <div className="relative bg-white rounded-2xl shadow-large border border-neutral-200 overflow-hidden">
         <div className="flex flex-col lg:flex-row">
@@ -115,7 +115,7 @@ const OfficerCard = ({ person, index }) => {
           />
           
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           
           {/* Role Badge */}
           <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/95 backdrop-blur-sm rounded-full shadow-sm border border-white/50">
@@ -168,7 +168,7 @@ const OfficerCard = ({ person, index }) => {
           <div className="pt-3 border-t border-neutral-100">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-primary-500 rounded-full" />
                 <span className="text-xs font-medium text-neutral-500">Class Officer</span>
               </div>
               <span className="text-xs text-neutral-400">11-Newton</span>

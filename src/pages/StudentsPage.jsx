@@ -22,7 +22,7 @@ const StudentsPage = () => {
 
   // Filter and sort students
   const filteredAndSortedStudents = useMemo(() => {
-    let filtered = students.filter(student => 
+    const filtered = students.filter(student => 
       student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (student.dreamJob && student.dreamJob.toLowerCase().includes(searchTerm.toLowerCase())) ||
       (student.funFact && student.funFact.toLowerCase().includes(searchTerm.toLowerCase())) ||

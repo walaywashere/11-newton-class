@@ -44,8 +44,8 @@ const Footer = () => {
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {/* Gradient Orbs */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         
         {/* Grid Pattern */}
         <div 
@@ -57,10 +57,10 @@ const Footer = () => {
             `,
             backgroundSize: '50px 50px'
           }}
-        ></div>
+         />
         
         {/* Top Border Glow */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div>
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
       </div>
 
       {/* Main Footer Content */}
@@ -88,7 +88,7 @@ const Footer = () => {
                     }}
                   >
                     {React.createElement(getIcon('Sparkles'), { className: "w-8 h-8 text-white" })}
-                    <div className="absolute inset-0 rounded-2xl bg-white/20 animate-pulse"></div>
+                    <div className="absolute inset-0 rounded-2xl bg-white/20 animate-pulse" />
                   </div>
                   <div>
                     <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
