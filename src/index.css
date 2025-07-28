@@ -1,58 +1,59 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Modern Subtle Scrollbar */
+/* Modern Subtle Scrollbar - Force Override */
 /* Webkit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px !important;
+  height: 8px !important;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-radius: 10px !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-  border: none;
-  transition: all 0.2s ease;
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.2s ease !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 ::-webkit-scrollbar-corner {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.05) !important;
 }
 
 /* Firefox scrollbar - subtle theme */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
 }
 
 /* Custom scrollbar for modals and overlays - even more subtle */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 6px !important;
+  height: 6px !important;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.03) !important;
+  border-radius: 8px !important;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.12);
-  border-radius: 6px;
-  transition: all 0.2s ease;
+  background: rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.25) !important;
 }
 
 /* Enhanced scrollbar for premium areas */

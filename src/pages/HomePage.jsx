@@ -619,7 +619,138 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Extra Content to Force Scrollbars */}
+      <section className="py-16 bg-gradient-to-br from-purple-50 to-indigo-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Class Achievements & Activities</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
+              <div key={item} className="bg-white rounded-xl shadow-lg p-6">
+                <div className="w-full h-48 bg-gradient-to-br from-purple-200 to-indigo-200 rounded-lg mb-4"></div>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Achievement {item}</h3>
+                <p className="text-gray-600 mb-4">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div className="flex items-center gap-2 text-sm text-purple-600">
+                  <span>🏆</span>
+                  <span>Outstanding Performance</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      {/* More Content */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Student Testimonials</h2>
+          <div className="space-y-8">
+            {[1, 2, 3, 4, 5, 6].map((item) => (
+              <div key={item} className="bg-gradient-to-r from-gray-50 to-slate-50 rounded-xl p-8">
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full flex-shrink-0"></div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">Student {item}</h3>
+                    <p className="text-gray-600 mb-4">
+                      "This class has been an incredible journey of learning and growth. The supportive environment and dedicated teachers have helped me achieve things I never thought possible."
+                    </p>
+                    <div className="text-sm text-purple-600 font-medium">Class 11-Newton Student</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold mb-4">Class 11-Newton</h3>
+            <p className="text-gray-400 mb-6">Excellence in Motion</p>
+            <div className="flex justify-center space-x-6">
+              <span className="text-gray-400">© 2024 Class 11-Newton. All rights reserved.</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Temporary Scrollbar Test Section */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-4">
+          <h4 className="font-semibold text-gray-800 mb-2">Scrollbar Test</h4>
+          
+          {/* Standard Scrollbar Test */}
+          <div className="mb-4">
+            <p className="text-xs text-gray-600 mb-1">Standard (6px):</p>
+            <div className="w-48 h-24 bg-gray-50 border border-gray-200 rounded p-2 overflow-y-auto">
+              <div className="h-64 bg-gradient-to-b from-purple-100 to-blue-100 rounded p-2">
+                <p className="text-xs">Scroll to see the standard 6px scrollbar with rgba(0,0,0,0.15) background.</p>
+                <div className="mt-4 space-y-2">
+                  <div className="h-8 bg-purple-200 rounded"></div>
+                  <div className="h-8 bg-blue-200 rounded"></div>
+                  <div className="h-8 bg-indigo-200 rounded"></div>
+                  <div className="h-8 bg-pink-200 rounded"></div>
+                  <div className="h-8 bg-green-200 rounded"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Custom Scrollbar Test */}
+          <div className="mb-4">
+            <p className="text-xs text-gray-600 mb-1">Custom (4px):</p>
+            <div className="w-48 h-24 bg-gray-50 border border-gray-200 rounded p-2 overflow-y-auto custom-scrollbar">
+              <div className="h-64 bg-gradient-to-b from-green-100 to-teal-100 rounded p-2">
+                <p className="text-xs">Scroll to see the custom 4px scrollbar with rgba(0,0,0,0.12) background.</p>
+                <div className="mt-4 space-y-2">
+                  <div className="h-8 bg-green-200 rounded"></div>
+                  <div className="h-8 bg-teal-200 rounded"></div>
+                  <div className="h-8 bg-emerald-200 rounded"></div>
+                  <div className="h-8 bg-cyan-200 rounded"></div>
+                  <div className="h-8 bg-blue-200 rounded"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Premium Scrollbar Test */}
+          <div className="mb-4">
+            <p className="text-xs text-gray-600 mb-1">Premium (5px):</p>
+            <div className="w-48 h-24 bg-gray-50 border border-gray-200 rounded p-2 overflow-y-auto premium-scrollbar">
+              <div className="h-64 bg-gradient-to-b from-purple-100 to-pink-100 rounded p-2">
+                <p className="text-xs">Scroll to see the premium 5px scrollbar with rgba(139,92,246,0.08) background.</p>
+                <div className="mt-4 space-y-2">
+                  <div className="h-8 bg-purple-200 rounded"></div>
+                  <div className="h-8 bg-pink-200 rounded"></div>
+                  <div className="h-8 bg-rose-200 rounded"></div>
+                  <div className="h-8 bg-red-200 rounded"></div>
+                  <div className="h-8 bg-orange-200 rounded"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Invisible Scrollbar Test */}
+          <div>
+            <p className="text-xs text-gray-600 mb-1">Invisible (2px):</p>
+            <div className="w-48 h-24 bg-gray-50 border border-gray-200 rounded p-2 overflow-y-auto invisible-scrollbar">
+              <div className="h-64 bg-gradient-to-b from-gray-100 to-slate-100 rounded p-2">
+                <p className="text-xs">Scroll to see the invisible 2px scrollbar with rgba(0,0,0,0.08) background.</p>
+                <div className="mt-4 space-y-2">
+                  <div className="h-8 bg-gray-200 rounded"></div>
+                  <div className="h-8 bg-slate-200 rounded"></div>
+                  <div className="h-8 bg-zinc-200 rounded"></div>
+                  <div className="h-8 bg-neutral-200 rounded"></div>
+                  <div className="h-8 bg-stone-200 rounded"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
