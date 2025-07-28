@@ -132,7 +132,7 @@ const Navbar = () => {
                     <Link
                       to={item.path}
                       onClick={scrollToTopInstant}
-                      className={`relative px-4 py-2.5 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 ${
+                      className={`relative px-4 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2 ${
                         isActive
                           ? 'text-white shadow-lg'
                           : `text-gray-700 ${theme.hoverColor} ${theme.hoverBg}`

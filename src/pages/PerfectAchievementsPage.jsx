@@ -456,8 +456,8 @@ const PerfectAchievementsPage = () => {
                         
                         <p className="text-gray-600 mb-3">{achievement.description}</p>
                         
-                        <div className="flex items-center justify-between gap-4">
-                          <div className="flex items-center gap-3 sm:gap-4">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+                          <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
                             <span className={`px-3 py-1 rounded-lg text-xs font-bold bg-gradient-to-r ${achievement.gradient} text-white flex-shrink-0`}>
                               {achievement.impact} Impact
                             </span>
@@ -465,11 +465,11 @@ const PerfectAchievementsPage = () => {
                           </div>
                           
                           <motion.div
-                            className="flex items-center text-orange-600 font-medium cursor-pointer flex-shrink-0 ml-auto"
+                            className="flex items-center text-orange-600 font-medium cursor-pointer flex-shrink-0 self-start sm:self-auto"
                             whileHover={{ x: 5 }}
                           >
-                            <span className="text-sm">View Details</span>
-                            <ChevronRight className="w-4 h-4 ml-1" />
+                            <span className="text-sm whitespace-nowrap">View Details</span>
+                            <ChevronRight className="w-4 h-4 ml-1 flex-shrink-0" />
                           </motion.div>
                         </div>
                       </div>
