@@ -110,7 +110,88 @@
     "showFunFact": true,
     "showSkillsInterests": true,
     "showContactInfo": true,
-    "enableCustomScrollbar": true
+    "enableCustomScrollbar": true,
+    "skillsInterests": {
+      "title": "Interests & Skills",
+      "icon": "Star",
+      "backgroundColor": "bg-green-50",
+      "borderColor": "border-green-100",
+      "iconColor": "text-green-600",
+      "iconBackground": "bg-green-100",
+      "skills": [
+        {
+          "name": "Academic Excellence",
+          "category": "academic",
+          "color": "green"
+        },
+        {
+          "name": "Leadership",
+          "category": "leadership",
+          "color": "purple"
+        },
+        {
+          "name": "Teamwork",
+          "category": "social",
+          "color": "blue"
+        },
+        {
+          "name": "Communication",
+          "category": "social",
+          "color": "indigo"
+        },
+        {
+          "name": "Problem Solving",
+          "category": "analytical",
+          "color": "emerald"
+        },
+        {
+          "name": "Creativity",
+          "category": "creative",
+          "color": "pink"
+        },
+        {
+          "name": "Critical Thinking",
+          "category": "analytical",
+          "color": "amber"
+        },
+        {
+          "name": "Innovation",
+          "category": "creative",
+          "color": "violet"
+        },
+        {
+          "name": "Public Speaking",
+          "category": "communication",
+          "color": "orange"
+        },
+        {
+          "name": "Technology",
+          "category": "technical",
+          "color": "cyan"
+        },
+        {
+          "name": "Research",
+          "category": "academic",
+          "color": "teal"
+        },
+        {
+          "name": "Time Management",
+          "category": "organizational",
+          "color": "slate"
+        }
+      ],
+      "displaySettings": {
+        "maxSkillsToShow": 6,
+        "randomizeSelection": true,
+        "showByCategory": false,
+        "tagStyling": {
+          "baseClasses": "px-3 py-1.5 rounded-lg text-sm font-medium border shadow-sm",
+          "backgroundClasses": "bg-white",
+          "textClasses": "text-gray-700",
+          "borderClasses": "border-green-200"
+        }
+      }
+    }
   },
   "pagination": {
     "showEllipsis": true,

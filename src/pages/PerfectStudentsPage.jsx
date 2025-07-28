@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { students } from '../data/classData';
 import PerfectDropdown from '../components/PerfectDropdown';
+import { getStudentSkills, getSkillsConfig } from '../utils/skillsManager';
 
 // Optimized StudentCard component with memo to prevent unnecessary re-renders
 const StudentGridCard = memo(function StudentGridCard({ student, onImageLoad, onStudentClick, imageLoaded }) {
@@ -294,6 +295,10 @@ const PerfectStudentsPage = () => {
   const handleImageLoad = useCallback((studentName) => {
     setImageLoaded(prev => ({ ...prev, [studentName]: true }));
   }, []);
+
+  // Get skills configuration and generate skills for modal
+  const skillsConfig = useMemo(() => getSkillsConfig(), []);
+  const modalSkills = useMemo(() => getStudentSkills(), []);
 
   // Filter and sort options
   const sortOptions = [
@@ -794,26 +799,26 @@ const PerfectStudentsPage = () => {
                   )}
                 </div>
 
-                {/* Skills & Interests */}
+                {/* Skills & Interests - Dynamic from Configuration */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="bg-green-50 rounded-2xl p-6 border border-green-100"
+                  className={`${skillsConfig.backgroundColor} rounded-2xl p-6 border ${skillsConfig.borderColor}`}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                      <Star className="w-4 h-4 text-white" />
+                    <div className={`w-8 h-8 ${skillsConfig.iconBackground} rounded-lg flex items-center justify-center`}>
+                      <Star className={`w-4 h-4 ${skillsConfig.iconColor}`} />
                     </div>
-                    <h4 className="font-semibold text-gray-800">Interests & Skills</h4>
+                    <h4 className="font-semibold text-gray-800">{skillsConfig.title}</h4>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {['Academic Excellence', 'Leadership', 'Teamwork', 'Communication', 'Problem Solving', 'Creativity'].map((skill, _index) => (
+                    {modalSkills.map((skill, _index) => (
                       <span
-                        key={skill}
-                        className="px-3 py-1.5 bg-white rounded-lg text-sm font-medium text-gray-700 border border-green-200 shadow-sm"
+                        key={skill.name}
+                        className={`${skillsConfig.displaySettings.tagStyling.baseClasses} border-${skill.color}-200 bg-${skill.color}-50 text-${skill.color}-700`}
                       >
-                        {skill}
+                        {skill.name}
                       </span>
                     ))}
                   </div>
