@@ -418,25 +418,25 @@ const HomePage = () => {
             </p>
           </motion.div>
 
-          {/* Cards Grid - Properly Aligned */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+          {/* Cards Grid - Professional Layout: Leadership Left, Students/Achievements Right */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start max-w-6xl mx-auto">
             
-            {/* Leadership Card - Mobile Responsive */}
+            {/* Leadership Card - Left Side */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6 }}
-              className="lg:row-span-2 group cursor-pointer"
+              className="group cursor-pointer"
               onClick={() => window.location.href = '/leadership'}
             >
               <div 
                 className="h-full rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 text-white relative overflow-hidden hover:scale-[1.02] transition-all duration-500 shadow-xl"
-                style={{
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%)',
-                  minHeight: '500px',
-                  height: 'auto'
-                }}
+                                  style={{
+                    background: 'linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%)',
+                    minHeight: '520px',
+                    height: 'auto'
+                  }}
               >
                 {/* Background Pattern */}
                 <div 
@@ -490,10 +490,10 @@ const HomePage = () => {
               </div>
             </motion.div>
 
-            {/* Right Column Cards - Equal Heights */}
+            {/* Right Column - Students Above Achievements */}
             <div className="flex flex-col gap-6 sm:gap-8 h-full">
               
-              {/* Students Card - Mobile Responsive */}
+              {/* Students Card - Top Right */}
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -506,7 +506,7 @@ const HomePage = () => {
                    className="h-full rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden hover:scale-[1.02] transition-all duration-500 shadow-xl"
                    style={{
                      background: 'linear-gradient(135deg, #3B82F6 0%, #10B981 100%)',
-                     minHeight: '240px',
+                     minHeight: '250px',
                      height: '100%'
                    }}
                  >
@@ -542,7 +542,7 @@ const HomePage = () => {
                 </div>
               </motion.div>
 
-              {/* Achievements Card - Mobile Responsive */}
+              {/* Achievements Card - Bottom Right */}
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -555,7 +555,7 @@ const HomePage = () => {
                    className="h-full rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden hover:scale-[1.02] transition-all duration-500 shadow-xl"
                    style={{
                      background: 'linear-gradient(135deg, #10B981 0%, #F59E0B 100%)',
-                     minHeight: '240px',
+                     minHeight: '250px',
                      height: '100%'
                    }}
                  >
