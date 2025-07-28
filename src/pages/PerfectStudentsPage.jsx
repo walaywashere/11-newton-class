@@ -486,82 +486,147 @@ const PerfectStudentsPage = () => {
                     />
                   </div>
                 ) : (
-                  // List View - Horizontal Layout
-                  <div className="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 group-hover:border-purple-200 p-6">
-                    <div className="flex gap-6 items-center">
-                      {/* Student Photo - Fixed Size */}
-                      <div className="relative overflow-hidden w-20 h-20 rounded-lg flex-shrink-0">
-                        {!imageLoaded[student.name] && (
-                          <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse rounded-lg" />
-                        )}
-                        <motion.img
-                          src={student.photo}
-                          alt={student.name}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          onLoad={() => handleImageLoad(student.name)}
-                        />
-                        
-                                                 {/* Position Badge - Better positioned for mobile */}
-                         {student.position && student.position !== 'Student' && (
-                           <div className="absolute top-1 right-1">
-                             <span className="px-1.5 py-0.5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-md text-xs font-bold shadow-lg border border-white/20 backdrop-blur-sm flex items-center gap-0.5">
-                               <Crown className="w-2.5 h-2.5 flex-shrink-0" />
-                             </span>
-                           </div>
-                         )}
-                      </div>
+                  // List View - Modern Redesigned Layout
+                  <div className="bg-gradient-to-br from-white via-gray-50/80 to-slate-50/60 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-white/60 group-hover:border-purple-200/80 relative">
+                    {/* Subtle Card Accent */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    <div className="p-6">
+                      <div className="flex gap-6 items-start">
+                        {/* Profile Picture Area - Matching Grid Design */}
+                        <div className="relative flex-shrink-0">
+                          <div className="relative w-20 h-20">
+                            <div 
+                              className="w-20 h-20 rounded-2xl overflow-hidden shadow-xl ring-4 ring-white/80 group-hover:ring-purple-200/60 transition-all duration-300 bg-gradient-to-br from-slate-100 to-gray-200 relative"
+                              style={{ transform: 'rotate(-2deg)' }}
+                            >
+                              {!imageLoaded[student.name] ? (
+                                <div className="w-full h-full bg-gradient-to-br from-slate-200 via-gray-200 to-slate-300 flex flex-col items-center justify-center relative overflow-hidden">
+                                  {/* Elegant Pattern Background */}
+                                  <div 
+                                    className="absolute inset-0 opacity-20"
+                                    style={{
+                                      backgroundImage: `
+                                        radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.4) 2px, transparent 2px),
+                                        radial-gradient(circle at 70% 70%, rgba(59, 130, 246, 0.3) 1.5px, transparent 1.5px)
+                                      `,
+                                      backgroundSize: '20px 20px, 14px 14px'
+                                    }}
+                                  />
+                                  <div className="text-center z-10">
+                                    <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg mx-auto mb-1 flex items-center justify-center shadow-lg">
+                                      <Users className="w-3 h-3 text-white" />
+                                    </div>
+                                    <p className="text-[8px] text-gray-600 font-bold tracking-wider">PHOTO</p>
+                                    <p className="text-[7px] text-gray-500 font-medium">SOON</p>
+                                  </div>
+                                </div>
+                              ) : (
+                                <img
+                                  src={student.photo}
+                                  alt={student.name}
+                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                  onLoad={() => handleImageLoad(student.name)}
+                                  loading="lazy"
+                                />
+                              )}
+                            </div>
 
-                      {/* Student Info - Flex Layout */}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                          <div className="min-w-0">
-                            <h3 className="font-bold text-gray-800 group-hover:text-purple-600 transition-colors text-lg truncate">
-                              {student.name}
-                            </h3>
-                                                         {student.position && student.position !== 'Student' ? (
-                               <div className="flex items-center gap-1 text-sm font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                                 <Crown className="w-3 h-3 text-purple-500 flex-shrink-0" />
-                                 <span className="truncate">{student.position}</span>
-                               </div>
-                             ) : (
-                               <p className="text-gray-600 text-sm">Student</p>
-                             )}
-                          </div>
-                          
-                          <div className="flex items-center gap-4 flex-shrink-0">
-                            {student.dreamJob && (
-                              <div className="flex items-center gap-1 text-sm text-gray-500">
-                                <Target className="w-4 h-4" />
-                                <span>{student.dreamJob}</span>
+                            {/* Leadership Badge - Elegant Integration */}
+                            {student.position && student.position !== 'Student' && (
+                              <div className="absolute -top-1 -right-1 z-10">
+                                <div className="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 text-white rounded-full p-1.5 shadow-lg border-2 border-white ring-2 ring-amber-200/50">
+                                  <Crown className="w-2.5 h-2.5" />
+                                </div>
                               </div>
-                            )}
-                            
-                            {student.socials?.instagram ? (
-                              <a
-                                href={`https://instagram.com/${student.socials.instagram}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={(e) => e.stopPropagation()}
-                                className="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-md hover:scale-105 transition-transform shadow-md text-xs"
-                                title="Follow on Instagram"
-                              >
-                                <Instagram className="w-3 h-3" />
-                                <span className="hidden sm:inline">IG</span>
-                              </a>
-                            ) : (
-                              <span className="text-xs text-gray-400 px-2 py-1">No socials</span>
                             )}
                           </div>
                         </div>
-                        
-                        {student.funFact && (
-                          <div className="mt-2 flex items-center gap-2 text-sm text-gray-500">
-                            <Sparkles className="w-4 h-4" />
-                            <span className="truncate">{student.funFact}</span>
+
+                        {/* Content Section - Enhanced Layout */}
+                        <div className="flex-1 min-w-0">
+                          {/* Header Row */}
+                          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+                            {/* Name and Role */}
+                            <div className="min-w-0 flex-1">
+                              <h3 className="font-bold text-xl text-gray-800 leading-tight mb-2 group-hover:text-purple-700 transition-colors duration-300">
+                                {student.name}
+                              </h3>
+                              
+                              {student.position && student.position !== 'Student' ? (
+                                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full border border-purple-200/60 shadow-sm">
+                                  <Crown className="w-3 h-3 text-purple-600" />
+                                  <span className="text-sm font-semibold text-purple-700">{student.position}</span>
+                                </div>
+                              ) : (
+                                <span className="inline-block px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full border border-gray-200">
+                                  Student
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Action Buttons */}
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              {student.socials?.instagram ? (
+                                <>
+                                  <a
+                                    href={`https://instagram.com/${student.socials.instagram}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg text-xs font-semibold hover:shadow-lg transition-shadow duration-200"
+                                    title="Follow on Instagram"
+                                  >
+                                    <Instagram className="w-3 h-3" />
+                                    <span className="hidden sm:inline">Connect</span>
+                                  </a>
+                                  <button className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors duration-200">
+                                    <Heart className="w-3 h-3" />
+                                  </button>
+                                </>
+                              ) : (
+                                <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs text-gray-600 font-medium">
+                                  <Mail className="w-3 h-3" />
+                                  <span className="hidden sm:inline">Contact via school</span>
+                                </div>
+                              )}
+                            </div>
                           </div>
-                        )}
+
+                          {/* Key Facts - Horizontal Layout */}
+                          <div className="flex flex-col sm:flex-row gap-3">
+                            {student.dreamJob && (
+                              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-2.5 border border-blue-100/50 flex-1">
+                                <div className="flex items-start gap-2">
+                                  <div className="w-5 h-5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <Target className="w-2.5 h-2.5 text-white" />
+                                  </div>
+                                  <div className="min-w-0">
+                                    <p className="text-xs text-gray-700 font-medium leading-relaxed">{student.dreamJob}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            
+                            {student.funFact && (
+                              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-2.5 border border-purple-100/50 flex-1">
+                                <div className="flex items-start gap-2">
+                                  <div className="w-5 h-5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <Sparkles className="w-2.5 h-2.5 text-white" />
+                                  </div>
+                                  <div className="min-w-0">
+                                    <p className="text-xs text-gray-700 leading-relaxed">{student.funFact}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
                       </div>
                     </div>
+
+                    {/* Subtle Interaction Feedback */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-purple-500/5 via-transparent to-transparent pointer-events-none rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                 )}
               </motion.div>
