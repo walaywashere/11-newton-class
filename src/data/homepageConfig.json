@@ -1,7 +1,7 @@
 {
   "heroSection": {
     "topBadge": {
-      "text": "Class of 2025-2026",
+      "text": "Class of 2024-2025",
       "icon": "Sparkles",
       "showPulsingDot": true
     },
@@ -30,19 +30,19 @@
       {
         "icon": "Users",
         "label": "Brilliant Minds",
-        "value": "40+",
+        "value": "35+",
         "color": "blue"
       },
       {
         "icon": "Trophy", 
         "label": "Achievements",
-        "value": "15+",
+        "value": "12+",
         "color": "purple"
       },
       {
         "icon": "BookOpen",
         "label": "Projects",
-        "value": "25+",
+        "value": "20+",
         "color": "emerald"
       },
       {
@@ -63,7 +63,7 @@
         "text": "Our Leadership",
         "link": "/leadership", 
         "type": "secondary",
-        "icon": "Crown"
+        "icon": "UserCheck"
       }
     ],
     "scrollIndicator": {
@@ -83,7 +83,7 @@
         "subtitle": "Meet Our Leaders",
         "description": "Discover the visionaries and innovators who guide our class towards excellence and success.",
         "link": "/leadership",
-        "icon": "Crown",
+        "icon": "UserCheck",
         "gradient": "from-purple-600 to-blue-600",
         "stats": [
           {
@@ -92,7 +92,7 @@
           },
           {
             "label": "Student Officers", 
-            "value": "8+"
+            "value": "6+"
           },
           {
             "label": "Leadership Excellence",
@@ -110,11 +110,11 @@
         "stats": [
           {
             "label": "Total Students",
-            "value": "40+"
+            "value": "35+"
           },
           {
             "label": "Unique Stories",
-            "value": "40+"
+            "value": "35+"
           },
           {
             "label": "Future Leaders", 
@@ -132,11 +132,11 @@
         "stats": [
           {
             "label": "Major Awards",
-            "value": "15+"
+            "value": "12+"
           },
           {
             "label": "Projects Completed",
-            "value": "25+"
+            "value": "20+"
           },
           {
             "label": "Excellence Rate",

@@ -17,13 +17,13 @@
     "stats": [
       {
         "icon": "Trophy",
-        "value": "15+",
+        "value": "12+",
         "label": "Major Awards",
         "color": "text-amber-400"
       },
       {
         "icon": "Star",
-        "value": "25+",
+        "value": "20+",
         "label": "Recognition",
         "color": "text-yellow-400"
       },
@@ -34,7 +34,7 @@
         "color": "text-orange-400"
       },
       {
-        "icon": "Medal",
+        "icon": "Crown",
         "value": "5+",
         "label": "Championships",
         "color": "text-amber-300"
@@ -333,7 +333,7 @@
         "desktop": 3,
         "large": 4
       },
-      "cardHeight": "auto",
+      "cardHeight": "384px",
       "imageAspectRatio": "4:3",
       "showExcerpt": true,
       "excerptLength": 120
@@ -351,7 +351,8 @@
       "enablePhotoGallery": true,
       "showMetadata": true,
       "enableSocialSharing": false,
-      "showRelatedAchievements": true
+      "showRelatedAchievements": true,
+      "enableCustomScrollbar": true
     }
   },
   "photoGallery": {
@@ -384,9 +385,15 @@
       "duration": 0.2
     },
     "imageHover": {
-      "scale": 1.1,
+      "scale": 1.05,
       "duration": 0.3
     },
-    "staggerDelay": 0.1
+    "staggerDelay": 0.05,
+    "optimized": true
+  },
+  "performance": {
+    "lazyLoading": true,
+    "memoizedComponents": true,
+    "reducedMotion": true
   }
 }

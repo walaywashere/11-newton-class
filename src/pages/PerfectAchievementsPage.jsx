@@ -1,8 +1,7 @@
-import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import React, { useState, useMemo, useScroll, useTransform } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Medal, Star, Flame, Diamond, Crown, Users, Target, Award, ChevronRight, X, Filter, Grid, List } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { scrollToTopInstant } from '../utils/scrollToTop';
 import PerfectDropdown from '../components/PerfectDropdown';
 
 // Enhanced achievements data with more details

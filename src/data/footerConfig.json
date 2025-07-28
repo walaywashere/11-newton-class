@@ -1,29 +1,29 @@
 {
   "branding": {
     "name": "Class 11-Newton",
-    "tagline": "Excellence in Education",
-    "academicYear": "2025-2026",
+    "tagline": "Excellence in Motion",
+    "academicYear": "2024-2025",
     "description": "We are a community of passionate learners, innovators, and future leaders. Together, we're shaping tomorrow through knowledge, creativity, and collaboration."
   },
   "classStats": [
     {
       "label": "Students",
-      "value": "40+",
+      "value": "35+",
       "icon": "Users"
     },
     {
       "label": "Projects", 
-      "value": "25+",
+      "value": "20+",
       "icon": "BookOpen"
     },
     {
       "label": "Achievements",
-      "value": "15+", 
+      "value": "12+", 
       "icon": "Trophy"
     },
     {
       "label": "Academic Year",
-      "value": "2025-26",
+      "value": "2024-25",
       "icon": "Calendar"
     }
   ],
@@ -36,7 +36,7 @@
     {
       "name": "Leadership", 
       "href": "/leadership",
-      "icon": "Sparkles"
+      "icon": "UserCheck"
     },
     {
       "name": "Achievements",
@@ -53,7 +53,7 @@
     "schoolName": "Your School Name",
     "city": "Your City",
     "email": "class11newton@school.edu",
-    "academicYear": "Academic Year 2025-2026"
+    "academicYear": "Academic Year 2024-2025"
   },
   "socialLinks": [
     {

@@ -1,8 +1,9 @@
 {
   "site": {
     "name": "Class 11-Newton",
-    "academicYear": "2025-2026",
-    "description": "Official website of Class 11-Newton - Excellence in Education",
+    "academicYear": "2024-2025",
+    "description": "Official website of Class 11-Newton - Excellence in Motion",
+    "tagline": "Excellence in Motion",
     "colors": {
       "primary": {
         "blue": "#3B82F6",
@@ -14,14 +15,14 @@
       "gradients": {
         "hero": "from-slate-50 via-blue-50 to-purple-50",
         "students": "from-blue-50 via-indigo-50 to-purple-50",
-        "leadership": "from-slate-50 via-blue-50 to-purple-50",
+        "leadership": "from-purple-50 via-indigo-50 to-blue-50",
         "achievements": "from-amber-50 via-orange-50 to-red-50"
       }
     }
   },
   "navigation": {
     "logo": {
-      "text": "Class 11-Newton",
+      "text": "Class 11-Newton / Excellence in Motion",
       "showIcon": true,
       "icon": "Sparkles"
     },
@@ -39,7 +40,7 @@
       {
         "name": "Leadership",
         "href": "/leadership", 
-        "icon": "Crown"
+        "icon": "UserCheck"
       },
       {
         "name": "Achievements",
@@ -50,19 +51,19 @@
   },
   "animations": {
     "pageTransition": {
-      "duration": 0.4,
+      "duration": 0.3,
       "easing": "easeInOut"
     },
     "cardHover": {
-      "scale": 1.05,
+      "scale": 1.02,
       "translateY": -4,
-      "duration": 0.3
+      "duration": 0.2
     },
-    "staggerDelay": 0.1,
+    "staggerDelay": 0.05,
     "floatingElements": {
-      "count": 12,
-      "duration": "5-8s",
-      "opacity": "0.4-0.9"
+      "count": 8,
+      "duration": "8-12s",
+      "opacity": "0.1-0.3"
     }
   },
   "responsive": {
@@ -85,6 +86,15 @@
     "preloader": true,
     "scrollToTop": true,
     "sessionStorage": true,
-    "pagination": true
+    "pagination": true,
+    "islandNavbar": true,
+    "customScrollbar": true,
+    "performanceOptimized": true
+  },
+  "performance": {
+    "prefersReducedMotion": true,
+    "lazyLoading": true,
+    "memoization": true,
+    "animationOptimization": "subtle"
   }
 }

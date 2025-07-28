@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Crown, Users, Star, Award, Heart, MapPin, Calendar, Mail, Phone, BookOpen, Trophy, Sparkles, ChevronRight, Instagram } from 'lucide-react';
+import { Crown, Phone, Mail, BookOpen, Trophy, Sparkles, ChevronRight, X, Users, Star, Calendar, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { scrollToTopInstant } from '../utils/scrollToTop';
 import { adviser, classOfficers } from '../data/classData';
 
 const PerfectLeadershipPage = () => {

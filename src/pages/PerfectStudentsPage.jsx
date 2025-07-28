@@ -2,12 +2,12 @@ import React, { useState, useMemo, useEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Users, Star, Heart, Sparkles, Search, Filter, Grid, List, ChevronLeft, ChevronRight, Crown, Instagram, Mail, Trophy, BookOpen, Target, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { scrollToTopInstant } from '../utils/scrollToTop';
+
 import { students } from '../data/classData';
 import PerfectDropdown from '../components/PerfectDropdown';
 
 // Optimized StudentCard component with memo to prevent unnecessary re-renders
-const StudentGridCard = memo(({ student, index, onImageLoad, onStudentClick, imageLoaded }) => {
+const StudentGridCard = memo(function StudentGridCard({ student, onImageLoad, onStudentClick, imageLoaded }) {
   return (
     <div
       className="group cursor-pointer"
@@ -138,7 +138,7 @@ const StudentGridCard = memo(({ student, index, onImageLoad, onStudentClick, ima
 });
 
 // Optimized ListCard component
-const StudentListCard = memo(({ student, onImageLoad, onStudentClick, imageLoaded }) => {
+const StudentListCard = memo(function StudentListCard({ student, onImageLoad, onStudentClick, imageLoaded }) {
   return (
     <div
       className="group cursor-pointer"
@@ -333,12 +333,13 @@ const PerfectStudentsPage = () => {
           return a.name.localeCompare(b.name);
         case 'name-desc':
           return b.name.localeCompare(a.name);
-        case 'position':
+        case 'position': {
           const aPos = a.position || 'Student';
           const bPos = b.position || 'Student';
           if (aPos === 'Student' && bPos !== 'Student') return 1;
           if (aPos !== 'Student' && bPos === 'Student') return -1;
           return aPos.localeCompare(bPos);
+        }
         case 'dreamJob':
           return (a.dreamJob || '').localeCompare(b.dreamJob || '');
         default:
@@ -560,12 +561,11 @@ const PerfectStudentsPage = () => {
             ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
             : 'space-y-4'
         }>
-          {currentStudents.map((student, index) => (
+                      {currentStudents.map((student) => (
             viewMode === 'grid' ? (
               <StudentGridCard
                 key={student.name}
                 student={student}
-                index={index}
                 onImageLoad={handleImageLoad}
                 onStudentClick={setSelectedStudent}
                 imageLoaded={imageLoaded}
@@ -808,7 +808,7 @@ const PerfectStudentsPage = () => {
                     <h4 className="font-semibold text-gray-800">Interests & Skills</h4>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {['Academic Excellence', 'Leadership', 'Teamwork', 'Communication', 'Problem Solving', 'Creativity'].map((skill, index) => (
+                    {['Academic Excellence', 'Leadership', 'Teamwork', 'Communication', 'Problem Solving', 'Creativity'].map((skill, _index) => (
                       <span
                         key={skill}
                         className="px-3 py-1.5 bg-white rounded-lg text-sm font-medium text-gray-700 border border-green-200 shadow-sm"

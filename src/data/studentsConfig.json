@@ -2,7 +2,8 @@
   "pageSettings": {
     "studentsPerPage": 12,
     "defaultViewMode": "grid",
-    "defaultSortBy": "name"
+    "defaultSortBy": "name",
+    "defaultFilterBy": "all"
   },
   "heroSection": {
     "badge": {
@@ -47,32 +48,69 @@
         "label": "By Name"
       },
       {
-        "value": "role", 
+        "value": "position", 
         "label": "By Position"
       },
       {
         "value": "dreamJob",
         "label": "By Dream Job"
       }
+    ],
+    "filterOptions": [
+      {
+        "value": "all",
+        "label": "All Students"
+      },
+      {
+        "value": "officers",
+        "label": "Class Officers Only"
+      },
+      {
+        "value": "regular",
+        "label": "Regular Students"
+      }
     ]
   },
   "cardSettings": {
     "grid": {
-      "imageHeight": "200px",
-      "showQuote": true,
+      "imageHeight": "192px",
+      "cardHeight": "420px",
+      "showQuote": false,
       "showFunFact": true,
       "showDreamJob": true,
-      "showInstagram": true
+      "showInstagram": true,
+      "showHeartButton": true,
+      "leadershipBadge": {
+        "show": true,
+        "icon": "Crown",
+        "position": "top-right"
+      }
     },
     "list": {
       "imageSize": {
-        "mobile": "64px",
+        "mobile": "80px",
         "desktop": "80px"
       },
       "showFunFact": true,
       "showDreamJob": true,
-      "showInstagram": true
+      "showInstagram": true,
+      "showHeartButton": true,
+      "leadershipBadge": {
+        "show": true,
+        "icon": "Crown",
+        "position": "top-right",
+        "size": "small"
+      }
     }
+  },
+  "modal": {
+    "showProfilePicture": true,
+    "showPersonalQuote": true,
+    "showDreamJob": true,
+    "showFunFact": true,
+    "showSkillsInterests": true,
+    "showContactInfo": true,
+    "enableCustomScrollbar": true
   },
   "pagination": {
     "showEllipsis": true,
@@ -84,6 +122,11 @@
     "subtitle": "Discover our leadership team and see how these amazing students contribute to our class excellence.",
     "buttonText": "Meet Our Leaders",
     "buttonLink": "/leadership",
-    "buttonIcon": "Trophy"
+    "buttonIcon": "UserCheck"
+  },
+  "performance": {
+    "memoizedComponents": true,
+    "lazyImageLoading": true,
+    "optimizedAnimations": true
   }
 }

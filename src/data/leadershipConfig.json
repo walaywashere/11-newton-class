@@ -1,12 +1,14 @@
 {
   "pageSettings": {
     "defaultViewMode": "grid",
-    "defaultFilterType": "all"
+    "defaultFilterType": "all",
+    "enableSearch": false,
+    "separateAdviserAndOfficers": true
   },
   "heroSection": {
     "badge": {
       "text": "Leadership Excellence",
-      "icon": "Crown"
+      "icon": "UserCheck"
     },
     "title": {
       "main": "Meet Our",
@@ -21,9 +23,8 @@
       },
       {
         "label": "Class Officers", 
-        "value": "dynamic",
-        "color": "blue",
-        "calculation": "officers"
+        "value": "6",
+        "color": "blue"
       },
       {
         "label": "Dedication",
@@ -53,8 +54,12 @@
     "title": "Our Class Adviser",
     "subtitle": "The guiding force behind Class 11-Newton's success",
     "cardSettings": {
-      "imageSize": "128px",
+      "imageSize": "224px",
       "showFunFact": true,
+      "showQuote": true,
+      "showContact": true,
+      "showExperience": true,
+      "showAchievements": true,
       "backgroundGradient": "from-purple-50 to-blue-50",
       "borderColor": "border-purple-200"
     },
@@ -78,22 +83,22 @@
   },
   "officersSection": {
     "title": "Our Class Officers",
+    "subtitle": "Student leaders making a difference in our class",
     "cardSettings": {
       "grid": {
-        "imageHeight": "240px",
+        "imageHeight": "192px",
+        "cardHeight": "auto",
         "showQuote": true,
+        "showPosition": true,
+        "showResponsibilities": true,
         "showFunFact": true,
         "showDreamJob": true,
         "showInstagram": true
       },
-      "list": {
-        "imageSize": {
-          "mobile": "64px",
-          "desktop": "80px"
-        },
-        "showFunFact": true,
-        "showDreamJob": true,
-        "showInstagram": true
+      "modal": {
+        "showResponsibilities": true,
+        "showPersonalInfo": true,
+        "enableCustomScrollbar": true
       }
     }
   },
@@ -103,5 +108,9 @@
     "buttonText": "Meet All Students",
     "buttonLink": "/students",
     "buttonIcon": "Users"
+  },
+  "performance": {
+    "optimizedAnimations": true,
+    "reducedMotion": true
   }
 }

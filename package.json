@@ -1,8 +1,10 @@
 {
   "name": "class-11-newton",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.2.0",
   "type": "module",
+  "description": "Official website of Class 11-Newton - Excellence in Motion",
+  "keywords": ["education", "class-website", "students", "achievements", "react", "vite"],
   "scripts": {
     "dev": "vite",
     "dev:open": "vite --open",
