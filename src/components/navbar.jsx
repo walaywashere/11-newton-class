@@ -1,102 +1,126 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Users, Menu, X, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { scrollToTopInstant } from '../utils/scrollToTop';
-
-const navLinks = [
-  { title: 'Home', href: '/' },
-  { title: 'Leadership', href: '/leadership' },
-  { title: 'Students', href: '/students' },
-  { title: 'Achievements', href: '/achievements' },
-];
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Home, Users, Trophy, UserCheck, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const isScrolled = window.scrollY > 20;
+      setScrolled(isScrolled);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navItems = [
+    { name: 'Home', path: '/', icon: Home },
+    { name: 'Students', path: '/students', icon: Users },
+    { name: 'Leadership', path: '/leadership', icon: UserCheck },
+    { name: 'Achievements', path: '/achievements', icon: Trophy },
+  ];
+
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      className="fixed top-0 w-full z-[100] transition-all duration-300"
-      style={{
-        background: isScrolled 
-          ? 'rgba(0, 0, 0, 0.8)' 
-          : 'rgba(0, 0, 0, 0.4)',
-        backdropFilter: 'blur(20px)',
-        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
-        paddingTop: 'env(safe-area-inset-top)',
-      }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'py-3' : 'py-6'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
-          {/* Logo */}
-          <motion.div 
-            className="flex items-center gap-3"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          >
-            <div className="relative">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary-400 to-accent-500 rounded-lg sm:rounded-xl flex items-center justify-center shadow-glow">
-                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-              </div>
-              <div className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-2 h-2 sm:w-3 sm:h-3 bg-accent-400 rounded-full animate-pulse"></div>
-            </div>
-            <div>
-              <Link to="/" onClick={scrollToTopInstant} className="block">
-                <h1 className="text-lg sm:text-xl font-bold text-white">11-Newton</h1>
-                <p className="text-xs text-white/60 font-medium">Class of 2025</p>
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {navLinks.map((link, index) => (
-              <motion.div 
-                key={link.title}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                                 transition={{ delay: Math.min(0.1 * index + 0.3, 1.0) }}
-              >
-                <Link
-                  to={link.href}
-                  onClick={scrollToTopInstant}
-                  className={`group relative px-4 py-2 rounded-xl font-medium transition-all duration-300 hover:bg-white/10 ${
-                    location.pathname === link.href 
-                      ? 'text-white bg-white/10' 
-                      : 'text-white/80 hover:text-white'
-                  }`}
+        {/* Island Bar Container */}
+        <motion.div
+          animate={{
+            scale: scrolled ? 0.95 : 1,
+            borderRadius: scrolled ? '24px' : '32px',
+          }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className={`relative backdrop-blur-xl border border-white/20 shadow-2xl transition-all duration-500 ${
+            scrolled 
+              ? 'bg-white/80 shadow-xl' 
+              : 'bg-white/70 shadow-2xl'
+          }`}
+          style={{
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            boxShadow: scrolled 
+              ? '0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 16px rgba(0, 0, 0, 0.08)' 
+              : '0 16px 64px rgba(0, 0, 0, 0.15), 0 4px 32px rgba(0, 0, 0, 0.1)'
+          }}
+        >
+          {/* Gradient Border Effect */}
+          <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-indigo-500/20 opacity-60 blur-sm" />
+          
+          <div className="relative flex items-center justify-between px-6 py-4">
+            {/* Logo */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center space-x-3"
+            >
+              <Link to="/" className="flex items-center space-x-3 group">
+                <motion.div
+                  animate={{ rotate: [0, 5, -5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-10 h-10 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow"
                 >
-                  {link.title}
-                  <span className={`absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-primary-400 to-accent-500 transition-all duration-300 rounded-full ${
-                    location.pathname === link.href 
-                      ? 'w-full left-0' 
-                      : 'w-0 group-hover:w-full group-hover:left-0'
-                  }`}></span>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+                  <Sparkles className="w-6 h-6 text-white" />
+                </motion.div>
+                <div className="hidden sm:block">
+                  <div className="text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                    Class 11-Newton
+                  </div>
+                  <div className="text-xs text-gray-500 font-medium">Excellence in Motion</div>
+                </div>
+              </Link>
+            </motion.div>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <button 
-              onClick={() => setIsOpen(!isOpen)} 
-              className="p-2 rounded-lg sm:rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300"
-              aria-label={isOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={isOpen}
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-2">
+              {navItems.map((item) => {
+                const isActive = location.pathname === item.path;
+                return (
+                  <motion.div
+                    key={item.name}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Link
+                      to={item.path}
+                      className={`relative px-4 py-2.5 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2 ${
+                        isActive
+                          ? 'text-white shadow-lg'
+                          : 'text-gray-700 hover:text-purple-600 hover:bg-purple-50/50'
+                      }`}
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeTab"
+                          className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl"
+                          transition={{ type: "spring", duration: 0.6 }}
+                        />
+                      )}
+                      <item.icon className={`w-4 h-4 relative z-10 ${isActive ? 'text-white' : ''}`} />
+                      <span className="relative z-10">{item.name}</span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg hover:shadow-xl transition-all"
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
@@ -107,7 +131,7 @@ const Navbar = () => {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X size={24} />
+                    <X className="w-5 h-5" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -117,61 +141,62 @@ const Navbar = () => {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu size={24} />
+                    <Menu className="w-5 h-5" />
                   </motion.div>
                 )}
               </AnimatePresence>
-            </button>
+            </motion.button>
           </div>
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden glass-dark backdrop-blur-xl border-t border-white/10"
-          >
-            <div className="px-4 py-6 space-y-2">
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.title}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 * index }}
-                >
-                  <Link
-                    to={link.href}
-                    onClick={(_e) => {
-                      setIsOpen(false);
-                      // Ensure scroll to top works on mobile
-                      setTimeout(() => {
-                        scrollToTopInstant();
-                      }, 100);
-                    }}
-                    className={`group flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 font-medium ${
-                      location.pathname === link.href 
-                        ? 'text-white bg-white/10' 
-                        : 'text-white/80 hover:text-white hover:bg-white/10'
-                    }`}
-                  >
-                    <div className={`w-2 h-2 bg-gradient-to-r from-primary-400 to-accent-500 rounded-full transition-transform ${
-                      location.pathname === link.href 
-                        ? 'scale-125' 
-                        : 'group-hover:scale-125'
-                    }`}></div>
-                    {link.title}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="md:hidden mt-4"
+            >
+              <div 
+                className="backdrop-blur-xl bg-white/80 border border-white/20 rounded-2xl shadow-2xl overflow-hidden"
+                style={{
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                }}
+              >
+                <div className="py-2">
+                  {navItems.map((item, index) => {
+                    const isActive = location.pathname === item.path;
+                    return (
+                      <motion.div
+                        key={item.name}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                      >
+                        <Link
+                          to={item.path}
+                          onClick={() => setIsOpen(false)}
+                          className={`flex items-center space-x-3 px-6 py-4 transition-all duration-300 ${
+                            isActive
+                              ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white'
+                              : 'text-gray-700 hover:bg-purple-50 hover:text-purple-600'
+                          }`}
+                        >
+                          <item.icon className="w-5 h-5" />
+                          <span className="font-medium">{item.name}</span>
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </motion.nav>
   );
 };

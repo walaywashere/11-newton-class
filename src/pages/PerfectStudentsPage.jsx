@@ -502,7 +502,7 @@ const PerfectStudentsPage = () => {
                             {student.dreamJob && (
                               <div className="flex items-center gap-1 text-sm text-gray-500">
                                 <Target className="w-4 h-4" />
-                                <span className="hidden sm:inline">{student.dreamJob}</span>
+                                <span>{student.dreamJob}</span>
                               </div>
                             )}
                             
@@ -586,7 +586,7 @@ const PerfectStudentsPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
             onClick={() => setSelectedStudent(null)}
           >
             <motion.div
