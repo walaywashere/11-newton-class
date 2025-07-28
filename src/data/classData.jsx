@@ -1,6 +1,6 @@
 import { Award, BookOpen, Calendar, Rocket } from 'lucide-react';
 
-const comingSoonPhoto = "https://media.discordapp.net/attachments/1394255915443552316/1398910732732727367/360_F_354511285_Rk4Pm1gWvS00XHNwthtxBBpyZvCWSEyk.jpg?ex=688714a5&is=6885c325&hm=df62fa1b7e40b144d09b721361adecdc25e24fbe3907ff202d5ba262ca987f2f&=&format=webp";
+const comingSoonPhoto = "https://media.discordapp.net/attachments/1394255915443552316/1398910732732727367/360_F_354511285_Rk4Pm1gWvS00XHNwthtxBBpyZvCWSEyk.jpg?ex=6887bd65&is=68866be5&hm=57b627aec9503734d7b07bfa96fca0a1077892dea29b94a948962b3294720536&=&format=webp";
 
 export const adviser = {
   name: 'Ms. Evelyn Reyes',
